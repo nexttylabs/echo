@@ -8,7 +8,7 @@
 
 Collect feedback, spot patterns, and ship what matters.
 
-[Live Demo](https://echo-demo.vercel.app)  - [Feedback](https://github.com/nexttylabs/echo/issues)
+[Live Demo](https://https://echo-khaki-eta.vercel.app/)  - [Feedback](https://github.com/nexttylabs/echo/issues)
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 [![GitHub stars](https://img.shields.io/github/stars/nexttylabs/echo.svg)](https://github.com/nexttylabs/echo/stargazers)
