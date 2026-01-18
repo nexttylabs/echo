@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Echo Logo](public/logo.svg)
+![Echo Logo](public/logo-64.svg)
 
 **Open-source product feedback platform for modern teams.**
 
