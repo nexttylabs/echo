@@ -8,7 +8,7 @@
 
 Collect feedback, spot patterns, and ship what matters.
 
-[Live Demo](https://echo-demo.vercel.app) - [Documentation](https://docs.echofeedback.io) - [Feedback](https://github.com/nexttylabs/echo/issues)
+[Live Demo](https://echo-demo.vercel.app)  - [Feedback](https://github.com/nexttylabs/echo/issues)
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 [![GitHub stars](https://img.shields.io/github/stars/nexttylabs/echo.svg)](https://github.com/nexttylabs/echo/stargazers)
@@ -193,6 +193,6 @@ This project is licensed under the [GNU AGPL v3](LICENSE).
 
 **[Star the repo](https://github.com/nexttylabs/echo) if Echo helps your team.**
 
-Made by the Echo Team
+Made by the nexttylabs Team
 
 </div>
