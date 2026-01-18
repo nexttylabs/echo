@@ -68,29 +68,30 @@ const createMockDb = (data = mockFeedbackData, total = data.length) => ({
   })),
 });
 
-mock.module("@/lib/auth/config", () => ({
-  auth: {
-    api: {
-      getSession: mock(() => Promise.resolve({ user: { id: "user_1" } })),
-    },
-    options: {
-      session: {
-        expiresIn: 60 * 60 * 24 * 30,
+function setupMocks() {
+  mock.module("@/lib/auth/config", () => ({
+    auth: {
+      api: {
+        getSession: mock(() => Promise.resolve({ user: { id: "user_1" } })),
+      },
+      options: {
+        session: {
+          expiresIn: 60 * 60 * 24 * 30,
+        },
       },
     },
-  },
-}));
+  }));
 
-
-
-mock.module("next/headers", () => ({
-  headers: () => Promise.resolve(new Headers()),
-  cookies: () => Promise.resolve({ get: () => undefined }),
-}));
+  mock.module("next/headers", () => ({
+    headers: () => Promise.resolve(new Headers()),
+    cookies: () => Promise.resolve({ get: () => undefined }),
+  }));
+}
 
 describe("GET /api/feedback", () => {
   beforeEach(() => {
     mock.restore();
+    setupMocks();
   });
 
   it("returns paginated feedback list with organization isolation", async () => {
