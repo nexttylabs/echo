@@ -63,3 +63,11 @@ jobs:
           git push origin HEAD:main
           VERSION=$(node -p "require('./package.json').version")
           git push origin "v${VERSION}"
+
+      - name: Trigger Publish workflow
+        if: steps.git_status.outputs.changed == 'true'
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          gh workflow run publish.yml --ref "v${VERSION}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
