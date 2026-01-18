@@ -1,0 +1,844 @@
+{
+  "navigation": {
+    "dashboard": "仪表盘",
+    "feedback": "反馈管理",
+    "sectionLabel": "导航",
+    "settings": "设置",
+    "logout": "退出登录",
+    "openMenu": "打开菜单",
+    "organization": "组织",
+    "selectOrganization": "选择组织",
+    "newOrganization": "新建组织"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "jp": "日本語"
+  },
+  "hero": {
+    "title": "Echo",
+    "login": "登录",
+    "register": "免费注册",
+    "headline": "开源产品反馈管理平台",
+    "description": "专为初创公司设计，让团队能够集中管理产品反馈、发现洞察并做出明智的产品决策。",
+    "subtitle": "零成本起步，完全掌控你的数据。",
+    "cta1": "开始使用",
+    "cta2": "查看文档",
+    "coreValues": "核心价值",
+    "feature1": {
+      "title": "零成本起步",
+      "description": "开源核心功能，免费自托管，5 分钟完成部署"
+    },
+    "feature2": {
+      "title": "数据主权",
+      "description": "完全掌控用户反馈数据，符合 GDPR 等合规要求"
+    },
+    "feature3": {
+      "title": "AI 原生",
+      "description": "智能分类、重复检测、洞察发现，让决策更高效"
+    },
+    "feature4": {
+      "title": "易于集成",
+      "description": "开放 API 与 Webhook，与现有工作流无缝衔接"
+    },
+    "ready": {
+      "title": "准备好开始了吗？",
+      "description": "加入已经在使用 Echo 的初创公司，让每一条用户反馈都能被听见。",
+      "cta1": "免费创建账户",
+      "cta2": "已有账户？登录"
+    },
+    "footer": {
+      "title": "Echo - 开源产品反馈管理平台",
+      "docs": "文档"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "save": "保存",
+    "saving": "保存中...",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "comingSoon": "即将推出",
+    "noData": "暂无数据",
+    "settingsSaved": "设置已保存",
+    "saveFailed": "保存失败，请稍后重试",
+    "viewAll": "查看全部",
+    "submitFirst": "提交第一个反馈",
+    "noOrganization": "未找到关联的组织。"
+  },
+  "validation": {
+    "titleRequired": "标题不能为空",
+    "titleMax200": "标题不能超过200个字符",
+    "descriptionRequired": "描述不能为空",
+    "descriptionMax5000": "描述不能超过5000个字符",
+    "customerNameRequired": "客户姓名不能为空",
+    "customerNameMax100": "客户姓名不能超过100个字符",
+    "emailInvalid": "请输入有效的邮箱地址",
+    "typeRequired": "请选择类型",
+    "priorityRequired": "请选择优先级"
+  },
+  "settings": {
+    "title": "设置",
+    "groups": {
+      "general": "通用",
+      "brandingCustomizations": "品牌与定制",
+      "accessAuthentication": "访问与认证",
+      "modules": "模块",
+      "other": "其他",
+      "resources": "资源"
+    },
+    "items": {
+      "profile": "个人资料",
+      "organization": "组织",
+      "teamMembers": "团队成员",
+      "appearance": "外观",
+      "branding": "品牌",
+      "notificationEmails": "邮件通知",
+      "organizationAccess": "组织访问",
+      "securitySso": "安全与 SSO",
+      "apiKeys": "API 密钥",
+      "customizeModules": "自定义模块",
+      "feedbackRoadmap": "反馈与路线图",
+      "changelog": "更新日志",
+      "widgetsEmbeds": "小组件与嵌入",
+      "integrations": "集成",
+      "advanced": "高级",
+      "dangerZone": "危险区",
+      "developerDocs": "开发者文档",
+      "joinCommunity": "加入社区"
+    },
+    "organizationForm": {
+      "titleEdit": "组织设置",
+      "titleCreate": "创建新组织",
+      "descEdit": "管理组织的基本信息",
+      "descCreate": "用于管理多个项目或团队",
+      "nameLabel": "组织名称",
+      "descriptionLabel": "描述",
+      "savingEdit": "保存中...",
+      "savingCreate": "创建中...",
+      "submitEdit": "保存更改",
+      "submitCreate": "创建",
+      "updateFailed": "更新失败",
+      "createFailed": "创建失败",
+      "updatedSuccess": "组织信息已更新",
+      "genericError": "发生错误，请稍后重试"
+    },
+    "profile": {
+      "pageTitle": "个人资料",
+      "pageDescription": "管理你的账户信息和偏好设置",
+      "cardTitle": "个人资料",
+      "cardDescription": "管理你的个人信息",
+      "nameLabel": "姓名",
+      "emailLabel": "邮箱",
+      "saveChanges": "保存更改 (即将推出)"
+    },
+    "appearance": {
+      "pageTitle": "外观设置",
+      "pageDescription": "自定义应用的显示风格",
+      "cardTitle": "外观设置",
+      "cardDescription": "自定义应用的显示风格",
+      "themeLabel": "主题",
+      "themeLight": "浅色",
+      "themeDark": "深色",
+      "themeSystem": "跟随系统",
+      "themeComingSoon": "主题切换功能即将推出"
+    },
+    "notifications": {
+      "pageTitle": "通知设置",
+      "pageDescription": "选择您希望接收的通知类型",
+      "cardTitle": "邮件通知",
+      "cardDescription": "选择您希望接收的邮件通知类型",
+      "statusChange": "反馈状态变更",
+      "statusChangeDesc": "当您提交的反馈状态发生变化时接收通知",
+      "newComment": "新评论通知",
+      "newCommentDesc": "当其他人评论您关注的反馈时接收通知",
+      "saveSettings": "保存设置"
+    },
+    "apiKeys": {
+      "pageTitle": "API 密钥",
+      "pageDescription": "管理您的 API 访问密钥",
+      "createTitle": "创建新密钥",
+      "createDescription": "创建新的 API 密钥用于外部集成",
+      "keyNameLabel": "密钥名称",
+      "keyNamePlaceholder": "输入密钥名称",
+      "createButton": "创建密钥",
+      "existingTitle": "已有密钥",
+      "existingDescription": "管理您的 API 密钥",
+      "noKeys": "暂无 API 密钥",
+      "keyCreatedAlert": "新密钥已创建: {key}\n\n请立即保存此密钥，它将不会再次显示。",
+      "deleteConfirm": "确定要删除此 API 密钥吗？此操作不可撤销。"
+    },
+    "dangerZone": {
+      "pageTitle": "危险区",
+      "pageDescription": "不可逆转的危险操作",
+      "deleteOrg": "删除组织",
+      "deleteOrgDesc": "永久删除您的组织及所有数据。此操作不可撤销。",
+      "resetData": "重置所有数据",
+      "resetDataDesc": "删除所有反馈、路线图项目和更新日志。组织设置将被保留。",
+      "transferOwnership": "转让所有权",
+      "transferOwnershipDesc": "将组织所有权转让给另一位管理员。您将失去所有者权限。"
+    },
+    "advanced": {
+      "pageTitle": "高级设置",
+      "pageDescription": "高级设置和配置",
+      "dataExport": "数据导出",
+      "dataExportDesc": "导出您的所有数据",
+      "dataExportComingSoon": "数据导出功能即将推出",
+      "webhooks": "Webhooks",
+      "webhooksDesc": "配置 webhook 端点",
+      "webhooksComingSoon": "Webhook 配置即将推出",
+      "developerMode": "开发者模式",
+      "developerModeDesc": "启用高级调试功能",
+      "developerModeComingSoon": "开发者模式即将推出"
+    },
+    "security": {
+      "pageTitle": "安全与 SSO",
+      "pageDescription": "管理安全设置和单点登录",
+      "sso": "单点登录 (SSO)",
+      "ssoDesc": "配置 SAML 或 OAuth 提供商",
+      "ssoComingSoon": "SSO 配置即将推出",
+      "twoFactor": "双因素认证",
+      "twoFactorDesc": "强制团队成员使用双因素认证",
+      "twoFactorComingSoon": "双因素认证设置即将推出"
+    },
+    "integrations": {
+      "pageTitle": "集成",
+      "pageDescription": "连接第三方工具和服务",
+      "availableTitle": "可用集成",
+      "availableDesc": "连接您喜爱的工具",
+      "slack": "Slack",
+      "slackDesc": "在 Slack 中接收通知",
+      "jira": "Jira",
+      "jiraDesc": "与 Jira 问题同步",
+      "linear": "Linear",
+      "linearDesc": "连接到 Linear 项目",
+      "discord": "Discord",
+      "discordDesc": "将更新发布到 Discord"
+    },
+    "widgets": {
+      "pageTitle": "小组件与嵌入",
+      "pageDescription": "在您的网站上嵌入反馈小组件",
+      "feedbackWidget": "反馈小组件",
+      "feedbackWidgetDesc": "在您的网站上嵌入反馈按钮",
+      "feedbackWidgetComingSoon": "小组件配置即将推出",
+      "changelogWidget": "更新日志小组件",
+      "changelogWidgetDesc": "在您的应用中显示更新日志",
+      "changelogWidgetComingSoon": "更新日志小组件即将推出"
+    },
+    "access": {
+      "pageTitle": "组织访问",
+      "pageDescription": "控制公开访问和权限",
+      "visibilityTitle": "可见性与权限",
+      "visibilityDesc": "配置公开访问、投票和索引设置"
+    },
+    "branding": {
+      "pageTitle": "品牌",
+      "pageDescription": "自定义门户的视觉风格和文案",
+      "themeTitle": "主题",
+      "themeDesc": "控制颜色、字体和视觉外观",
+      "copyTitle": "文案",
+      "copyDesc": "配置门户标题和引导文本",
+      "languagesTitle": "语言",
+      "languagesDesc": "配置默认语言和可用语言"
+    },
+    "modules": {
+      "pageTitle": "自定义模块",
+      "pageDescription": "启用或禁用功能模块",
+      "configTitle": "模块配置",
+      "configDesc": "根据需要启用反馈、路线图和更新日志"
+    },
+    "changelog": {
+      "pageTitle": "更新日志",
+      "pageDescription": "配置更新日志显示和通知",
+      "settingsTitle": "更新日志设置",
+      "settingsDesc": "控制更新日志条目的显示方式",
+      "settingsComingSoon": "更新日志配置即将推出"
+    },
+    "feedbackSettings": {
+      "pageTitle": "反馈与路线图",
+      "pageDescription": "配置反馈收集和路线图显示",
+      "settingsTitle": "反馈设置",
+      "settingsDesc": "配置用户如何提交和查看反馈",
+      "settingsComingSoon": "反馈配置即将推出",
+      "roadmapTitle": "路线图显示",
+      "roadmapDesc": "控制路线图可见性和布局",
+      "roadmapComingSoon": "路线图设置即将推出"
+    },
+    "portal": {
+      "branding": {
+        "title": "门户品牌",
+        "description": "管理门户视觉样式与文案语言",
+        "theme": {
+          "title": "门户主题",
+          "description": "控制颜色、字体与视觉体验"
+        },
+        "copy": {
+          "title": "门户文案",
+          "description": "统一门户标题与引导文案"
+        },
+        "copyForm": {
+          "defaults": {
+            "title": "反馈中心",
+            "ctaLabel": "提交反馈",
+            "emptyStateMessage": "还没有反馈，成为第一个分享想法的人！",
+            "successMessage": "感谢您的反馈！我们会认真阅读。",
+            "placeholders": {
+              "titleInput": "输入反馈标题...",
+              "descriptionInput": "详细描述您的想法..."
+            }
+          },
+          "labels": {
+            "title": "门户标题",
+            "description": "门户描述",
+            "ctaLabel": "提交按钮文字",
+            "emptyStateMessage": "空状态提示",
+            "successMessage": "提交成功提示",
+            "placeholdersSection": "输入框提示文字",
+            "placeholders": {
+              "titleInput": "标题输入框",
+              "descriptionInput": "描述输入框"
+            }
+          },
+          "placeholders": {
+            "title": "反馈中心",
+            "description": "帮助我们了解你的想法，让产品变得更好",
+            "ctaLabel": "提交反馈",
+            "emptyStateMessage": "暂无反馈...",
+            "successMessage": "感谢您的反馈！",
+            "titleInput": "输入反馈标题...",
+            "descriptionInput": "详细描述您的想法..."
+          },
+          "help": {
+            "title": "显示在门户顶部的标题",
+            "description": "标题下方的简短描述",
+            "emptyStateMessage": "当还没有反馈时显示的文字",
+            "successMessage": "用户成功提交反馈后看到的消息"
+          },
+          "buttons": {
+            "save": "保存更改"
+          },
+          "status": {
+            "saved": "文案设置已保存",
+            "saveFailed": "保存失败"
+          }
+        },
+        "languages": {
+          "title": "门户语言",
+          "description": "配置默认语言与可选语言"
+        },
+        "themeForm": {
+          "labels": {
+            "mode": "颜色模式",
+            "primaryColor": "主色调",
+            "accentColor": "强调色",
+            "borderRadius": "圆角大小",
+            "fontFamily": "自定义字体",
+            "customCSS": "自定义 CSS"
+          },
+          "placeholders": {
+            "mode": "选择颜色模式",
+            "borderRadius": "选择圆角大小"
+          },
+          "options": {
+            "mode": {
+              "light": "浅色模式",
+              "dark": "深色模式",
+              "system": "跟随系统"
+            },
+            "borderRadius": {
+              "none": "无圆角",
+              "sm": "小圆角",
+              "md": "中等圆角",
+              "lg": "大圆角",
+              "full": "完全圆角"
+            }
+          },
+          "help": {
+            "primaryColor": "用于按钮、链接等主要元素",
+            "accentColor": "用于高亮和次要操作元素",
+            "fontFamily": "留空使用系统默认字体",
+            "customCSS": "高级用户可添加自定义样式"
+          },
+          "buttons": {
+            "save": "保存更改"
+          },
+          "status": {
+            "saved": "主题设置已保存",
+            "saveFailed": "保存失败"
+          }
+        }
+      },
+      "access": {
+        "title": "门户访问"
+      },
+      "overview": {
+        "themeSummary": {
+          "custom": "主色 {color}",
+          "default": "使用默认主题"
+        },
+        "seoSummary": {
+          "unset": "未设置 SEO 标题"
+        },
+        "status": {
+          "title": "Portal 状态",
+          "description": "当前组织的门户入口与可见性",
+          "badgeEnabled": "公开中",
+          "badgeDisabled": "已关闭",
+          "preview": "预览 Portal",
+          "open": "打开 Portal",
+          "portalLink": "门户链接："
+        },
+        "cards": {
+          "action": "进入设置",
+          "experience": {
+            "title": "体验",
+            "description": "主题、文案与语言",
+            "items": {
+              "copyTitle": "标题：{title}",
+              "copyTitleUnset": "未设置门户标题",
+              "defaultLanguage": "默认语言：{locale}"
+            }
+          },
+          "growth": {
+            "title": "传播",
+            "description": "分享与 SEO 配置",
+            "items": {
+              "socialSharingEnabled": "社交分享已配置",
+              "socialSharingDisabled": "未配置社交分享",
+              "ogImageSet": "已设置 OG 图片",
+              "ogImageUnset": "未设置 OG 图片"
+            }
+          },
+          "visibility": {
+            "title": "可见性",
+            "description": "公开权限与索引",
+            "items": {
+              "portalEnabled": "门户公开",
+              "portalDisabled": "门户关闭",
+              "publicVotingEnabled": "允许公开投票",
+              "publicVotingDisabled": "关闭公开投票",
+              "noIndex": "禁止索引",
+              "index": "允许索引"
+            }
+          }
+        },
+        "modules": {
+          "badge": "模块开关",
+          "summary": "管理 Portal 模块显示"
+        }
+      },
+      "modules": {
+        "title": "门户模块",
+        "panelTitle": "Portal 模块开关",
+        "panelDescription": "控制门户中展示的功能模块。",
+        "rows": {
+          "feedback": {
+            "label": "反馈",
+            "description": "允许用户提交和浏览反馈"
+          },
+          "roadmap": {
+            "label": "路线图",
+            "description": "展示计划中的功能与进度"
+          },
+          "changelog": {
+            "label": "变更日志",
+            "description": "发布更新与版本公告"
+          }
+        },
+        "saveButton": "保存模块设置",
+        "saving": "保存中...",
+        "saved": "模块设置已保存",
+        "saveFailed": "保存失败"
+      },
+      "resources": {
+        "title": "门户资源",
+        "links": {
+          "title": "门户链接"
+        }
+      },
+      "growth": {
+        "title": "门户增长",
+        "seo": {
+          "title": "SEO 设置"
+        }
+      }
+    }
+  },
+  "invite": {
+    "status": {
+      "loading": {
+        "title": "正在接受邀请",
+        "description": "请稍候，我们正在确认你的邀请信息。"
+      },
+      "success": {
+        "title": "欢迎加入组织",
+        "description": "邀请已成功确认，你现在可以开始协作。"
+      },
+      "expired": {
+        "title": "邀请已过期",
+        "description": "该邀请已超过有效期，请联系管理员重新发送。"
+      },
+      "unauthorized": {
+        "title": "请先登录",
+        "description": "登录后即可接受邀请并加入组织。"
+      },
+      "error": {
+        "title": "无法接受邀请",
+        "description": "邀请链接可能无效，请联系管理员。"
+      }
+    },
+    "buttons": {
+      "dashboard": "进入控制台",
+      "login": "前往登录",
+      "back": "返回"
+    }
+  },
+  "auth": {
+    "login": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "登录以继续访问你的反馈和组织",
+      "cardTitle": "登录",
+      "cardDescription": "输入邮箱和密码登录",
+      "emailLabel": "邮箱",
+      "passwordLabel": "密码",
+      "rememberMe": "记住我",
+      "forgotPassword": "忘记密码？",
+      "submitButton": "登录",
+      "submitting": "登录中...",
+      "noAccount": "还没有账户？",
+      "register": "注册",
+      "invalidCredentials": "邮箱或密码错误"
+    },
+    "register": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "创建新账户以开始收集反馈",
+      "cardTitle": "创建账户",
+      "cardDescription": "填写以下信息注册新账户",
+      "nameLabel": "姓名",
+      "namePlaceholder": "张三",
+      "emailLabel": "邮箱",
+      "passwordLabel": "密码",
+      "passwordHint": "至少 8 个字符，包含大小写字母和数字或特殊字符",
+      "confirmPasswordLabel": "确认密码",
+      "submitButton": "注册",
+      "submitting": "注册中...",
+      "hasAccount": "已有账户？",
+      "login": "登录",
+      "emailExists": "邮箱已存在",
+      "registerFailed": "注册失败，请稍后重试"
+    },
+    "validation": {
+      "nameRequired": "请输入您的姓名",
+      "emailRequired": "请输入邮箱地址",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "passwordRequired": "请输入密码",
+      "passwordMinLength": "密码至少需要 8 个字符",
+      "passwordUppercase": "密码必须包含大写字母",
+      "passwordLowercase": "密码必须包含小写字母",
+      "passwordNumberOrSpecial": "密码必须包含数字或特殊字符",
+      "passwordMismatch": "两次输入的密码不一致"
+    }
+  },
+  "dashboard": {
+    "pageTitle": "仪表盘",
+    "pageDescription": "反馈管理概览",
+    "visitPortal": "访问 Web Portal",
+    "stats": {
+      "totalFeedback": "总反馈数",
+      "pending": "待处理",
+      "weeklyNew": "近7天新增",
+      "resolved": "已解决"
+    },
+    "recentFeedback": {
+      "title": "最近反馈",
+      "noData": "暂无反馈数据",
+      "count": "{count} 条",
+      "quantity": "数量"
+    },
+    "quickActions": {
+      "submitFeedback": "提交新反馈",
+      "viewAllFeedback": "查看全部反馈",
+      "settings": "设置",
+      "organizationSettings": "组织设置"
+    },
+    "statusChart": {
+      "title": "状态分布",
+      "noData": "暂无数据"
+    }
+  },
+  "feedback": {
+    "trigger": "反馈",
+    "dialogTitle": "提交反馈",
+    "dialogDescription": "填写表单以提交你的建议或问题。",
+    "form": {
+      "title": "标题",
+      "titlePlaceholder": "简要概述你的反馈",
+      "description": "描述",
+      "descriptionPlaceholder": "请描述发生了什么，或你希望增加的能力",
+      "type": "反馈类型",
+      "selectType": "选择反馈类型",
+      "priority": "优先级",
+      "selectPriority": "选择优先级",
+      "submit": "提交",
+      "submitting": "提交中...",
+      "cancel": "取消"
+    },
+    "fileUpload": {
+      "errors": {
+        "size": "文件大小不能超过 {maxMb}MB",
+        "type": "不支持的文件类型",
+        "missingFeedbackId": "请先提交反馈"
+      },
+      "dropzone": {
+        "title": "拖拽文件到此处，或点击选择文件",
+        "subtitle": "支持 PNG, JPG, GIF, PDF (最大 {maxMb}MB)"
+      },
+      "status": {
+        "pending": "待上传",
+        "uploading": "上传中...",
+        "success": "✓ 已上传",
+        "error": "✗ 上传失败"
+      },
+      "buttons": {
+        "upload": "上传文件"
+      }
+    },
+    "detail": {
+      "info": "信息",
+      "createdAt": "创建时间",
+      "updatedAt": "更新时间",
+      "feedbackId": "反馈编号: #{id}",
+      "copyLinkAriaLabel": "复制跟踪链接",
+      "priorityLabel": "优先级: {priority}",
+      "votes": "投票数",
+      "description": "详细描述",
+      "attachments": "附件",
+      "votesTitle": "投票",
+      "statusHistory": "状态历史",
+      "backToList": "返回列表",
+      "customerInfo": "客户信息（代提交）",
+      "customerName": "姓名",
+      "customerEmail": "邮箱",
+      "customerPhone": "电话",
+      "descriptionTitle": "描述",
+      "attachmentsTitle": "附件 ({count})",
+      "onBehalf": {
+        "title": "代客户提交",
+        "submitter": "提交者",
+        "customerInfo": "客户信息",
+        "name": "姓名",
+        "email": "邮箱",
+        "phone": "电话",
+        "unknownUser": "未知用户",
+        "customerHidden": "客户信息已隐藏以保护隐私。"
+      },
+      "timeline": {
+        "title": "时间线",
+        "createdAt": "创建于",
+        "updatedAt": "最后更新"
+      },
+      "shareHint": "分享此链接以跟踪反馈进度",
+      "shareLinkLabel": "分享链接",
+      "copyLink": "复制链接",
+      "copied": "已复制",
+      "feedbackIdLabel": "反馈 ID",
+      "voteHistory": "投票记录",
+      "publicTitle": "反馈详情",
+      "publicDescription": "查看反馈详情与进展。",
+      "publicHeader": "反馈详情",
+      "publicBackHome": "返回首页",
+      "publicContinueSubmit": "继续提交"
+    },
+    "submitOnBehalf": {
+      "roleNotice": "您正在以 {strong}{role}{/strong} 角色代客户提交反馈。",
+      "submitSuccess": "反馈提交成功！",
+      "submitFailed": "提交失败",
+      "networkError": "网络错误，请稍后重试",
+      "viewDetail": "查看反馈详情 →",
+      "cardTitle": "代客户提交反馈",
+      "cardDescription": "代表客户提交反馈，系统将记录您的信息和客户信息",
+      "sections": {
+        "feedback": "反馈内容",
+        "customer": "客户信息"
+      },
+      "labels": {
+        "title": "标题 *",
+        "description": "描述 *",
+        "type": "类型 *",
+        "priority": "优先级 *",
+        "customerName": "客户姓名 *",
+        "customerEmail": "客户邮箱 *",
+        "customerPhone": "客户电话（可选）"
+      },
+      "placeholders": {
+        "title": "简要描述问题或建议",
+        "description": "详细描述问题或建议内容",
+        "type": "选择类型",
+        "priority": "选择优先级",
+        "customerName": "客户姓名",
+        "customerEmail": "customer@example.com",
+        "customerPhone": "+86 138 0000 0000"
+      },
+      "submit": "提交反馈",
+      "submitting": "提交中..."
+    },
+    "success": "反馈提交成功",
+    "tracking": "跟踪链接",
+    "copy": "复制链接",
+    "copied": "已复制",
+    "close": "关闭",
+    "pageTitle": "反馈管理",
+    "pageDescription": "查看和管理所有用户反馈",
+    "filters": {
+      "title": "筛选",
+      "activeCount": "({count} 个活跃)",
+      "clearAll": "清除筛选",
+      "logicHint": "组内任一匹配 · 组间全部满足",
+      "statusLabel": "状态",
+      "statusPlaceholder": "选择状态",
+      "typeLabel": "类型",
+      "typePlaceholder": "选择类型",
+      "priorityLabel": "优先级",
+      "priorityPlaceholder": "选择优先级"
+    },
+    "status": {
+      "all": "全部状态",
+      "new": "新建",
+      "inProgress": "处理中",
+      "planned": "已规划",
+      "completed": "已完成",
+      "closed": "已关闭",
+      "resolved": "已解决",
+      "updating": "更新中...",
+      "updateFailed": "更新失败，请稍后重试"
+    },
+    "type": {
+      "all": "全部类型",
+      "bug": "Bug",
+      "feature": "功能请求",
+      "issue": "问题",
+      "other": "其他",
+      "improvement": "改进",
+      "question": "问题"
+    },
+    "priority": {
+      "label": "优先级",
+      "all": "全部优先级",
+      "low": "低",
+      "medium": "中",
+      "high": "高",
+      "critical": "紧急"
+    },
+    "filterTags": {
+      "status": "状态: {value}",
+      "type": "类型: {value}",
+      "priority": "优先级: {value}"
+    },
+    "list": {
+      "searchPlaceholder": "搜索标题或描述…",
+      "searchButton": "搜索",
+      "sortLabel": "排序",
+      "sortNewest": "最新",
+      "sortOldest": "最旧",
+      "sortMostVotes": "票数最多",
+      "sortFewestVotes": "票数最少",
+      "pageSizeLabel": "每页",
+      "summary": "共 {total} 条 / 每页 {pageSize} 条",
+      "empty": "暂无反馈",
+      "error": "错误: {message}",
+      "filtersEmpty": "暂无筛选条件",
+      "hasVotes": "有票",
+      "hasReplies": "有回复",
+      "boolYes": "是",
+      "boolNo": "否",
+      "selectLabel": "选择反馈",
+      "delete": "删除反馈",
+      "selectAll": "全选本页"
+    },
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页",
+      "jumpTo": "跳转到",
+      "go": "确定",
+      "goToPage": "跳转到第 {page} 页"
+    },
+    "bulk": {
+      "selectedCount": "{count} 条已选",
+      "updateStatus": "更新状态",
+      "updatePriority": "更新优先级",
+      "delete": "删除",
+      "deleteConfirmTitle": "删除选中的反馈？",
+      "deleteConfirmDesc": "删除后将不再显示在列表中。",
+      "clearSelection": "清除选择"
+    },
+    "vote": {
+      "vote": "投票",
+      "voted": "已投票",
+      "count": "{count} 票",
+      "noVotes": "暂无投票",
+      "visitor": "访客",
+      "anonymous": "匿名用户"
+    },
+    "relative": {
+      "today": "今天",
+      "yesterday": "昨天",
+      "daysAgo": "{count} 天前"
+    },
+    "actions": {
+      "label": "反馈操作"
+    }
+  },
+  "comments": {
+    "internal": {
+      "title": "内部备注",
+      "loading": "加载中...",
+      "empty": "暂无内部备注",
+      "beFirst": "添加第一条备注以开始讨论",
+      "formLabel": "内部备注",
+      "placeholder": "添加内部备注，例如背景或下一步计划…",
+      "submit": "添加备注",
+      "submitting": "添加中...",
+      "deleteAriaLabel": "删除备注",
+      "errors": {
+        "loadFailed": "加载内部备注失败",
+        "addFailed": "添加内部备注失败",
+        "deleteFailed": "删除内部备注失败"
+      }
+    },
+    "public": {
+      "title": "公开评论",
+      "loading": "加载中...",
+      "empty": "暂无评论",
+      "beFirst": "成为第一个评论的人",
+      "loginPrompt": "登录后评论，或匿名留言",
+      "loginRequired": "登录后才能评论",
+      "login": "登录",
+      "guestComment": "匿名评论",
+      "formLabel": "评论",
+      "placeholder": "分享你的想法，例如你喜欢的点或需要改进的地方…",
+      "submit": "发布评论",
+      "submitting": "发布中...",
+      "anonymous": "匿名",
+      "guest": "访客",
+      "errors": {
+        "loadFailed": "加载评论失败",
+        "submitFailed": "发布评论失败"
+      },
+      "guestForm": {
+        "title": "匿名评论",
+        "nameLabel": "姓名",
+        "emailLabel": "邮箱",
+        "contentLabel": "评论内容",
+        "namePlaceholder": "你的姓名，例如张三…",
+        "emailPlaceholder": "邮箱地址，例如 zhangsan@example.com…",
+        "contentPlaceholder": "分享你的想法，例如你喜欢的点或需要改进的地方…",
+        "cancel": "取消",
+        "submit": "发布评论",
+        "submitting": "发布中..."
+      }
+    }
+  }
+}

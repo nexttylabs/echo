@@ -1,0 +1,954 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "feedback": "Feedback",
+    "sectionLabel": "Navigation",
+    "settings": "Settings",
+    "logout": "Log out",
+    "openMenu": "Open menu",
+    "organization": "Organization",
+    "selectOrganization": "Select organization",
+    "newOrganization": "New organization"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "jp": "日本語"
+  },
+  "hero": {
+    "title": "Echo",
+    "login": "Login",
+    "register": "Sign Up",
+    "headline": "Open Source Product Feedback Management Platform",
+    "description": "Designed for startups to centrally manage product feedback, discover insights, and make informed product decisions.",
+    "subtitle": "Start at zero cost, fully control your data.",
+    "cta1": "Get Started",
+    "cta2": "View Documentation",
+    "coreValues": "Core Values",
+    "feature1": {
+      "title": "Zero Cost Start",
+      "description": "Open source core features, free self-hosting, deploy in 5 minutes"
+    },
+    "feature2": {
+      "title": "Data Sovereignty",
+      "description": "Full control over user feedback data, compliant with GDPR and other regulations"
+    },
+    "feature3": {
+      "title": "AI Native",
+      "description": "Smart classification, duplicate detection, insight discovery for more efficient decisions"
+    },
+    "feature4": {
+      "title": "Easy Integration",
+      "description": "Open API and Webhooks for seamless integration with existing workflows"
+    },
+    "ready": {
+      "title": "Ready to Get Started?",
+      "description": "Join the startups already using Echo to ensure every user feedback is heard.",
+      "cta1": "Create Free Account",
+      "cta2": "Have an Account? Login"
+    },
+    "footer": {
+      "title": "Echo - Open Source Product Feedback Management Platform",
+      "docs": "Documentation"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "comingSoon": "Coming soon",
+    "noData": "No data",
+    "settingsSaved": "Settings saved",
+    "saveFailed": "Save failed, please try again later",
+    "viewAll": "View all",
+    "submitFirst": "Submit first feedback",
+    "noOrganization": "No associated organization found."
+  },
+  "validation": {
+    "titleRequired": "Title is required",
+    "titleMax200": "Title must be 200 characters or less",
+    "descriptionRequired": "Description is required",
+    "descriptionMax5000": "Description must be 5000 characters or less",
+    "customerNameRequired": "Customer name is required",
+    "customerNameMax100": "Customer name must be 100 characters or less",
+    "emailInvalid": "Please enter a valid email address",
+    "typeRequired": "Please select a type",
+    "priorityRequired": "Please select a priority"
+  },
+  "settings": {
+    "title": "Settings",
+    "groups": {
+      "general": "General",
+      "brandingCustomizations": "Branding & Customizations",
+      "accessAuthentication": "Access & Authentication",
+      "modules": "Modules",
+      "other": "Other",
+      "resources": "Resources"
+    },
+    "items": {
+      "profile": "Profile",
+      "organization": "Organization",
+      "teamMembers": "Team Members",
+      "appearance": "Appearance",
+      "branding": "Branding",
+      "notificationEmails": "Notification Emails",
+      "organizationAccess": "Organization Access",
+      "securitySso": "Security & SSO",
+      "apiKeys": "API Keys",
+      "customizeModules": "Customize Modules",
+      "feedbackRoadmap": "Feedback & Roadmap",
+      "changelog": "Changelog",
+      "widgetsEmbeds": "Widgets & Embeds",
+      "integrations": "Integrations",
+      "advanced": "Advanced",
+      "dangerZone": "Danger Zone",
+      "developerDocs": "Developer Docs",
+      "joinCommunity": "Join Community"
+    },
+    "organizationForm": {
+      "titleEdit": "Organization Settings",
+      "titleCreate": "Create Organization",
+      "descEdit": "Manage your organization’s basic information",
+      "descCreate": "Create an organization to manage multiple projects or teams",
+      "nameLabel": "Organization name",
+      "descriptionLabel": "Description",
+      "savingEdit": "Saving...",
+      "savingCreate": "Creating...",
+      "submitEdit": "Save changes",
+      "submitCreate": "Create",
+      "updateFailed": "Update failed",
+      "createFailed": "Create failed",
+      "updatedSuccess": "Organization updated",
+      "genericError": "Something went wrong. Please try again later."
+    },
+    "profile": {
+      "pageTitle": "Profile",
+      "pageDescription": "Manage your account information and preferences",
+      "cardTitle": "Profile",
+      "cardDescription": "Manage your personal information",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "saveChanges": "Save Changes (Coming Soon)"
+    },
+    "appearance": {
+      "pageTitle": "Appearance",
+      "pageDescription": "Customize the app's display style",
+      "cardTitle": "Appearance",
+      "cardDescription": "Customize the app's display style",
+      "themeLabel": "Theme",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeSystem": "System",
+      "themeComingSoon": "Theme switching coming soon"
+    },
+    "notifications": {
+      "pageTitle": "Notification Settings",
+      "pageDescription": "Choose the types of notifications you want to receive",
+      "cardTitle": "Email Notifications",
+      "cardDescription": "Choose the types of email notifications you want to receive",
+      "statusChange": "Feedback Status Change",
+      "statusChangeDesc": "Receive notifications when your submitted feedback status changes",
+      "newComment": "New Comment Notification",
+      "newCommentDesc": "Receive notifications when others comment on feedback you're following",
+      "saveSettings": "Save Settings"
+    },
+    "apiKeys": {
+      "pageTitle": "API Keys",
+      "pageDescription": "Manage your API access keys",
+      "createTitle": "Create New Key",
+      "createDescription": "Create a new API key for external integrations",
+      "keyNameLabel": "Key Name",
+      "keyNamePlaceholder": "Enter key name",
+      "createButton": "Create Key",
+      "existingTitle": "Existing Keys",
+      "existingDescription": "Manage your API keys",
+      "noKeys": "No API keys",
+      "keyCreatedAlert": "New key created: {key}\n\nPlease save this key immediately, it will not be shown again.",
+      "deleteConfirm": "Are you sure you want to delete this API key? This action cannot be undone."
+    },
+    "dangerZone": {
+      "pageTitle": "Danger Zone",
+      "pageDescription": "Irreversible and destructive actions",
+      "deleteOrg": "Delete Organization",
+      "deleteOrgDesc": "Permanently delete your organization and all its data. This action cannot be undone.",
+      "resetData": "Reset All Data",
+      "resetDataDesc": "Delete all feedback, roadmap items, and changelog entries. Organization settings will be preserved.",
+      "transferOwnership": "Transfer Ownership",
+      "transferOwnershipDesc": "Transfer organization ownership to another admin. You will lose owner privileges."
+    },
+    "advanced": {
+      "pageTitle": "Advanced",
+      "pageDescription": "Advanced settings and configurations",
+      "dataExport": "Data Export",
+      "dataExportDesc": "Export all your data",
+      "dataExportComingSoon": "Data export coming soon",
+      "webhooks": "Webhooks",
+      "webhooksDesc": "Configure webhook endpoints",
+      "webhooksComingSoon": "Webhook configuration coming soon",
+      "developerMode": "Developer Mode",
+      "developerModeDesc": "Enable advanced debugging features",
+      "developerModeComingSoon": "Developer mode coming soon"
+    },
+    "security": {
+      "pageTitle": "Security & SSO",
+      "pageDescription": "Manage security settings and single sign-on",
+      "sso": "Single Sign-On (SSO)",
+      "ssoDesc": "Configure SAML or OAuth providers",
+      "ssoComingSoon": "SSO configuration coming soon",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorDesc": "Require 2FA for team members",
+      "twoFactorComingSoon": "2FA settings coming soon"
+    },
+    "integrations": {
+      "pageTitle": "Integrations",
+      "pageDescription": "Connect with third-party tools and services",
+      "availableTitle": "Available Integrations",
+      "availableDesc": "Connect your favorite tools",
+      "slack": "Slack",
+      "slackDesc": "Get notifications in Slack",
+      "jira": "Jira",
+      "jiraDesc": "Sync with Jira issues",
+      "linear": "Linear",
+      "linearDesc": "Connect to Linear projects",
+      "discord": "Discord",
+      "discordDesc": "Post updates to Discord"
+    },
+    "widgets": {
+      "pageTitle": "Widgets & Embeds",
+      "pageDescription": "Embed feedback widgets on your website",
+      "feedbackWidget": "Feedback Widget",
+      "feedbackWidgetDesc": "Embed a feedback button on your site",
+      "feedbackWidgetComingSoon": "Widget configuration coming soon",
+      "changelogWidget": "Changelog Widget",
+      "changelogWidgetDesc": "Display changelog updates in your app",
+      "changelogWidgetComingSoon": "Changelog widget coming soon"
+    },
+    "access": {
+      "pageTitle": "Organization Access",
+      "pageDescription": "Control public access and permissions",
+      "visibilityTitle": "Visibility & Permissions",
+      "visibilityDesc": "Configure public access, voting, and indexing settings"
+    },
+    "branding": {
+      "pageTitle": "Branding",
+      "pageDescription": "Customize your portal's visual style and copy",
+      "themeTitle": "Theme",
+      "themeDesc": "Control colors, fonts and visual appearance",
+      "copyTitle": "Copy",
+      "copyDesc": "Configure portal title and guide text",
+      "languagesTitle": "Languages",
+      "languagesDesc": "Configure default language and available languages"
+    },
+    "modules": {
+      "pageTitle": "Customize Modules",
+      "pageDescription": "Enable or disable feature modules",
+      "configTitle": "Module Configuration",
+      "configDesc": "Enable feedback, roadmap and changelog as needed"
+    },
+    "changelog": {
+      "pageTitle": "Changelog",
+      "pageDescription": "Configure changelog display and notifications",
+      "settingsTitle": "Changelog Settings",
+      "settingsDesc": "Control how changelog entries are displayed",
+      "settingsComingSoon": "Changelog configuration coming soon"
+    },
+    "feedbackSettings": {
+      "pageTitle": "Feedback & Roadmap",
+      "pageDescription": "Configure feedback collection and roadmap display",
+      "settingsTitle": "Feedback Settings",
+      "settingsDesc": "Configure how users submit and view feedback",
+      "settingsComingSoon": "Feedback configuration coming soon",
+      "roadmapTitle": "Roadmap Display",
+      "roadmapDesc": "Control roadmap visibility and layout",
+      "roadmapComingSoon": "Roadmap settings coming soon"
+    },
+    "portal": {
+      "branding": {
+        "title": "Portal Branding",
+        "description": "Manage portal visual styles and copy language",
+        "theme": {
+          "title": "Portal Theme",
+          "description": "Control colors, fonts and visual experience"
+        },
+        "copy": {
+          "title": "Portal Copy",
+          "description": "Unify portal title and guide copy"
+        },
+        "copyForm": {
+          "defaults": {
+            "title": "Feedback Hub",
+            "ctaLabel": "Submit feedback",
+            "emptyStateMessage": "No feedback yet—be the first to share an idea!",
+            "successMessage": "Thanks for your feedback! We'll read it carefully.",
+            "placeholders": {
+              "titleInput": "Enter feedback title...",
+              "descriptionInput": "Describe your idea in detail..."
+            }
+          },
+          "labels": {
+            "title": "Portal title",
+            "description": "Portal description",
+            "ctaLabel": "Submit button text",
+            "emptyStateMessage": "Empty state message",
+            "successMessage": "Success message",
+            "placeholdersSection": "Input placeholders",
+            "placeholders": {
+              "titleInput": "Title input",
+              "descriptionInput": "Description input"
+            }
+          },
+          "placeholders": {
+            "title": "Feedback Hub",
+            "description": "Help us understand your ideas and make the product better",
+            "ctaLabel": "Submit feedback",
+            "emptyStateMessage": "No feedback...",
+            "successMessage": "Thanks for your feedback!",
+            "titleInput": "Enter feedback title...",
+            "descriptionInput": "Describe your idea in detail..."
+          },
+          "help": {
+            "title": "Displayed at the top of the portal",
+            "description": "A short description shown below the title",
+            "emptyStateMessage": "Shown when there is no feedback yet",
+            "successMessage": "Shown after a user successfully submits feedback"
+          },
+          "buttons": {
+            "save": "Save changes"
+          },
+          "status": {
+            "saved": "Copy settings saved",
+            "saveFailed": "Save failed"
+          }
+        },
+        "languages": {
+          "title": "Portal Languages",
+          "description": "Configure default and optional languages"
+        },
+        "themeForm": {
+          "labels": {
+            "mode": "Color mode",
+            "primaryColor": "Primary color",
+            "accentColor": "Accent color",
+            "borderRadius": "Border radius",
+            "fontFamily": "Custom font",
+            "customCSS": "Custom CSS"
+          },
+          "placeholders": {
+            "mode": "Select color mode",
+            "borderRadius": "Select border radius"
+          },
+          "options": {
+            "mode": {
+              "light": "Light mode",
+              "dark": "Dark mode",
+              "system": "Follow system"
+            },
+            "borderRadius": {
+              "none": "No radius",
+              "sm": "Small radius",
+              "md": "Medium radius",
+              "lg": "Large radius",
+              "full": "Full radius"
+            }
+          },
+          "help": {
+            "primaryColor": "Used for buttons, links and primary elements",
+            "accentColor": "Used for highlights and secondary actions",
+            "fontFamily": "Leave empty to use system default font",
+            "customCSS": "Advanced users can add custom styles"
+          },
+          "buttons": {
+            "save": "Save changes"
+          },
+          "status": {
+            "saved": "Theme settings saved",
+            "saveFailed": "Save failed"
+          }
+        }
+      },
+      "access": {
+        "title": "Portal Access"
+      },
+      "overview": {
+        "themeSummary": {
+          "custom": "Primary color {color}",
+          "default": "Using default theme"
+        },
+        "seoSummary": {
+          "unset": "SEO title not set"
+        },
+        "status": {
+          "title": "Portal Status",
+          "description": "Portal entry and visibility for the current organization",
+          "badgeEnabled": "Public",
+          "badgeDisabled": "Closed",
+          "preview": "Preview Portal",
+          "open": "Open Portal",
+          "portalLink": "Portal link:"
+        },
+        "cards": {
+          "action": "Go to settings",
+          "experience": {
+            "title": "Experience",
+            "description": "Theme, copy and language",
+            "items": {
+              "copyTitle": "Title: {title}",
+              "copyTitleUnset": "Portal title not set",
+              "defaultLanguage": "Default language: {locale}"
+            }
+          },
+          "growth": {
+            "title": "Growth",
+            "description": "Sharing and SEO configuration",
+            "items": {
+              "socialSharingEnabled": "Social sharing configured",
+              "socialSharingDisabled": "Social sharing not configured",
+              "ogImageSet": "OG image set",
+              "ogImageUnset": "OG image not set"
+            }
+          },
+          "visibility": {
+            "title": "Visibility",
+            "description": "Public access and indexing",
+            "items": {
+              "portalEnabled": "Portal public",
+              "portalDisabled": "Portal closed",
+              "publicVotingEnabled": "Public voting allowed",
+              "publicVotingDisabled": "Public voting disabled",
+              "noIndex": "Indexing disabled",
+              "index": "Indexing allowed"
+            }
+          }
+        },
+        "modules": {
+          "badge": "Module toggle",
+          "summary": "Manage Portal module display"
+        }
+      },
+      "modules": {
+        "title": "Portal Modules",
+        "panelTitle": "Portal Modules",
+        "panelDescription": "Control which feature modules are shown in the portal.",
+        "rows": {
+          "feedback": {
+            "label": "Feedback",
+            "description": "Allow users to submit and browse feedback"
+          },
+          "roadmap": {
+            "label": "Roadmap",
+            "description": "Show planned features and progress"
+          },
+          "changelog": {
+            "label": "Changelog",
+            "description": "Publish updates and release announcements"
+          }
+        },
+        "saveButton": "Save module settings",
+        "saving": "Saving...",
+        "saved": "Module settings saved",
+        "saveFailed": "Save failed"
+      },
+      "resources": {
+        "title": "Portal Resources",
+        "links": {
+          "title": "Portal Links"
+        }
+      },
+      "growth": {
+        "title": "Portal Growth",
+        "seo": {
+          "title": "SEO Settings"
+        }
+      }
+    }
+  },
+  "invite": {
+    "status": {
+      "loading": {
+        "title": "Accepting invitation",
+        "description": "Please wait while we confirm your invitation."
+      },
+      "success": {
+        "title": "Welcome to the organization",
+        "description": "Invitation confirmed successfully. You can now start collaborating."
+      },
+      "expired": {
+        "title": "Invitation expired",
+        "description": "This invitation has expired. Please contact the administrator to resend."
+      },
+      "unauthorized": {
+        "title": "Please log in first",
+        "description": "Log in to accept the invitation and join the organization."
+      },
+      "error": {
+        "title": "Unable to accept invitation",
+        "description": "The invitation link may be invalid. Please contact the administrator."
+      }
+    },
+    "buttons": {
+      "dashboard": "Go to dashboard",
+      "login": "Go to login",
+      "back": "Back"
+    }
+  },
+  "auth": {
+    "login": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "Sign in to continue accessing your feedback and organization",
+      "cardTitle": "Sign In",
+      "cardDescription": "Enter your email and password to sign in",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submitButton": "Sign In",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "register": "Register",
+      "invalidCredentials": "Invalid email or password"
+    },
+    "register": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "Create a new account to start collecting feedback",
+      "cardTitle": "Create Account",
+      "cardDescription": "Fill in the information below to register a new account",
+      "nameLabel": "Name",
+      "namePlaceholder": "John Doe",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "passwordHint": "At least 8 characters, including uppercase, lowercase, and numbers or special characters",
+      "confirmPasswordLabel": "Confirm Password",
+      "submitButton": "Register",
+      "submitting": "Registering...",
+      "hasAccount": "Already have an account?",
+      "login": "Sign In",
+      "emailExists": "Email already exists",
+      "registerFailed": "Registration failed, please try again later"
+    },
+    "validation": {
+      "nameRequired": "Please enter your name",
+      "emailRequired": "Please enter your email address",
+      "emailInvalid": "Please enter a valid email address",
+      "passwordRequired": "Please enter a password",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "passwordUppercase": "Password must contain an uppercase letter",
+      "passwordLowercase": "Password must contain a lowercase letter",
+      "passwordNumberOrSpecial": "Password must contain a number or special character",
+      "passwordMismatch": "Passwords do not match"
+    }
+  },
+  "dashboard": {
+    "pageTitle": "Dashboard",
+    "pageDescription": "Feedback management overview",
+    "visitPortal": "Visit Web Portal",
+    "stats": {
+      "totalFeedback": "Total Feedback",
+      "pending": "Pending",
+      "weeklyNew": "New This Week",
+      "resolved": "Resolved"
+    },
+    "recentFeedback": {
+      "title": "Recent Feedback",
+      "noData": "No feedback data",
+      "count": "{count} items",
+      "quantity": "Quantity"
+    },
+    "quickActions": {
+      "submitFeedback": "Submit New Feedback",
+      "viewAllFeedback": "View All Feedback",
+      "settings": "Settings",
+      "organizationSettings": "Organization Settings"
+    },
+    "statusChart": {
+      "title": "Status Distribution",
+      "noData": "No data"
+    }
+  },
+  "feedback": {
+    "trigger": "Feedback",
+    "dialogTitle": "Submit Feedback",
+    "dialogDescription": "Fill out the form to submit your suggestions or issues.",
+    "form": {
+      "title": "Title",
+      "titlePlaceholder": "Briefly describe your feedback",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe what happened or what you'd like to see improved",
+      "type": "Feedback Type",
+      "selectType": "Select feedback type",
+      "priority": "Priority",
+      "selectPriority": "Select priority",
+      "submit": "Submit",
+      "submitting": "Submitting...",
+      "cancel": "Cancel"
+    },
+    "fileUpload": {
+      "errors": {
+        "size": "File size must be {maxMb}MB or less",
+        "type": "Unsupported file type",
+        "missingFeedbackId": "Please submit feedback first"
+      },
+      "dropzone": {
+        "title": "Drag files here, or click to select",
+        "subtitle": "Supports PNG, JPG, GIF, PDF (max {maxMb}MB)"
+      },
+      "status": {
+        "pending": "Pending",
+        "uploading": "Uploading...",
+        "success": "✓ Uploaded",
+        "error": "✗ Upload failed"
+      },
+      "buttons": {
+        "upload": "Upload files"
+      }
+    },
+    "detail": {
+      "info": "Info",
+      "createdAt": "Created",
+      "updatedAt": "Updated",
+      "feedbackId": "Feedback ID: #{id}",
+      "copyLinkAriaLabel": "Copy tracking link",
+      "priorityLabel": "Priority: {priority}",
+      "votes": "Votes",
+      "description": "Description",
+      "attachments": "Attachments",
+      "votesTitle": "Votes",
+      "statusHistory": "Status History",
+      "backToList": "Back to list",
+      "customerInfo": "Customer info (submitted on behalf)",
+      "customerName": "Name",
+      "customerEmail": "Email",
+      "customerPhone": "Phone",
+      "descriptionTitle": "Description",
+      "attachmentsTitle": "Attachments ({count})",
+      "onBehalf": {
+        "title": "Submitted on behalf",
+        "submitter": "Submitter",
+        "customerInfo": "Customer info",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "unknownUser": "Unknown user",
+        "customerHidden": "Customer details are hidden for privacy."
+      },
+      "timeline": {
+        "title": "Timeline",
+        "createdAt": "Created at",
+        "updatedAt": "Last updated"
+      },
+      "shareHint": "Share this link to track feedback progress",
+      "shareLinkLabel": "Share link",
+      "copyLink": "Copy link",
+      "copied": "Copied",
+      "feedbackIdLabel": "Feedback ID",
+      "voteHistory": "Voting Record",
+      "publicTitle": "Feedback Detail",
+      "publicDescription": "View feedback details and updates.",
+      "publicHeader": "Feedback Detail",
+      "publicBackHome": "Back to home",
+      "publicContinueSubmit": "Submit another"
+    },
+    "submitOnBehalf": {
+      "roleNotice": "You are submitting feedback on behalf of a customer as {strong}{role}{/strong}.",
+      "submitSuccess": "Feedback submitted successfully!",
+      "submitFailed": "Submit failed",
+      "networkError": "Network error. Please try again later.",
+      "viewDetail": "View feedback details →",
+      "cardTitle": "Submit feedback on behalf of a customer",
+      "cardDescription": "Submit feedback for a customer; the system will record both your info and the customer info.",
+      "sections": {
+        "feedback": "Feedback",
+        "customer": "Customer information"
+      },
+      "labels": {
+        "title": "Title",
+        "description": "Description",
+        "type": "Type",
+        "priority": "Priority",
+        "customerName": "Customer name",
+        "customerEmail": "Customer email",
+        "customerPhone": "Customer phone (optional)"
+      },
+      "placeholders": {
+        "title": "Briefly describe the issue or request",
+        "description": "Describe the issue or request in detail",
+        "type": "Select type",
+        "priority": "Select priority",
+        "customerName": "Customer name",
+        "customerEmail": "customer@example.com",
+        "customerPhone": "+86 138 0000 0000"
+      },
+      "submit": "Submit feedback",
+      "submitting": "Submitting..."
+    },
+    "success": "Feedback submitted successfully",
+    "tracking": "Tracking link",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "close": "Close",
+    "pageTitle": "Feedback Management",
+    "pageDescription": "View and manage all user feedback",
+    "filters": {
+      "title": "Filters",
+      "activeCount": "({count} active)",
+      "clearAll": "Clear Filters",
+      "logicHint": "Within a group: match any • Across groups: match all",
+      "statusLabel": "Status",
+      "statusPlaceholder": "Select status",
+      "typeLabel": "Type",
+      "typePlaceholder": "Select type",
+      "priorityLabel": "Priority",
+      "priorityPlaceholder": "Select priority"
+    },
+    "status": {
+      "label": "Status",
+      "all": "All Status",
+      "new": "New",
+      "inProgress": "In Progress",
+      "planned": "Planned",
+      "completed": "Completed",
+      "closed": "Closed",
+      "resolved": "Resolved",
+      "updating": "Updating...",
+      "updateFailed": "Update failed, please try again later"
+    },
+    "type": {
+      "label": "Type",
+      "all": "All Types",
+      "bug": "Bug",
+      "feature": "Feature Request",
+      "issue": "Issue",
+      "other": "Other",
+      "improvement": "Improvement",
+      "question": "Question"
+    },
+    "priority": {
+      "label": "Priority",
+      "all": "All Priorities",
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "filterTags": {
+      "status": "Status: {value}",
+      "type": "Type: {value}",
+      "priority": "Priority: {value}"
+    },
+    "list": {
+      "searchPlaceholder": "Search title or description…",
+      "searchButton": "Search",
+      "sortLabel": "Sort",
+      "sortNewest": "Newest",
+      "sortOldest": "Oldest",
+      "sortMostVotes": "Most votes",
+      "sortFewestVotes": "Fewest votes",
+      "sort": {
+        "createdAt_desc": "Newest",
+        "createdAt_asc": "Oldest",
+        "voteCount_desc": "Most votes",
+        "priority_desc": "Highest priority",
+        "status_asc": "Status"
+      },
+      "pageSizeLabel": "Per page",
+      "summary": "Total {total} / {pageSize} per page",
+      "empty": "No feedback yet",
+      "error": "Error: {message}",
+      "filtersEmpty": "No filters",
+      "hasVotes": "Has votes",
+      "hasReplies": "Has replies",
+      "boolYes": "Yes",
+      "boolNo": "No",
+      "selectLabel": "Select feedback",
+      "delete": "Delete feedback",
+      "selectAll": "Select all on page",
+      "createdAt": "Created"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "jumpTo": "Go to",
+      "go": "Go",
+      "goToPage": "Go to page {page}"
+    },
+    "bulk": {
+      "selectedCount": "{count} selected",
+      "updateStatus": "Update status",
+      "updatePriority": "Update priority",
+      "delete": "Delete",
+      "deleteConfirmTitle": "Delete selected feedback?",
+      "deleteConfirmDesc": "Deleted feedback will no longer appear in the list.",
+      "clearSelection": "Clear selection"
+    },
+    "vote": {
+      "label": "Votes",
+      "vote": "Vote",
+      "voted": "Voted",
+      "count": "{count} votes",
+      "noVotes": "No votes yet",
+      "visitor": "Visitor",
+      "anonymous": "Anonymous"
+    },
+    "relative": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "daysAgo": "{count} days ago"
+    },
+    "actions": {
+      "label": "Feedback actions"
+    }
+  },
+  "integrations": {
+    "github": {
+      "title": "GitHub Integration",
+      "description": "Sync feedback to GitHub Issues for tracking and collaboration",
+      "personalAccessToken": "Personal Access Token",
+      "owner": "Owner",
+      "repository": "Repository",
+      "autoSync": "Auto-sync new feedback",
+      "webhook": {
+        "title": "Configure GitHub Webhook:",
+        "events": "Events: Select \"Issues\" only"
+      },
+      "connecting": "Connecting...",
+      "connect": "Connect GitHub",
+      "disconnect": "Disconnect",
+      "failedToLoad": "Failed to load configuration"
+    }
+  },
+  "widget": {
+    "thankYou": "Thank you!",
+    "successMessage": "Your feedback has been submitted successfully.",
+    "welcomeMessage": "We'd love to hear your thoughts.",
+    "title": "Title",
+    "description": "Description",
+    "priority": "Priority",
+    "titlePlaceholder": "What would you like to share?"
+  },
+  "apiKeys": {
+    "loading": "Loading...",
+    "empty": "No API keys yet. Create one to get started.",
+    "deleteConfirm": "Are you sure you want to delete this API key?",
+    "createdAt": "Created",
+    "lastUsed": "Last used",
+    "dialog": {
+      "title": "Your API Key",
+      "description": "Please save this key now. You won't be able to see it again after closing.",
+      "copy": "Copy to clipboard",
+      "copied": "Copied!",
+      "close": "Close"
+    },
+    "create": {
+      "title": "Create New API Key",
+      "description": "Generate a new API key for programmatic access",
+      "placeholder": "e.g., Production API Key",
+      "button": "Create",
+      "creating": "Creating..."
+    },
+    "status": {
+      "active": "Active",
+      "disabled": "Disabled"
+    },
+    "actions": {
+      "enable": "Enable",
+      "disable": "Disable",
+      "delete": "Delete"
+    }
+  },
+  "comments": {
+    "internal": {
+      "title": "Internal Notes",
+      "loading": "Loading...",
+      "empty": "No internal notes yet",
+      "beFirst": "Add the first note to start the discussion",
+      "formLabel": "Internal note",
+      "placeholder": "Add an internal note, e.g., context or next steps…",
+      "submit": "Add note",
+      "submitting": "Adding...",
+      "deleteAriaLabel": "Delete note",
+      "errors": {
+        "loadFailed": "Failed to load internal notes",
+        "addFailed": "Failed to add internal note",
+        "deleteFailed": "Failed to delete internal note"
+      }
+    },
+    "public": {
+      "title": "Public Comments",
+      "loading": "Loading...",
+      "empty": "No comments yet",
+      "beFirst": "Be the first to comment",
+      "loginPrompt": "Log in to comment, or leave an anonymous message",
+      "loginRequired": "Log in to leave a comment",
+      "login": "Log in",
+      "guestComment": "Anonymous comment",
+      "formLabel": "Comment",
+      "placeholder": "Share your thoughts, e.g., what you liked or what needs improvement…",
+      "submit": "Post comment",
+      "submitting": "Posting...",
+      "anonymous": "Anonymous",
+      "guest": "Guest",
+      "errors": {
+        "loadFailed": "Failed to load comments",
+        "submitFailed": "Failed to post comment"
+      },
+      "guestForm": {
+        "title": "Anonymous Comment",
+        "nameLabel": "Name",
+        "emailLabel": "Email address",
+        "contentLabel": "Comment",
+        "namePlaceholder": "Your name, e.g., Alex Chen…",
+        "emailPlaceholder": "Email address, e.g., alex@example.com…",
+        "contentPlaceholder": "Share your thoughts, e.g., what you liked or what needs improvement…",
+        "cancel": "Cancel",
+        "submit": "Post comment",
+        "submitting": "Posting..."
+      }
+    }
+  },
+  "processing": {
+    "queued": "AI processing queued...",
+    "inProgress": "AI processing in progress...",
+    "completed": "AI processing completed",
+    "failed": "AI processing failed",
+    "retry": "Retry"
+  },
+  "errors": {
+    "noAccess": {
+      "title": "Access Denied",
+      "message": "Your account does not have permission to access this page. Please contact your administrator for access.",
+      "backToDashboard": "Back to Dashboard",
+      "viewSettings": "View Settings"
+    },
+    "notFound": {
+      "title": "Feedback Not Found"
+    }
+  },
+  "analytics": {
+    "portal": {
+      "title": "Portal Analytics",
+      "timeseriesPoints": "Timeseries data points: {count}"
+    }
+  },
+  "portal": {
+    "roadmap": {
+      "title": "Roadmap",
+      "subscribeToUpdates": "Subscribe to updates",
+      "submitFeedback": "Submit feedback"
+    },
+    "changelog": {
+      "title": "Changelog",
+      "subscribeToUpdates": "Subscribe to updates"
+    },
+    "contributors": {
+      "mostHelpful": "Most helpful"
+    },
+    "ai": {
+      "classification": "AI Classification",
+      "reasons": "Reasons:"
+    }
+  }
+}

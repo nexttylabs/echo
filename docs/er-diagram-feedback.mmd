@@ -1,0 +1,138 @@
+erDiagram
+  feedback {
+    int feedbackId PK
+    text title
+    text description
+    text type
+    text priority
+    text status
+    text organizationId
+    boolean submittedOnBehalf
+    text submittedBy FK
+    jsonb customerInfo
+    timestamp createdAt
+    timestamp updatedAt
+    timestamp deletedAt
+    boolean autoClassified
+    text processingStatus
+    timestamp processedAt
+    int githubIssueId
+    int githubIssueNumber
+    text githubIssueUrl
+    timestamp githubSyncedAt
+    text githubStatus
+  }
+
+  attachments {
+    int attachmentId PK
+    int feedbackId FK
+    text fileName
+    text filePath
+    int fileSize
+    text mimeType
+    timestamp createdAt
+  }
+
+  votes {
+    int voteId PK
+    int feedbackId FK
+    text visitorId
+    text userId FK
+    timestamp createdAt
+  }
+
+  comments {
+    int commentId PK
+    int feedbackId FK
+    text userId FK
+    text authorName
+    text authorEmail
+    text guestToken
+    text content
+    boolean isInternal
+    timestamp createdAt
+    timestamp updatedAt
+  }
+
+  status_history {
+    int historyId PK
+    int feedbackId FK
+    text oldStatus
+    text newStatus
+    text changedBy FK
+    timestamp changedAt
+    text comment
+  }
+
+  tags {
+    int tagId PK
+    text name
+    text slug
+    text color
+    text description
+    timestamp createdAt
+  }
+
+  feedback_tags {
+    int id PK
+    int feedbackId FK
+    int tagId FK
+    timestamp createdAt
+  }
+
+  ai_processing_results {
+    int id PK
+    int feedbackId FK
+    jsonb classification
+    jsonb tagSuggestions
+    jsonb duplicateCandidates
+    int processingTime
+    text status
+    text errorMessage
+    timestamp createdAt
+    timestamp updatedAt
+  }
+
+  duplicate_feedback {
+    int id PK
+    int originalFeedbackId FK
+    int duplicateFeedbackId FK
+    int similarity
+    text status
+    text confirmedBy FK
+    timestamp confirmedAt
+    timestamp createdAt
+  }
+
+  notifications {
+    int notificationId PK
+    text userId FK
+    int feedbackId FK
+    text type
+    jsonb data
+    text status
+    timestamp sentAt
+    text error
+    timestamp createdAt
+  }
+
+  user {
+    text id PK
+    text name
+    text email
+  }
+
+  feedback ||--o{ attachments : has
+  feedback ||--o{ votes : has
+  feedback ||--o{ comments : has
+  feedback ||--o{ status_history : status
+  feedback ||--o{ feedback_tags : tags
+  feedback ||--o{ ai_processing_results : ai
+  feedback ||--o{ duplicate_feedback : duplicates
+  feedback ||--o{ notifications : notifies
+
+  tags ||--o{ feedback_tags : maps
+  user ||--o{ votes : votes
+  user ||--o{ comments : comments
+  user ||--o{ status_history : changes
+  user ||--o{ notifications : receives

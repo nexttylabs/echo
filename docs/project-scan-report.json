@@ -1,0 +1,104 @@
+{
+  "workflow_version": "1.2.0",
+  "timestamps": {
+    "started": "2025-12-31T00:00:00Z",
+    "last_updated": "2025-12-31T00:00:00Z"
+  },
+  "mode": "initial_scan",
+  "scan_level": "quick",
+  "project_root": "/Users/derek/Workspaces/echo",
+  "output_folder": "/Users/derek/Workspaces/echo/docs",
+  "current_step": "completed",
+  "findings": {
+    "project_classification": {
+      "repository_type": "monolith",
+      "parts_count": 1,
+      "primary_tech": "Next.js 16.1.1 + React 19.2.3 + TypeScript 5"
+    },
+    "project_types": [
+      {
+        "part_id": "main",
+        "project_type_id": "web",
+        "display_name": "Web Application"
+      }
+    ],
+    "existing_docs_count": 2,
+    "technology_stack": {
+      "framework": "Next.js 16.1.1 + React 19.2.3",
+      "language": "TypeScript 5.x (strict mode)"
+    },
+    "architecture_pattern": "Next.js App Router + React Server Components"
+  },
+  "outputs_generated": [
+    "project-scan-report.json",
+    "source-tree-analysis.md",
+    "development-guide.md",
+    "architecture.md",
+    "component-inventory.md",
+    "project-overview.md",
+    "index.md"
+  ],
+  "completed_steps": [
+    {
+      "step": "step_1",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Classified as monolith with 1 parts"
+    },
+    {
+      "step": "step_2",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Found 2 existing docs"
+    },
+    {
+      "step": "step_3",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Tech stack: Next.js 16 + React 19 + TypeScript 5"
+    },
+    {
+      "step": "step_4",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Conditional analysis complete, 0 files written"
+    },
+    {
+      "step": "step_5",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Source tree documented"
+    },
+    {
+      "step": "step_6",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Dev/deployment guides written"
+    },
+    {
+      "step": "step_8",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Architecture docs written for 1 parts"
+    },
+    {
+      "step": "step_9",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "All supporting docs written"
+    },
+    {
+      "step": "step_10",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Master index generated"
+    },
+    {
+      "step": "step_12",
+      "status": "completed",
+      "timestamp": "2025-12-31T00:00:00Z",
+      "summary": "Workflow complete"
+    }
+  ],
+  "resume_instructions": "Workflow completed"
+}

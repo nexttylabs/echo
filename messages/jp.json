@@ -1,0 +1,851 @@
+{
+  "navigation": {
+    "dashboard": "ダッシュボード",
+    "feedback": "フィードバック",
+    "sectionLabel": "ナビゲーション",
+    "settings": "設定",
+    "logout": "ログアウト",
+    "openMenu": "メニューを開く",
+    "organization": "組織",
+    "selectOrganization": "組織を選択",
+    "newOrganization": "新しい組織"
+  },
+  "language": {
+    "label": "言語",
+    "en": "English",
+    "zh-CN": "简体中文",
+    "jp": "日本語"
+  },
+  "hero": {
+    "title": "Echo",
+    "login": "ログイン",
+    "register": "無料登録",
+    "headline": "オープンソース製品フィードバック管理プラットフォーム",
+    "description": "スタートアップ向けに設計され、製品フィードバックを一元管理し、洞察を発見し、情報に基づいた製品決定を下すことができます。",
+    "subtitle": "ゼロコストで開始、データを完全に制御。",
+    "cta1": "開始する",
+    "cta2": "ドキュメントを見る",
+    "coreValues": "中核価値",
+    "feature1": {
+      "title": "ゼロコースト開始",
+      "description": "オープンソースのコア機能、無料セルフホスティング、5分でデプロイ完了"
+    },
+    "feature2": {
+      "title": "データ主権",
+      "description": "ユーザーフィードバックデータを完全に制御し、GDPRなどのコンプライアンス要件に準拠"
+    },
+    "feature3": {
+      "title": "AIネイティブ",
+      "description": "スマート分類、重複検出、洞察発見でより効率的な意思決定を支援"
+    },
+    "feature4": {
+      "title": "簡単な統合",
+      "description": "オープンAPIとWebhookで既存のワークフローとシームレスに統合"
+    },
+    "ready": {
+      "title": "準備はできましたか？",
+      "description": "Echoをすでに使用しているスタートアップに参加し、すべてのユーザーフィードバックが聞かれるようにしましょう。",
+      "cta1": "無料アカウントを作成",
+      "cta2": "アカウントをお持ちですか？ログイン"
+    },
+    "footer": {
+      "title": "Echo - オープンソース製品フィードバック管理プラットフォーム",
+      "docs": "ドキュメント"
+    }
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "save": "保存",
+    "saving": "保存中...",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "comingSoon": "近日公開",
+    "noData": "データがありません",
+    "settingsSaved": "設定を保存しました",
+    "saveFailed": "保存に失敗しました。後でもう一度お試しください",
+    "viewAll": "すべて表示",
+    "submitFirst": "最初のフィードバックを送信",
+    "noOrganization": "関連する組織が見つかりませんでした。"
+  },
+  "validation": {
+    "titleRequired": "タイトルは必須です",
+    "titleMax200": "タイトルは200文字以内で入力してください",
+    "descriptionRequired": "説明は必須です",
+    "descriptionMax5000": "説明は5000文字以内で入力してください",
+    "customerNameRequired": "顧客名は必須です",
+    "customerNameMax100": "顧客名は100文字以内で入力してください",
+    "emailInvalid": "有効なメールアドレスを入力してください",
+    "typeRequired": "タイプを選択してください",
+    "priorityRequired": "優先度を選択してください"
+  },
+  "settings": {
+    "title": "設定",
+    "groups": {
+      "general": "一般",
+      "brandingCustomizations": "ブランディングとカスタマイズ",
+      "accessAuthentication": "アクセスと認証",
+      "modules": "モジュール",
+      "other": "その他",
+      "resources": "リソース"
+    },
+    "items": {
+      "profile": "プロフィール",
+      "organization": "組織",
+      "teamMembers": "チームメンバー",
+      "appearance": "外観",
+      "branding": "ブランディング",
+      "notificationEmails": "メール通知",
+      "organizationAccess": "組織アクセス",
+      "securitySso": "セキュリティとSSO",
+      "apiKeys": "APIキー",
+      "customizeModules": "モジュールのカスタマイズ",
+      "feedbackRoadmap": "フィードバックとロードマップ",
+      "changelog": "更新履歴",
+      "widgetsEmbeds": "ウィジェットと埋め込み",
+      "integrations": "インテグレーション",
+      "advanced": "詳細設定",
+      "dangerZone": "危険なゾーン",
+      "developerDocs": "開発者ドキュメント",
+      "joinCommunity": "コミュニティに参加"
+    },
+    "organizationForm": {
+      "titleEdit": "組織設定",
+      "titleCreate": "新しい組織を作成",
+      "descEdit": "組織の基本情報を管理します",
+      "descCreate": "複数のプロジェクトやチームを管理するための組織を作成します",
+      "nameLabel": "組織名",
+      "descriptionLabel": "説明",
+      "savingEdit": "保存中...",
+      "savingCreate": "作成中...",
+      "submitEdit": "変更を保存",
+      "submitCreate": "作成",
+      "updateFailed": "更新に失敗しました",
+      "createFailed": "作成に失敗しました",
+      "updatedSuccess": "組織情報を更新しました",
+      "genericError": "エラーが発生しました。後でもう一度お試しください。"
+    },
+    "profile": {
+      "pageTitle": "プロフィール",
+      "pageDescription": "アカウント情報と設定を管理",
+      "cardTitle": "プロフィール",
+      "cardDescription": "個人情報を管理",
+      "nameLabel": "名前",
+      "emailLabel": "メールアドレス",
+      "saveChanges": "変更を保存（近日公開）"
+    },
+    "appearance": {
+      "pageTitle": "外観設定",
+      "pageDescription": "アプリの表示スタイルをカスタマイズ",
+      "cardTitle": "外観設定",
+      "cardDescription": "アプリの表示スタイルをカスタマイズ",
+      "themeLabel": "テーマ",
+      "themeLight": "ライト",
+      "themeDark": "ダーク",
+      "themeSystem": "システム設定に従う",
+      "themeComingSoon": "テーマ切り替え機能は近日公開"
+    },
+    "notifications": {
+      "pageTitle": "通知設定",
+      "pageDescription": "受け取りたい通知の種類を選択",
+      "cardTitle": "メール通知",
+      "cardDescription": "受け取りたいメール通知の種類を選択",
+      "statusChange": "フィードバックステータス変更",
+      "statusChangeDesc": "送信したフィードバックのステータスが変更されたときに通知を受け取る",
+      "newComment": "新しいコメント通知",
+      "newCommentDesc": "フォローしているフィードバックに他の人がコメントしたときに通知を受け取る",
+      "saveSettings": "設定を保存"
+    },
+    "apiKeys": {
+      "pageTitle": "APIキー",
+      "pageDescription": "APIアクセスキーを管理",
+      "createTitle": "新しいキーを作成",
+      "createDescription": "外部連携用の新しいAPIキーを作成",
+      "keyNameLabel": "キー名",
+      "keyNamePlaceholder": "キー名を入力",
+      "createButton": "キーを作成",
+      "existingTitle": "既存のキー",
+      "existingDescription": "APIキーを管理",
+      "noKeys": "APIキーがありません",
+      "keyCreatedAlert": "新しいキーが作成されました: {key}\n\nこのキーは今すぐ保存してください。再度表示されることはありません。",
+      "deleteConfirm": "このAPIキーを削除してもよろしいですか？この操作は取り消せません。"
+    },
+    "dangerZone": {
+      "pageTitle": "危険なゾーン",
+      "pageDescription": "不可逆的で危険な操作",
+      "deleteOrg": "組織を削除",
+      "deleteOrgDesc": "組織とすべてのデータを完全に削除します。この操作は取り消せません。",
+      "resetData": "すべてのデータをリセット",
+      "resetDataDesc": "すべてのフィードバック、ロードマップ項目、更新履歴を削除します。組織の設定は保持されます。",
+      "transferOwnership": "所有権を譲渡",
+      "transferOwnershipDesc": "組織の所有権を別の管理者に譲渡します。所有者権限を失います。"
+    },
+    "advanced": {
+      "pageTitle": "詳細設定",
+      "pageDescription": "詳細な設定と構成",
+      "dataExport": "データエクスポート",
+      "dataExportDesc": "すべてのデータをエクスポート",
+      "dataExportComingSoon": "データエクスポート機能は近日公開",
+      "webhooks": "Webhooks",
+      "webhooksDesc": "Webhookエンドポイントを構成",
+      "webhooksComingSoon": "Webhook構成は近日公開",
+      "developerMode": "開発者モード",
+      "developerModeDesc": "高度なデバッグ機能を有効化",
+      "developerModeComingSoon": "開発者モードは近日公開"
+    },
+    "security": {
+      "pageTitle": "セキュリティとSSO",
+      "pageDescription": "セキュリティ設定とシングルサインオンを管理",
+      "sso": "シングルサインオン（SSO）",
+      "ssoDesc": "SAMLまたはOAuthプロバイダーを構成",
+      "ssoComingSoon": "SSO構成は近日公開",
+      "twoFactor": "二要素認証",
+      "twoFactorDesc": "チームメンバーに2FAを要求",
+      "twoFactorComingSoon": "2FA設定は近日公開"
+    },
+    "integrations": {
+      "pageTitle": "インテグレーション",
+      "pageDescription": "サードパーティツールとサービスに接続",
+      "availableTitle": "利用可能なインテグレーション",
+      "availableDesc": "お気に入りのツールと接続",
+      "slack": "Slack",
+      "slackDesc": "Slackで通知を受け取る",
+      "jira": "Jira",
+      "jiraDesc": "Jiraの課題と同期",
+      "linear": "Linear",
+      "linearDesc": "Linearプロジェクトに接続",
+      "discord": "Discord",
+      "discordDesc": "Discordに更新を投稿"
+    },
+    "widgets": {
+      "pageTitle": "ウィジェットと埋め込み",
+      "pageDescription": "ウェブサイトにフィードバックウィジェットを埋め込む",
+      "feedbackWidget": "フィードバックウィジェット",
+      "feedbackWidgetDesc": "サイトにフィードバックボタンを埋め込む",
+      "feedbackWidgetComingSoon": "ウィジェット構成は近日公開",
+      "changelogWidget": "更新履歴ウィジェット",
+      "changelogWidgetDesc": "アプリ内に更新履歴を表示",
+      "changelogWidgetComingSoon": "更新履歴ウィジェットは近日公開"
+    },
+    "access": {
+      "pageTitle": "組織アクセス",
+      "pageDescription": "公開アクセスと権限を制御",
+      "visibilityTitle": "可視性と権限",
+      "visibilityDesc": "公開アクセス、投票、インデックス設定を構成"
+    },
+    "branding": {
+      "pageTitle": "ブランディング",
+      "pageDescription": "ポータルのビジュアルスタイルとコピーをカスタマイズ",
+      "themeTitle": "テーマ",
+      "themeDesc": "色、フォント、外観を制御",
+      "copyTitle": "コピー",
+      "copyDesc": "ポータルのタイトルとガイドテキストを構成",
+      "languagesTitle": "言語",
+      "languagesDesc": "デフォルト言語と利用可能な言語を構成"
+    },
+    "modules": {
+      "pageTitle": "モジュールのカスタマイズ",
+      "pageDescription": "機能モジュールを有効化または無効化",
+      "configTitle": "モジュール構成",
+      "configDesc": "必要に応じてフィードバック、ロードマップ、更新履歴を有効化"
+    },
+    "changelog": {
+      "pageTitle": "更新履歴",
+      "pageDescription": "更新履歴の表示と通知を構成",
+      "settingsTitle": "更新履歴設定",
+      "settingsDesc": "更新履歴エントリの表示方法を制御",
+      "settingsComingSoon": "更新履歴構成は近日公開"
+    },
+    "feedbackSettings": {
+      "pageTitle": "フィードバックとロードマップ",
+      "pageDescription": "フィードバック収集とロードマップ表示を構成",
+      "settingsTitle": "フィードバック設定",
+      "settingsDesc": "ユーザーがフィードバックを送信・表示する方法を構成",
+      "settingsComingSoon": "フィードバック構成は近日公開",
+      "roadmapTitle": "ロードマップ表示",
+      "roadmapDesc": "ロードマップの可視性とレイアウトを制御",
+      "roadmapComingSoon": "ロードマップ設定は近日公開"
+    },
+    "portal": {
+      "branding": {
+        "title": "ポータルブランディング",
+        "description": "ポータルのビジュアルスタイルとコピー言語を管理",
+        "theme": {
+          "title": "ポータルテーマ",
+          "description": "色、フォント、ビジュアル体験を制御"
+        },
+        "copy": {
+          "title": "ポータルコピー",
+          "description": "ポータルタイトルとガイドコピーを統一"
+        },
+        "copyForm": {
+          "defaults": {
+            "title": "フィードバックセンター",
+            "ctaLabel": "フィードバックを送信",
+            "emptyStateMessage": "まだフィードバックがありません。最初のアイデアを共有しましょう！",
+            "successMessage": "フィードバックありがとうございます。内容を確認します。",
+            "placeholders": {
+              "titleInput": "フィードバックのタイトルを入力...",
+              "descriptionInput": "アイデアを詳しく記述..."
+            }
+          },
+          "labels": {
+            "title": "ポータルタイトル",
+            "description": "ポータル説明",
+            "ctaLabel": "送信ボタンの文言",
+            "emptyStateMessage": "空状態メッセージ",
+            "successMessage": "成功メッセージ",
+            "placeholdersSection": "入力プレースホルダー",
+            "placeholders": {
+              "titleInput": "タイトル入力",
+              "descriptionInput": "説明入力"
+            }
+          },
+          "placeholders": {
+            "title": "フィードバックセンター",
+            "description": "アイデアを共有して、製品改善にご協力ください",
+            "ctaLabel": "フィードバックを送信",
+            "emptyStateMessage": "フィードバックがありません...",
+            "successMessage": "フィードバックありがとうございます！",
+            "titleInput": "フィードバックのタイトルを入力...",
+            "descriptionInput": "アイデアを詳しく記述..."
+          },
+          "help": {
+            "title": "ポータル上部に表示されます",
+            "description": "タイトルの下に表示される短い説明",
+            "emptyStateMessage": "まだフィードバックがない場合に表示されます",
+            "successMessage": "ユーザーが送信に成功した後に表示されます"
+          },
+          "buttons": {
+            "save": "変更を保存"
+          },
+          "status": {
+            "saved": "コピー設定を保存しました",
+            "saveFailed": "保存に失敗しました"
+          }
+        },
+        "languages": {
+          "title": "ポータル言語",
+          "description": "デフォルト言語とオプション言語を設定"
+        },
+        "themeForm": {
+          "labels": {
+            "mode": "カラーモード",
+            "primaryColor": "メインカラー",
+            "accentColor": "アクセントカラー",
+            "borderRadius": "角丸サイズ",
+            "fontFamily": "カスタムフォント",
+            "customCSS": "カスタム CSS"
+          },
+          "placeholders": {
+            "mode": "カラーモードを選択",
+            "borderRadius": "角丸サイズを選択"
+          },
+          "options": {
+            "mode": {
+              "light": "ライトモード",
+              "dark": "ダークモード",
+              "system": "システムに従う"
+            },
+            "borderRadius": {
+              "none": "角丸なし",
+              "sm": "小さい角丸",
+              "md": "中程度の角丸",
+              "lg": "大きい角丸",
+              "full": "完全な角丸"
+            }
+          },
+          "help": {
+            "primaryColor": "ボタン、リンクなどの主要要素に使用",
+            "accentColor": "ハイライトや補助アクションに使用",
+            "fontFamily": "空欄でシステムデフォルトフォントを使用",
+            "customCSS": "上級ユーザー向けカスタムスタイル"
+          },
+          "buttons": {
+            "save": "変更を保存"
+          },
+          "status": {
+            "saved": "テーマ設定を保存しました",
+            "saveFailed": "保存に失敗しました"
+          }
+        }
+      },
+      "access": {
+        "title": "ポータルアクセス"
+      },
+      "overview": {
+        "themeSummary": {
+          "custom": "メインカラー {color}",
+          "default": "デフォルトテーマを使用"
+        },
+        "seoSummary": {
+          "unset": "SEOタイトル未設定"
+        },
+        "status": {
+          "title": "ポータルステータス",
+          "description": "現在の組織のポータル入口と可視性",
+          "badgeEnabled": "公開中",
+          "badgeDisabled": "非公開",
+          "preview": "ポータルをプレビュー",
+          "open": "ポータルを開く",
+          "portalLink": "ポータルリンク："
+        },
+        "cards": {
+          "action": "設定へ",
+          "experience": {
+            "title": "体験",
+            "description": "テーマ、コピー、言語",
+            "items": {
+              "copyTitle": "タイトル：{title}",
+              "copyTitleUnset": "ポータルタイトル未設定",
+              "defaultLanguage": "デフォルト言語：{locale}"
+            }
+          },
+          "growth": {
+            "title": "成長",
+            "description": "共有とSEO設定",
+            "items": {
+              "socialSharingEnabled": "ソーシャル共有設定済み",
+              "socialSharingDisabled": "ソーシャル共有未設定",
+              "ogImageSet": "OG画像設定済み",
+              "ogImageUnset": "OG画像未設定"
+            }
+          },
+          "visibility": {
+            "title": "可視性",
+            "description": "公開権限とインデックス",
+            "items": {
+              "portalEnabled": "ポータル公開",
+              "portalDisabled": "ポータル非公開",
+              "publicVotingEnabled": "公開投票を許可",
+              "publicVotingDisabled": "公開投票を無効",
+              "noIndex": "インデックス禁止",
+              "index": "インデックス許可"
+            }
+          }
+        },
+        "modules": {
+          "badge": "モジュール切替",
+          "summary": "ポータルモジュール表示を管理"
+        }
+      },
+      "modules": {
+        "title": "ポータルモジュール",
+        "panelTitle": "ポータルモジュール切り替え",
+        "panelDescription": "ポータルに表示する機能モジュールを制御します。",
+        "rows": {
+          "feedback": {
+            "label": "フィードバック",
+            "description": "ユーザーがフィードバックを送信・閲覧できるようにします"
+          },
+          "roadmap": {
+            "label": "ロードマップ",
+            "description": "計画中の機能と進捗を表示します"
+          },
+          "changelog": {
+            "label": "更新履歴",
+            "description": "更新内容とリリース告知を公開します"
+          }
+        },
+        "saveButton": "モジュール設定を保存",
+        "saving": "保存中...",
+        "saved": "モジュール設定を保存しました",
+        "saveFailed": "保存に失敗しました"
+      },
+      "resources": {
+        "title": "ポータルリソース",
+        "links": {
+          "title": "ポータルリンク"
+        }
+      },
+      "growth": {
+        "title": "ポータル成長",
+        "seo": {
+          "title": "SEO 設定"
+        }
+      }
+    }
+  },
+  "invite": {
+    "status": {
+      "loading": {
+        "title": "招待を受け入れ中",
+        "description": "招待情報を確認しています。しばらくお待ちください。"
+      },
+      "success": {
+        "title": "組織へようこそ",
+        "description": "招待が正常に確認されました。コラボレーションを開始できます。"
+      },
+      "expired": {
+        "title": "招待の有効期限切れ",
+        "description": "この招待は有効期限が切れています。管理者に再送信を依頼してください。"
+      },
+      "unauthorized": {
+        "title": "先にログインしてください",
+        "description": "ログインして招待を受け入れ、組織に参加してください。"
+      },
+      "error": {
+        "title": "招待を受け入れられません",
+        "description": "招待リンクが無効な可能性があります。管理者にお問い合わせください。"
+      }
+    },
+    "buttons": {
+      "dashboard": "ダッシュボードへ",
+      "login": "ログインへ",
+      "back": "戻る"
+    }
+  },
+  "auth": {
+    "login": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "フィードバックと組織にアクセスするにはログインしてください",
+      "cardTitle": "ログイン",
+      "cardDescription": "メールアドレスとパスワードを入力してログイン",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "rememberMe": "ログインを記憶",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "submitButton": "ログイン",
+      "submitting": "ログイン中...",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "register": "登録",
+      "invalidCredentials": "メールアドレスまたはパスワードが正しくありません"
+    },
+    "register": {
+      "pageTitle": "Echo",
+      "pageSubtitle": "フィードバック収集を開始するために新しいアカウントを作成",
+      "cardTitle": "アカウント作成",
+      "cardDescription": "以下の情報を入力して新しいアカウントを登録",
+      "nameLabel": "名前",
+      "namePlaceholder": "山田太郎",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "passwordHint": "8文字以上、大文字小文字と数字または特殊文字を含む",
+      "confirmPasswordLabel": "パスワードを確認",
+      "submitButton": "登録",
+      "submitting": "登録中...",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "login": "ログイン",
+      "emailExists": "このメールアドレスは既に使用されています",
+      "registerFailed": "登録に失敗しました。後でもう一度お試しください"
+    },
+    "validation": {
+      "nameRequired": "名前を入力してください",
+      "emailRequired": "メールアドレスを入力してください",
+      "emailInvalid": "有効なメールアドレスを入力してください",
+      "passwordRequired": "パスワードを入力してください",
+      "passwordMinLength": "パスワードは8文字以上必要です",
+      "passwordUppercase": "パスワードには大文字を含める必要があります",
+      "passwordLowercase": "パスワードには小文字を含める必要があります",
+      "passwordNumberOrSpecial": "パスワードには数字または特殊文字を含める必要があります",
+      "passwordMismatch": "パスワードが一致しません"
+    }
+  },
+  "dashboard": {
+    "pageTitle": "ダッシュボード",
+    "pageDescription": "フィードバック管理の概要",
+    "visitPortal": "Web Portalにアクセス",
+    "stats": {
+      "totalFeedback": "総フィードバック数",
+      "pending": "保留中",
+      "weeklyNew": "今週の新規",
+      "resolved": "解決済み"
+    },
+    "recentFeedback": {
+      "title": "最近のフィードバック",
+      "noData": "フィードバックデータがありません",
+      "count": "{count} 件",
+      "quantity": "数量"
+    },
+    "quickActions": {
+      "submitFeedback": "新しいフィードバックを送信",
+      "viewAllFeedback": "すべてのフィードバックを表示",
+      "settings": "設定",
+      "organizationSettings": "組織設定"
+    },
+    "statusChart": {
+      "title": "ステータス分布",
+      "noData": "データがありません"
+    }
+  },
+  "feedback": {
+    "trigger": "フィードバック",
+    "dialogTitle": "フィードバックを送信",
+    "dialogDescription": "提案や問題を送信するためにフォームに記入してください。",
+    "form": {
+      "title": "タイトル",
+      "titlePlaceholder": "フィードバックを簡単に説明してください",
+      "description": "説明",
+      "descriptionPlaceholder": "何が起こったか、またはどのような改善を望むかを説明してください",
+      "type": "フィードバックタイプ",
+      "selectType": "フィードバックタイプを選択",
+      "priority": "優先度",
+      "selectPriority": "優先度を選択",
+      "submit": "送信",
+      "submitting": "送信中...",
+      "cancel": "キャンセル"
+    },
+    "fileUpload": {
+      "errors": {
+        "size": "ファイルサイズは {maxMb}MB 以下にしてください",
+        "type": "対応していないファイル形式です",
+        "missingFeedbackId": "先にフィードバックを送信してください"
+      },
+      "dropzone": {
+        "title": "ここにドラッグするか、クリックしてファイルを選択",
+        "subtitle": "PNG, JPG, GIF, PDF に対応（最大 {maxMb}MB）"
+      },
+      "status": {
+        "pending": "待機中",
+        "uploading": "アップロード中...",
+        "success": "✓ アップロード完了",
+        "error": "✗ アップロード失敗"
+      },
+      "buttons": {
+        "upload": "ファイルをアップロード"
+      }
+    },
+    "detail": {
+      "info": "情報",
+      "createdAt": "作成日時",
+      "updatedAt": "更新日時",
+      "feedbackId": "フィードバックID: #{id}",
+      "copyLinkAriaLabel": "追跡リンクをコピー",
+      "priorityLabel": "優先度: {priority}",
+      "votes": "投票数",
+      "description": "詳細説明",
+      "attachments": "添付ファイル",
+      "votesTitle": "投票",
+      "statusHistory": "ステータス履歴",
+      "backToList": "一覧に戻る",
+      "customerInfo": "顧客情報（代理送信）",
+      "customerName": "氏名",
+      "customerEmail": "メール",
+      "customerPhone": "電話",
+      "descriptionTitle": "説明",
+      "attachmentsTitle": "添付ファイル ({count})",
+      "onBehalf": {
+        "title": "代理送信",
+        "submitter": "送信者",
+        "customerInfo": "顧客情報",
+        "name": "名前",
+        "email": "メール",
+        "phone": "電話",
+        "unknownUser": "不明なユーザー",
+        "customerHidden": "顧客情報はプライバシー保護のため非表示です。"
+      },
+      "timeline": {
+        "title": "タイムライン",
+        "createdAt": "作成日時",
+        "updatedAt": "最終更新"
+      },
+      "shareHint": "このリンクを共有してフィードバックの進捗を追跡",
+      "shareLinkLabel": "共有リンク",
+      "copyLink": "リンクをコピー",
+      "copied": "コピーしました",
+      "feedbackIdLabel": "フィードバック ID",
+      "voteHistory": "投票履歴",
+      "publicTitle": "フィードバック詳細",
+      "publicDescription": "フィードバックの詳細と進捗を確認できます。",
+      "publicHeader": "フィードバック詳細",
+      "publicBackHome": "ホームに戻る",
+      "publicContinueSubmit": "続けて送信"
+    },
+    "submitOnBehalf": {
+      "roleNotice": "あなたは {strong}{role}{/strong} として、顧客の代わりにフィードバックを送信しています。",
+      "submitSuccess": "フィードバックを送信しました！",
+      "submitFailed": "送信に失敗しました",
+      "networkError": "ネットワークエラー。後でもう一度お試しください。",
+      "viewDetail": "フィードバック詳細を見る →",
+      "cardTitle": "顧客の代わりにフィードバックを送信",
+      "cardDescription": "顧客の代わりにフィードバックを送信します。システムはあなたと顧客の情報を記録します。",
+      "sections": {
+        "feedback": "フィードバック",
+        "customer": "顧客情報"
+      },
+      "labels": {
+        "title": "タイトル",
+        "description": "説明",
+        "type": "タイプ",
+        "priority": "優先度",
+        "customerName": "顧客名",
+        "customerEmail": "顧客メール",
+        "customerPhone": "顧客電話（任意）"
+      },
+      "placeholders": {
+        "title": "問題や要望を簡単に説明してください",
+        "description": "問題や要望の内容を詳しく説明してください",
+        "type": "タイプを選択",
+        "priority": "優先度を選択",
+        "customerName": "顧客名",
+        "customerEmail": "customer@example.com",
+        "customerPhone": "+86 138 0000 0000"
+      },
+      "submit": "フィードバックを送信",
+      "submitting": "送信中..."
+    },
+    "success": "フィードバックが正常に送信されました",
+    "tracking": "追跡リンク",
+    "copy": "リンクをコピー",
+    "copied": "コピーしました",
+    "close": "閉じる",
+    "pageTitle": "フィードバック管理",
+    "pageDescription": "すべてのユーザーフィードバックを表示・管理",
+    "filters": {
+      "title": "フィルター",
+      "activeCount": "({count} 件有効)",
+      "clearAll": "フィルターをクリア",
+      "logicHint": "グループ内はいずれか一致・グループ間はすべて一致",
+      "statusLabel": "ステータス",
+      "statusPlaceholder": "ステータスを選択",
+      "typeLabel": "タイプ",
+      "typePlaceholder": "タイプを選択",
+      "priorityLabel": "優先度",
+      "priorityPlaceholder": "優先度を選択"
+    },
+    "status": {
+      "all": "すべてのステータス",
+      "new": "新規",
+      "inProgress": "進行中",
+      "planned": "計画済み",
+      "completed": "完了",
+      "closed": "クローズ",
+      "resolved": "解決済み",
+      "updating": "更新中...",
+      "updateFailed": "更新に失敗しました。後でもう一度お試しください"
+    },
+    "type": {
+      "all": "すべてのタイプ",
+      "bug": "バグ",
+      "feature": "機能リクエスト",
+      "issue": "問題",
+      "other": "その他",
+      "improvement": "改善",
+      "question": "質問"
+    },
+    "priority": {
+      "label": "優先度",
+      "all": "すべての優先度",
+      "low": "低",
+      "medium": "中",
+      "high": "高",
+      "critical": "緊急"
+    },
+    "filterTags": {
+      "status": "ステータス: {value}",
+      "type": "タイプ: {value}",
+      "priority": "優先度: {value}"
+    },
+    "list": {
+      "searchPlaceholder": "タイトルまたは説明を検索…",
+      "searchButton": "検索",
+      "sortLabel": "並び替え",
+      "sortNewest": "新しい順",
+      "sortOldest": "古い順",
+      "sortMostVotes": "票数が多い順",
+      "sortFewestVotes": "票数が少ない順",
+      "sort": {
+        "createdAt_desc": "最新",
+        "createdAt_asc": "最古",
+        "voteCount_desc": "投票数順",
+        "priority_desc": "優先度順",
+        "status_asc": "ステータス"
+      },
+      "pageSizeLabel": "表示件数",
+      "summary": "合計 {total} 件 / 1ページ {pageSize} 件",
+      "empty": "フィードバックはまだありません",
+      "error": "エラー: {message}",
+      "filtersEmpty": "フィルターなし",
+      "hasVotes": "投票あり",
+      "hasReplies": "返信あり",
+      "boolYes": "はい",
+      "boolNo": "いいえ",
+      "selectLabel": "フィードバックを選択",
+      "delete": "フィードバックを削除",
+      "selectAll": "このページを全選択"
+    },
+    "pagination": {
+      "previous": "前へ",
+      "next": "次へ",
+      "jumpTo": "移動",
+      "go": "移動",
+      "goToPage": "{page} ページへ移動"
+    },
+    "bulk": {
+      "selectedCount": "{count} 件選択済み",
+      "updateStatus": "ステータス更新",
+      "updatePriority": "優先度更新",
+      "delete": "削除",
+      "deleteConfirmTitle": "選択したフィードバックを削除しますか？",
+      "deleteConfirmDesc": "削除すると一覧に表示されなくなります。",
+      "clearSelection": "選択をクリア"
+    },
+    "vote": {
+      "vote": "投票",
+      "voted": "投票済み",
+      "count": "{count} 票",
+      "noVotes": "まだ投票はありません",
+      "visitor": "ビジター",
+      "anonymous": "匿名"
+    },
+    "relative": {
+      "today": "今日",
+      "yesterday": "昨日",
+      "daysAgo": "{count} 日前"
+    },
+    "actions": {
+      "label": "フィードバック操作"
+    }
+  },
+  "comments": {
+    "internal": {
+      "title": "内部メモ",
+      "loading": "読み込み中...",
+      "empty": "内部メモはまだありません",
+      "beFirst": "最初のメモを追加して議論を始めましょう",
+      "formLabel": "内部メモ",
+      "placeholder": "内部メモを追加してください。例：背景や次のアクション…",
+      "submit": "メモを追加",
+      "submitting": "追加中...",
+      "deleteAriaLabel": "メモを削除",
+      "errors": {
+        "loadFailed": "内部メモの読み込みに失敗しました",
+        "addFailed": "内部メモの追加に失敗しました",
+        "deleteFailed": "内部メモの削除に失敗しました"
+      }
+    },
+    "public": {
+      "title": "公開コメント",
+      "loading": "読み込み中...",
+      "empty": "コメントはまだありません",
+      "beFirst": "最初のコメントを投稿しましょう",
+      "loginPrompt": "ログインしてコメント、または匿名で投稿",
+      "loginRequired": "コメントするにはログインが必要です",
+      "login": "ログイン",
+      "guestComment": "匿名コメント",
+      "formLabel": "コメント",
+      "placeholder": "感想を共有してください。例：良かった点や改善点…",
+      "submit": "コメントを投稿",
+      "submitting": "投稿中...",
+      "anonymous": "匿名",
+      "guest": "ゲスト",
+      "errors": {
+        "loadFailed": "コメントの読み込みに失敗しました",
+        "submitFailed": "コメントの投稿に失敗しました"
+      },
+      "guestForm": {
+        "title": "匿名コメント",
+        "nameLabel": "お名前",
+        "emailLabel": "メールアドレス",
+        "contentLabel": "コメント内容",
+        "namePlaceholder": "お名前（例：山田太郎…）",
+        "emailPlaceholder": "メールアドレス（例：taro@example.com…）",
+        "contentPlaceholder": "感想を共有してください。例：良かった点や改善点…",
+        "cancel": "キャンセル",
+        "submit": "投稿",
+        "submitting": "投稿中..."
+      }
+    }
+  }
+}
