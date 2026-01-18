@@ -6,10 +6,7 @@ on:
 
 permissions:
   contents: write
-<<<<<<< HEAD
   actions: write
-=======
->>>>>>> first-publish
 
 jobs:
   version:
@@ -30,10 +27,6 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: 'latest'
-<<<<<<< HEAD
-=======
-          cache: true
->>>>>>> first-publish
 
       - name: Install dependencies
         run: bun install
@@ -75,10 +68,6 @@ jobs:
         if: steps.git_status.outputs.changed == 'true'
         run: |
           VERSION=$(node -p "require('./package.json').version")
-<<<<<<< HEAD
           gh workflow run publish.yml -f tag="v${VERSION}"
-=======
-          gh workflow run publish.yml --ref "v${VERSION}"
->>>>>>> first-publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

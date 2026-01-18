@@ -3,12 +3,6 @@ name: Publish
 on:
   push:
     tags: [ 'v*' ]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag version to publish'
-        required: true
-        type: string
 
 permissions:
   contents: read
@@ -31,10 +25,6 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: 'latest'
-<<<<<<< HEAD
-=======
-          cache: true
->>>>>>> first-publish
 
       - name: Install dependencies
         run: bun install
