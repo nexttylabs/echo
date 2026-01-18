@@ -17,6 +17,17 @@
 
 import { GlobalRegistrator } from "@happy-dom/global-registrator";
 
+// Stub Jest fake timers check for @testing-library/dom compatibility
+const globalWithJest = globalThis as typeof globalThis & {
+  jestFakeTimersAreEnabled?: () => boolean;
+  jest?: {
+    advanceTimersByTime?: (ms: number) => void;
+  };
+};
+
+globalWithJest.jestFakeTimersAreEnabled = () => false;
+globalWithJest.jest = { advanceTimersByTime: () => {} };
+
 // Register happy-dom globals
 GlobalRegistrator.register();
 
