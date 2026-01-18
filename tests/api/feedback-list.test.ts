@@ -88,10 +88,28 @@ function setupMocks() {
   }));
 }
 
+// Mock getOrgContext to throw when organizationId is missing
+function setupOrgContextMock() {
+  mock.module("@/lib/auth/org-context", () => ({
+    getOrgContext: mock(async ({ request }: { request: { nextUrl: { searchParams: { get: (key: string) => string | null } } } }) => {
+      const organizationId = request.nextUrl.searchParams.get("organizationId");
+      if (!organizationId) {
+        throw new Error("Missing organization");
+      }
+      return {
+        organizationId,
+        memberRole: "admin",
+        source: "query" as const,
+      };
+    }),
+  }));
+}
+
 describe("GET /api/feedback", () => {
   beforeEach(() => {
     mock.restore();
     setupMocks();
+    setupOrgContextMock();
   });
 
   it("returns paginated feedback list with organization isolation", async () => {
