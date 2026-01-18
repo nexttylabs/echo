@@ -68,29 +68,48 @@ const createMockDb = (data = mockFeedbackData, total = data.length) => ({
   })),
 });
 
-mock.module("@/lib/auth/config", () => ({
-  auth: {
-    api: {
-      getSession: mock(() => Promise.resolve({ user: { id: "user_1" } })),
-    },
-    options: {
-      session: {
-        expiresIn: 60 * 60 * 24 * 30,
+function setupMocks() {
+  mock.module("@/lib/auth/config", () => ({
+    auth: {
+      api: {
+        getSession: mock(() => Promise.resolve({ user: { id: "user_1" } })),
+      },
+      options: {
+        session: {
+          expiresIn: 60 * 60 * 24 * 30,
+        },
       },
     },
-  },
-}));
+  }));
 
+  mock.module("next/headers", () => ({
+    headers: () => Promise.resolve(new Headers()),
+    cookies: () => Promise.resolve({ get: () => undefined }),
+  }));
+}
 
-
-mock.module("next/headers", () => ({
-  headers: () => Promise.resolve(new Headers()),
-  cookies: () => Promise.resolve({ get: () => undefined }),
-}));
+// Mock getOrgContext to throw when organizationId is missing
+function setupOrgContextMock() {
+  mock.module("@/lib/auth/org-context", () => ({
+    getOrgContext: mock(async ({ request }: { request: { nextUrl: { searchParams: { get: (key: string) => string | null } } } }) => {
+      const organizationId = request.nextUrl.searchParams.get("organizationId");
+      if (!organizationId) {
+        throw new Error("Missing organization");
+      }
+      return {
+        organizationId,
+        memberRole: "admin",
+        source: "query" as const,
+      };
+    }),
+  }));
+}
 
 describe("GET /api/feedback", () => {
   beforeEach(() => {
     mock.restore();
+    setupMocks();
+    setupOrgContextMock();
   });
 
   it("returns paginated feedback list with organization isolation", async () => {
