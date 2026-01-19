@@ -30,19 +30,6 @@ const publicRoutes = ["/login", "/register", "/invite", "/invite/", "/api/auth",
 const protectedRoutes = ["/dashboard", "/feedback", "/settings"];
 const LOCALE_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
-// Primary app hosts (custom domains will not match these)
-const APP_HOSTS = new Set([
-  "localhost",
-  "localhost:3000",
-  "127.0.0.1:3000",
-  // Add production domains when deployed
-]);
-
-// Simple in-memory cache for domain lookups
-const domainCache = new Map<string, { orgSlug: string; projectSlug: string } | null>();
-const CACHE_TTL = 60 * 1000; // 1 minute
-const cacheTimestamps = new Map<string, number>();
-
 function generateRequestId(): string {
   return crypto.randomUUID();
 }
@@ -86,44 +73,6 @@ function isAuthenticated(req: NextRequest): boolean {
   return testAuth === '1';
 }
 
-async function lookupCustomDomain(hostname: string, requestUrl: string): Promise<{ orgSlug: string; projectSlug: string } | null> {
-  const now = Date.now();
-  const cachedResult = domainCache.get(hostname);
-  const cacheTime = cacheTimestamps.get(hostname);
-  
-  if (cachedResult !== undefined && cacheTime && now - cacheTime < CACHE_TTL) {
-    return cachedResult;
-  }
-
-  try {
-    const lookupUrl = new URL("/api/internal/domain-lookup", requestUrl);
-    lookupUrl.searchParams.set("domain", hostname);
-    
-    const response = await fetch(lookupUrl, {
-      headers: {
-        "x-middleware-secret": process.env.MIDDLEWARE_SECRET || "",
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.orgSlug && data.projectSlug) {
-        const result = { orgSlug: data.orgSlug, projectSlug: data.projectSlug };
-        domainCache.set(hostname, result);
-        cacheTimestamps.set(hostname, now);
-        return result;
-      }
-    }
-    
-    domainCache.set(hostname, null);
-    cacheTimestamps.set(hostname, now);
-  } catch (error) {
-    console.error("Domain lookup failed:", error);
-  }
-
-  return null;
-}
-
 export async function proxy(req: NextRequest) {
   const startTime = Date.now();
   const reqId = req.headers.get("x-request-id") || generateRequestId();
@@ -135,29 +84,6 @@ export async function proxy(req: NextRequest) {
   console.log(`[${reqId}] ${req.method} ${req.nextUrl.pathname}`);
 
   const pathname = req.nextUrl.pathname;
-  const hostname = req.headers.get("host") || "";
-  const hostnameWithoutPort = hostname.split(":")[0];
-
-  // Custom domain routing - check if this is a custom domain request
-  if (!APP_HOSTS.has(hostname) && !APP_HOSTS.has(hostnameWithoutPort)) {
-    // Skip API routes and static assets
-    if (!pathname.startsWith("/api/") && !pathname.startsWith("/_next/") && !pathname.includes(".")) {
-      const domainInfo = await lookupCustomDomain(hostname, req.url);
-      if (domainInfo) {
-        const url = req.nextUrl.clone();
-        url.pathname = `/portal/${domainInfo.orgSlug}/${domainInfo.projectSlug}${pathname === "/" ? "" : pathname}`;
-        
-        const response = NextResponse.rewrite(url, {
-          request: { headers: requestHeaders },
-        });
-        maybeSetLocaleCookie(req, response, pathname);
-        response.headers.set("x-request-id", reqId);
-        const duration = Date.now() - startTime;
-        console.log(`[${reqId}] ${response.status} ${duration}ms (rewrite)`);
-        return response;
-      }
-    }
-  }
 
   const isPublic = isRouteMatch(pathname, publicRoutes);
   const isProtected = isRouteMatch(pathname, protectedRoutes);
