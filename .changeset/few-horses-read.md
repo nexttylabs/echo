@@ -2,4 +2,4 @@
 "@nexttylabs/echo": patch
 ---
 
-add gitignore
+fix: changeset package name
