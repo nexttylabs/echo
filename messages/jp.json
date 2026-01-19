@@ -129,11 +129,22 @@
     "profile": {
       "pageTitle": "プロフィール",
       "pageDescription": "アカウント情報と設定を管理",
-      "cardTitle": "プロフィール",
-      "cardDescription": "個人情報を管理",
+      "avatarTitle": "アバター",
+      "avatarDescription": "プロフィール画像",
+      "changeAvatar": "アバターを変更",
+      "avatarHint": "アバターアップロード機能は近日公開",
+      "cardTitle": "個人情報",
+      "cardDescription": "個人情報を更新",
       "nameLabel": "名前",
+      "namePlaceholder": "名前を入力",
+      "nameRequired": "名前は必須です",
+      "nameTooLong": "名前は100文字以内で入力してください",
       "emailLabel": "メールアドレス",
-      "saveChanges": "変更を保存（近日公開）"
+      "emailNote": "メールアドレスは変更できません",
+      "saveChanges": "変更を保存",
+      "updating": "保存中...",
+      "updateSuccess": "プロフィールを更新しました",
+      "updateFailed": "プロフィールの更新に失敗しました"
     },
     "appearance": {
       "pageTitle": "外観設定",

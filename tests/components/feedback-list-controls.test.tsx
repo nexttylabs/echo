@@ -81,19 +81,23 @@ mock.module("next-intl", () => ({
 }));
 
 mock.module("@/components/ui/dropdown-menu", () => ({
-  DropdownMenu: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuLabel: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  DropdownMenu: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
+  DropdownMenuTrigger: ({ children, asChild, ...props }: { children: React.ReactNode; asChild?: boolean; [key: string]: unknown }) => <div {...props}>{children}</div>,
+  DropdownMenuContent: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
+  DropdownMenuLabel: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
   DropdownMenuSeparator: () => <div />,
   DropdownMenuCheckboxItem: ({
     children,
     onCheckedChange,
+    asChild,
+    ...props
   }: {
     children: React.ReactNode;
     onCheckedChange?: () => void;
+    asChild?: boolean;
+    [key: string]: unknown;
   }) => (
-    <button type="button" onClick={() => onCheckedChange?.()}>
+    <button type="button" {...props} onClick={() => onCheckedChange?.()}>
       {children}
     </button>
   ),
