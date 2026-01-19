@@ -1,5 +1,0 @@
----
-"echo": patch
----
-
-add gitignore
