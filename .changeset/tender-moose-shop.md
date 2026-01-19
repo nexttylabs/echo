@@ -2,4 +2,4 @@
 "@nexttylabs/echo": patch
 ---
 
-fix: changeset package name
+first release
