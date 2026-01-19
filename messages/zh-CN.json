@@ -129,11 +129,22 @@
     "profile": {
       "pageTitle": "个人资料",
       "pageDescription": "管理你的账户信息和偏好设置",
-      "cardTitle": "个人资料",
-      "cardDescription": "管理你的个人信息",
+      "avatarTitle": "头像",
+      "avatarDescription": "你的个人头像",
+      "changeAvatar": "更换头像",
+      "avatarHint": "头像上传功能即将推出",
+      "cardTitle": "个人信息",
+      "cardDescription": "更新你的个人资料",
       "nameLabel": "姓名",
+      "namePlaceholder": "输入你的姓名",
+      "nameRequired": "姓名不能为空",
+      "nameTooLong": "姓名不能超过100个字符",
       "emailLabel": "邮箱",
-      "saveChanges": "保存更改 (即将推出)"
+      "emailNote": "邮箱地址不可更改",
+      "saveChanges": "保存更改",
+      "updating": "保存中...",
+      "updateSuccess": "个人资料更新成功",
+      "updateFailed": "更新个人资料失败"
     },
     "appearance": {
       "pageTitle": "外观设置",

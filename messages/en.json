@@ -129,11 +129,22 @@
     "profile": {
       "pageTitle": "Profile",
       "pageDescription": "Manage your account information and preferences",
-      "cardTitle": "Profile",
-      "cardDescription": "Manage your personal information",
+      "avatarTitle": "Avatar",
+      "avatarDescription": "Your profile picture",
+      "changeAvatar": "Change Avatar",
+      "avatarHint": "Avatar upload coming soon",
+      "cardTitle": "Personal Information",
+      "cardDescription": "Update your personal details",
       "nameLabel": "Name",
+      "namePlaceholder": "Enter your name",
+      "nameRequired": "Name is required",
+      "nameTooLong": "Name must be 100 characters or less",
       "emailLabel": "Email",
-      "saveChanges": "Save Changes (Coming Soon)"
+      "emailNote": "Email address cannot be changed",
+      "saveChanges": "Save Changes",
+      "updating": "Saving...",
+      "updateSuccess": "Profile updated successfully",
+      "updateFailed": "Failed to update profile"
     },
     "appearance": {
       "pageTitle": "Appearance",
