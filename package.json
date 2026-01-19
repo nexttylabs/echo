@@ -1,5 +1,5 @@
 {
-  "name": "echo",
+  "name": "@nexttylabs/echo",
   "version": "0.3.0",
   "private": false,
   "publishConfig": {
