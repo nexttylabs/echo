@@ -6,6 +6,25 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "app",
+    "components",
+    "lib",
+    "hooks",
+    "i18n",
+    "messages",
+    "public",
+    "db",
+    "types",
+    "next.config.ts",
+    "tsconfig.json",
+    "postcss.config.mjs",
+    "drizzle.config.ts",
+    "components.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "dev": "bun --bun next dev",
     "build": "node node_modules/next/dist/bin/next build",

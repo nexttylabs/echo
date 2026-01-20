@@ -24,6 +24,8 @@ import {
   getBackupConfig,
 } from "@/lib/services/backup";
 import { apiError } from "@/lib/api/errors";
+import { db } from "@/lib/db";
+import { getUserOrganizations } from "@/lib/auth/organization";
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,8 +34,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const role = (session.user as { role: UserRole }).role;
-    if (!role || !hasPermission(role, PERMISSIONS.BACKUP_CREATE)) {
+    if (!db) {
+      return NextResponse.json({ error: "Database not available" }, { status: 503 });
+    }
+
+    const orgs = await getUserOrganizations(db, session.user.id);
+    const hasAccess = orgs.some(org => 
+      hasPermission(org.role as UserRole, PERMISSIONS.BACKUP_CREATE)
+    );
+
+    if (!hasAccess) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
@@ -57,8 +67,16 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const role = (session.user as { role: UserRole }).role;
-    if (!role || !hasPermission(role, PERMISSIONS.BACKUP_VIEW)) {
+    if (!db) {
+      return NextResponse.json({ error: "Database not available" }, { status: 503 });
+    }
+
+    const orgs = await getUserOrganizations(db, session.user.id);
+    const hasAccess = orgs.some(org => 
+      hasPermission(org.role as UserRole, PERMISSIONS.BACKUP_VIEW)
+    );
+
+    if (!hasAccess) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

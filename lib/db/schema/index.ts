@@ -16,7 +16,6 @@
  */
 
 export * from "./auth";
-export * from "./user-profiles";
 export * from "./organizations";
 export * from "./organization-settings";
 export * from "./organization-members";

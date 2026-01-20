@@ -19,6 +19,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { headers } from "next/headers";
+import { organizationMembers } from "@/lib/db/schema";
 import { auth } from "@/lib/auth/config";
 import { PortalLayout } from "@/components/portal/portal-layout";
 import { RoadmapBoard, type RoadmapStatus } from "@/components/portal/roadmap-board";
@@ -108,7 +109,24 @@ export default async function OrganizationRoadmapPage({ params }: PageProps) {
 
   // Check if user is admin
   const session = await auth.api.getSession({ headers: await headers() });
-  const isAdmin = session?.user?.role === "admin" || session?.user?.role === "owner";
+  let isAdmin = false;
+
+  if (session?.user?.id) {
+    const { db } = await import("@/lib/db");
+    if (db) {
+      const [member] = await db
+        .select({ role: organizationMembers.role })
+        .from(organizationMembers)
+        .where(
+          and(
+            eq(organizationMembers.organizationId, organization.id),
+            eq(organizationMembers.userId, session.user.id)
+          )
+        )
+        .limit(1);
+      isAdmin = member?.role === "admin" || member?.role === "owner";
+    }
+  }
 
   const items = await getRoadmapItems(organization.id);
   const sections = getPortalSections(organizationSlug, context.modules);
