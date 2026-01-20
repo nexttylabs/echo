@@ -22,7 +22,7 @@ import { auth } from "@/lib/auth/config";
 import { db } from "@/lib/db";
 import { feedback } from "@/lib/db/schema";
 import { FeedbackEditForm } from "@/components/feedback/feedback-edit-form";
-import { canEditFeedback, type UserRole } from "@/lib/auth/permissions";
+import { canEditFeedback } from "@/lib/auth/permissions";
 import { getOrgContext } from "@/lib/auth/org-context";
 import { getRequestUrl } from "@/lib/http/get-request-url";
 
