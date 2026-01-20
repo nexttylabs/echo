@@ -34,6 +34,11 @@ const defaultModules: PortalModulesConfig = {
 export async function getPortalPublicContext(organizationSlug: string) {
   if (!db) return null;
 
+  // Skip static asset paths that shouldn't be treated as org slugs
+  if (organizationSlug.includes('.') || /^(api|_next|favicon|apple-touch-icon|robots|sitemap)/.test(organizationSlug)) {
+    return null;
+  }
+
   const organization = await db.query.organizations.findFirst({
     where: eq(organizations.slug, organizationSlug),
   });
