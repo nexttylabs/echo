@@ -81,9 +81,9 @@ export async function POST(
       );
     }
 
-    const userRole = (session.user as { role?: string }).role as
-      | UserRole
-      | undefined;
+    // Get user role from organization membership (via context)
+    const { getUserRoleInOrganization } = await import("@/lib/auth/organization");
+    const userRole = await getUserRoleInOrganization(db, session.user.id, context.organizationId);
 
     if (!userRole || !canUpdateFeedbackStatus(userRole)) {
       return NextResponse.json(

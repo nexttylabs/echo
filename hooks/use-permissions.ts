@@ -18,34 +18,46 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { authClient } from "@/lib/auth/client";
 import {
   hasAllPermissions,
   hasPermission,
   type Permission,
   type UserRole,
 } from "@/lib/auth/permissions";
+import { useCurrentRole } from "@/hooks/use-organization";
 
-type Session = (typeof authClient)["$Infer"]["Session"];
-
+/**
+ * Check if the current user has a specific permission.
+ * Uses the user's role in the current organization from OrganizationProvider context.
+ * 
+ * @param permission - The permission to check
+ * @param roleOverride - Optional role to use instead of the context role
+ * @returns true if the user has the permission
+ */
 export function useCan(
   permission: Permission,
-  sessionOverride?: Session | null,
+  roleOverride?: UserRole | null,
 ): boolean {
-  const session =
-    sessionOverride === undefined ? authClient.useSession().data : sessionOverride;
-  const role = (session?.user as { role?: UserRole })?.role;
+  const contextRole = useCurrentRole();
+  const role = roleOverride ?? contextRole;
 
   return role ? hasPermission(role, permission) : false;
 }
 
+/**
+ * Check if the current user has all of the specified permissions.
+ * Uses the user's role in the current organization from OrganizationProvider context.
+ * 
+ * @param permissions - Single permission or array of permissions to check
+ * @param roleOverride - Optional role to use instead of the context role
+ * @returns true if the user has all permissions
+ */
 export function useHasPermission(
   permissions: Permission | Permission[],
-  sessionOverride?: Session | null,
+  roleOverride?: UserRole | null,
 ): boolean {
-  const session =
-    sessionOverride === undefined ? authClient.useSession().data : sessionOverride;
-  const role = (session?.user as { role?: UserRole })?.role;
+  const contextRole = useCurrentRole();
+  const role = roleOverride ?? contextRole;
 
   if (!role) {
     return false;
@@ -54,3 +66,4 @@ export function useHasPermission(
   const list = Array.isArray(permissions) ? permissions : [permissions];
   return hasAllPermissions(role, list);
 }
+
