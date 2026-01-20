@@ -38,30 +38,29 @@ export default async function OrganizationSettingsPage() {
     redirect("/login");
   }
 
-  const userRole = (session.user as { role?: string }).role as UserRole || "customer";
-
-  if (userRole !== "admin") {
-    redirect("/settings/profile");
-  }
-
   if (!db) {
       throw new Error("Database connection not available");
   }
 
-  // Get all user organizations
+  // Get all user organizations and find current one
   const organizations = await getUserOrganizations(db, session.user.id);
   
   if (organizations.length === 0) {
     redirect("/settings/organizations/new");
   }
 
-  // Get current organization from cookie (same logic as dashboard layout)
+  // Get current organization from cookie
   const cookieStore = await cookies();
   const cookieOrgId = cookieStore.get("orgId")?.value ?? null;
   const currentOrgId = cookieOrgId || organizations[0]?.id || null;
   
-  // Find the current organization
+  // Find the current organization and get role from it
   const organization = organizations.find(org => org.id === currentOrgId) || organizations[0];
+  const userRole = (organization?.role as UserRole) || "customer";
+
+  if (userRole !== "owner" && userRole !== "admin") {
+    redirect("/settings/profile");
+  }
 
   if (!organization) {
     redirect("/settings/organizations/new");

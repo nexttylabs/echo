@@ -21,7 +21,7 @@ import { eq, and } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { feedback } from "@/lib/db/schema";
 import { auth } from "@/lib/auth/config";
-import { canUpdateFeedbackStatus, type UserRole } from "@/lib/auth/permissions";
+import { canUpdateFeedbackStatus } from "@/lib/auth/permissions";
 import { classifyFeedback } from "@/lib/services/ai/classifier";
 import { apiError } from "@/lib/api/errors";
 import { getOrgContext } from "@/lib/auth/org-context";
@@ -81,9 +81,9 @@ export async function POST(
       );
     }
 
-    const userRole = (session.user as { role?: string }).role as
-      | UserRole
-      | undefined;
+    // Get user role from organization membership (via context)
+    const { getUserRoleInOrganization } = await import("@/lib/auth/organization");
+    const userRole = await getUserRoleInOrganization(db, session.user.id, context.organizationId);
 
     if (!userRole || !canUpdateFeedbackStatus(userRole)) {
       return NextResponse.json(

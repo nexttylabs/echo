@@ -30,28 +30,11 @@ export default async function NewFeedbackPage() {
     redirect("/login");
   }
 
-  const userRole = ((session.user as { role?: string }).role ?? "customer") as UserRole;
-  const hasSubmitOnBehalfPermission = canSubmitOnBehalf(userRole);
-
-  if (!hasSubmitOnBehalfPermission) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
-        <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-            <h1 className="text-xl font-semibold text-red-800">权限不足</h1>
-            <p className="mt-2 text-sm text-red-600">
-              您没有代客户提交反馈的权限。请联系管理员获取相应权限。
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (!db) {
     throw new Error("Database not configured");
   }
 
+  // Get user's organization first (which includes their role)
   const organization = await getUserOrganization(db, session.user.id);
 
   if (!organization) {
@@ -62,6 +45,25 @@ export default async function NewFeedbackPage() {
             <h1 className="text-xl font-semibold text-amber-800">未找到组织</h1>
             <p className="mt-2 text-sm text-amber-700">
               请先加入组织后再代客户提交反馈。
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Get user role from organization membership
+  const userRole = (organization.role as UserRole) || "customer";
+  const hasSubmitOnBehalfPermission = canSubmitOnBehalf(userRole);
+
+  if (!hasSubmitOnBehalfPermission) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+        <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-6">
+            <h1 className="text-xl font-semibold text-red-800">权限不足</h1>
+            <p className="mt-2 text-sm text-red-600">
+              您没有代客户提交反馈的权限。请联系管理员获取相应权限。
             </p>
           </div>
         </div>

@@ -16,6 +16,7 @@
  */
 
 export type UserRole =
+  | "owner"
   | "admin"
   | "product_manager"
   | "developer"
@@ -35,6 +36,15 @@ export const PERMISSIONS = {
 export type Permission = (typeof PERMISSIONS)[keyof typeof PERMISSIONS];
 
 export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
+  owner: [
+    PERMISSIONS.CREATE_FEEDBACK,
+    PERMISSIONS.SUBMIT_ON_BEHALF,
+    PERMISSIONS.DELETE_FEEDBACK,
+    PERMISSIONS.MANAGE_ORG,
+    PERMISSIONS.UPDATE_FEEDBACK_STATUS,
+    PERMISSIONS.BACKUP_CREATE,
+    PERMISSIONS.BACKUP_VIEW,
+  ],
   admin: [
     PERMISSIONS.CREATE_FEEDBACK,
     PERMISSIONS.SUBMIT_ON_BEHALF,

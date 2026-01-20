@@ -22,7 +22,7 @@ import { auth } from "@/lib/auth/config";
 import { db } from "@/lib/db";
 import { feedback } from "@/lib/db/schema";
 import { FeedbackEditForm } from "@/components/feedback/feedback-edit-form";
-import { canEditFeedback, type UserRole } from "@/lib/auth/permissions";
+import { canEditFeedback } from "@/lib/auth/permissions";
 import { getOrgContext } from "@/lib/auth/org-context";
 import { getRequestUrl } from "@/lib/http/get-request-url";
 
@@ -39,11 +39,6 @@ export default async function FeedbackEditPage({ params }: PageProps) {
     redirect("/login");
   }
 
-  const userRole = (session.user as { role?: string }).role as UserRole | undefined;
-  if (!userRole || !canEditFeedback(userRole)) {
-    redirect("/admin/feedback");
-  }
-
   const { id } = await params;
   const feedbackId = parseInt(id);
 
@@ -55,6 +50,7 @@ export default async function FeedbackEditPage({ params }: PageProps) {
     throw new Error("Database not configured");
   }
 
+  // Get organization context first
   let organizationId: string | null = null;
   try {
     const url = getRequestUrl(
@@ -70,6 +66,16 @@ export default async function FeedbackEditPage({ params }: PageProps) {
     organizationId = context.organizationId;
   } catch {
     notFound();
+  }
+
+  // Get user role from organization membership
+  const { getUserRoleInOrganization } = await import("@/lib/auth/organization");
+  const userRole = organizationId 
+    ? await getUserRoleInOrganization(db, session.user.id, organizationId)
+    : null;
+    
+  if (!userRole || !canEditFeedback(userRole)) {
+    redirect("/admin/feedback");
   }
 
   const [row] = await db

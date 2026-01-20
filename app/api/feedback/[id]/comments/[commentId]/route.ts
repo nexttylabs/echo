@@ -60,9 +60,17 @@ export async function DELETE(req: NextRequest, { params }: RouteParams) {
     }
 
     const userId = session.user.id;
-    const userRole = (session.user as { role?: string }).role as
-      | UserRole
-      | undefined;
+    
+    // Get user role from organization membership
+    const { cookies } = await import("next/headers");
+    const cookieStore = await cookies();
+    const currentOrgId = cookieStore.get("orgId")?.value;
+    
+    let userRole: UserRole | null = null;
+    if (currentOrgId) {
+      const { getUserRoleInOrganization } = await import("@/lib/auth/organization");
+      userRole = await getUserRoleInOrganization(db, userId, currentOrgId);
+    }
 
     const [existingComment] = await db
       .select({
@@ -80,8 +88,9 @@ export async function DELETE(req: NextRequest, { params }: RouteParams) {
       );
     }
 
+    // Users can delete their own comments, or admins/owners can delete any
     const canDelete =
-      existingComment.userId === userId || userRole === "admin";
+      existingComment.userId === userId || userRole === "admin" || userRole === "owner";
 
     if (!canDelete) {
       return NextResponse.json(

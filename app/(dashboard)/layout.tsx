@@ -39,8 +39,6 @@ export default async function DashboardRootLayout({
     redirect("/login");
   }
 
-  const userRole = (session.user as { role?: string }).role as UserRole || "customer";
-
   // Fetch organizations
   let organizations: Array<{ id: string; name: string; slug: string; role: string }> = [];
   let currentOrgId: string | null = null;
@@ -51,6 +49,10 @@ export default async function DashboardRootLayout({
     const cookieOrgId = cookieStore.get("orgId")?.value ?? null;
     currentOrgId = cookieOrgId || organizations[0]?.id || null;
   }
+
+  // Get user role from current organization membership
+  const currentOrg = organizations.find((org) => org.id === currentOrgId);
+  const userRole = (currentOrg?.role as UserRole) || "customer";
 
   return (
     <DashboardLayout

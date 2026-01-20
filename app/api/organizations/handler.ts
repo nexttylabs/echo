@@ -43,9 +43,7 @@ export function buildCreateOrganizationHandler(deps: CreateOrganizationDeps) {
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    if (session.user.role !== "admin") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
+    // Any authenticated user can create organizations - they become the owner
 
     let body: unknown;
     try {
@@ -87,7 +85,7 @@ export function buildCreateOrganizationHandler(deps: CreateOrganizationDeps) {
       await tx.insert(organizationMembers).values({
         organizationId,
         userId: session.user.id,
-        role: "admin",
+        role: "owner",
       });
       return [created];
     });

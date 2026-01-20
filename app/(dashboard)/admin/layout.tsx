@@ -15,10 +15,11 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth/config";
-import type { UserRole } from "@/lib/auth/permissions";
+import { db } from "@/lib/db";
+import { getUserRoleInOrganization } from "@/lib/auth/organization";
 
 export default async function AdminLayout({
   children,
@@ -36,13 +37,22 @@ export default async function AdminLayout({
     redirect("/login");
   }
 
-  const role = (session.user as { role?: string }).role as
-    | UserRole
-    | undefined;
+  // Get current organization ID from cookie
+  const cookieStore = await cookies();
+  const currentOrgId = cookieStore.get("orgId")?.value;
 
-  if (role !== "admin") {
+  if (!db || !currentOrgId) {
+    redirect("/no-access");
+  }
+
+  // Get user's role in the current organization
+  const role = await getUserRoleInOrganization(db, session.user.id, currentOrgId);
+
+  // Only admin or owner can access admin pages
+  if (role !== "admin" && role !== "owner" && role !== "product_manager") {
     redirect("/no-access");
   }
 
   return <>{children}</>;
 }
+

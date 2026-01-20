@@ -32,15 +32,15 @@ interface SettingsSidebarProps {
 export function SettingsSidebar({ userRole }: SettingsSidebarProps) {
   const pathname = usePathname();
   const t = useTranslations("settings");
-  const isAdmin = userRole === "admin";
-  const isAdminOrPM = isAdmin || userRole === "product_manager";
+  const isOwnerOrAdmin = userRole === "owner" || userRole === "admin";
+  const isAdminOrPM = isOwnerOrAdmin || userRole === "product_manager";
 
   const groupedItems = [
     {
       title: t("groups.general"),
       items: [
         { href: "/settings/profile", label: t("items.profile"), icon: User },
-        { href: "/settings/organization", label: t("items.organization"), icon: Users, show: isAdmin },
+        { href: "/settings/organization", label: t("items.organization"), icon: Users, show: isOwnerOrAdmin },
       ],
     },
     {
@@ -71,7 +71,7 @@ export function SettingsSidebar({ userRole }: SettingsSidebarProps) {
         { href: "/settings/widgets", label: t("items.widgetsEmbeds"), icon: LayoutGrid, show: isAdminOrPM },
         { href: "/settings/integrations", label: t("items.integrations"), icon: Plug, show: isAdminOrPM },
 
-        { href: "/settings/danger-zone", label: t("items.dangerZone"), icon: AlertTriangle, show: isAdmin },
+        { href: "/settings/danger-zone", label: t("items.dangerZone"), icon: AlertTriangle, show: isOwnerOrAdmin },
       ],
     },
   ];

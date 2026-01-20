@@ -15,11 +15,13 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth/config";
+import { db } from "@/lib/db";
 import { ApiKeysList } from "@/components/settings/api-keys-list";
+import { getUserRoleInOrganization } from "@/lib/auth/organization";
 import type { UserRole } from "@/lib/auth/permissions";
 
 export async function generateMetadata() {
@@ -37,9 +39,17 @@ export default async function ApiKeysSettingsPage() {
     redirect("/login");
   }
 
-  const userRole = (session.user as { role?: string }).role as UserRole || "customer";
+  // Get user role from current organization
+  const cookieStore = await cookies();
+  const currentOrgId = cookieStore.get("orgId")?.value;
 
-  if (userRole !== "admin" && userRole !== "product_manager") {
+  let userRole: UserRole = "customer";
+  if (db && currentOrgId) {
+    const role = await getUserRoleInOrganization(db, session.user.id, currentOrgId);
+    userRole = role || "customer";
+  }
+
+  if (userRole !== "owner" && userRole !== "admin" && userRole !== "product_manager") {
     redirect("/settings/profile");
   }
 

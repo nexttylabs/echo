@@ -19,6 +19,7 @@ import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import type { db as database } from "@/lib/db";
 import { organizationMembers, organizations } from "@/lib/db/schema";
+import type { UserRole } from "@/lib/auth/permissions";
 
 type Database = NonNullable<typeof database>;
 
@@ -104,4 +105,23 @@ export async function getCurrentOrganizationId(userId: string): Promise<string |
   if (!db) return null;
   const org = await getUserOrganization(db, userId);
   return org?.id || null;
+}
+
+export async function getUserRoleInOrganization(
+  db: Database,
+  userId: string,
+  organizationId: string
+): Promise<UserRole | null> {
+  const [member] = await db
+    .select({ role: organizationMembers.role })
+    .from(organizationMembers)
+    .where(
+      and(
+        eq(organizationMembers.userId, userId),
+        eq(organizationMembers.organizationId, organizationId)
+      )
+    )
+    .limit(1);
+
+  return (member?.role as UserRole) || null;
 }
