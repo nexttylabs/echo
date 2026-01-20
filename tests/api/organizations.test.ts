@@ -132,7 +132,7 @@ describe("POST /api/organizations", () => {
     expect(res.status).toBe(201);
   });
 
-  it("returns 403 for non-admin users", async () => {
+  it("allows non-admin users to create organizations", async () => {
     const deps = makeDeps();
     deps.auth.api.getSession = async () => ({
       user: { id: "user_1", role: "customer" },
@@ -144,6 +144,7 @@ describe("POST /api/organizations", () => {
         body: JSON.stringify({ name: "Acme" }),
       }),
     );
-    expect(res.status).toBe(403);
+    expect(res.status).toBe(201);
+    expect(deps.getOrganizationValues()).toBeDefined();
   });
 });
