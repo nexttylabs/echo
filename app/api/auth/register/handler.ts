@@ -22,7 +22,7 @@ import { APIError } from "better-auth/api";
 import type { db as database } from "@/lib/db";
 import { registerSchema } from "@/lib/validations/auth";
 import { generateSlug } from "@/lib/utils/slug";
-import { user, organizations, organizationMembers, userProfiles } from "@/lib/db/schema";
+import { user, organizations, organizationMembers } from "@/lib/db/schema";
 import { logger } from "@/lib/logger";
 
 type Database = NonNullable<typeof database>;
@@ -98,7 +98,6 @@ export function buildRegisterHandler(deps: RegisterDeps) {
 
       try {
         await deps.db.transaction(async (tx) => {
-          await tx.insert(userProfiles).values({ userId, name });
           await tx
             .insert(organizations)
             .values({ id: organizationId, name: orgName, slug: orgSlug });

@@ -82,14 +82,13 @@ mock.module("next-intl", () => ({
 
 mock.module("@/components/ui/dropdown-menu", () => ({
   DropdownMenu: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
-  DropdownMenuTrigger: ({ children, asChild, ...props }: { children: React.ReactNode; asChild?: boolean; [key: string]: unknown }) => <div {...props}>{children}</div>,
+  DropdownMenuTrigger: ({ children, ...props }: { children: React.ReactNode; asChild?: boolean; [key: string]: unknown }) => <div {...props}>{children}</div>,
   DropdownMenuContent: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
   DropdownMenuLabel: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => <div {...props}>{children}</div>,
   DropdownMenuSeparator: () => <div />,
   DropdownMenuCheckboxItem: ({
     children,
     onCheckedChange,
-    asChild,
     ...props
   }: {
     children: React.ReactNode;
