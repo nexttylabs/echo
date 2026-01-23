@@ -18,14 +18,16 @@
 import { cookies, headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Building2 } from "lucide-react";
 import { auth } from "@/lib/auth/config";
 import { db } from "@/lib/db";
 import { getDashboardStats, type DashboardStats } from "@/lib/dashboard/get-dashboard-stats";
-import { getUserOrganizations } from "@/lib/auth/organization";
+import { getUserOrganizations, type UserOrganization } from "@/lib/auth/organization";
 import { getOrgContext } from "@/lib/auth/org-context";
 import { StatsCards, RecentFeedbackList, StatusChart } from "@/components/dashboard";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import type { UserRole } from "@/lib/auth/permissions";
 
 interface PageProps {
@@ -49,8 +51,8 @@ export default async function DashboardPage({ searchParams }: PageProps) {
     recentFeedback: [],
   };
 
-  let organizationSlug: string | null = null;
-  let organizations: Array<{ id: string; name: string; slug: string; role: string }> = [];
+  let currentOrganization: UserOrganization | null = null;
+  let organizations: UserOrganization[] = [];
   let shouldPersistDefaultOrg = false;
 
   if (db && session?.user) {
@@ -81,7 +83,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
           requireMembership: true,
         });
 
-        organizationSlug = organizations.find((org) => org.id === context.organizationId)?.slug ?? null;
+        currentOrganization = organizations.find((org) => org.id === context.organizationId) ?? null;
 
         stats = await getDashboardStats(db, {
           userId: session.user.id,
@@ -96,22 +98,48 @@ export default async function DashboardPage({ searchParams }: PageProps) {
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">{t("pageTitle")}</h1>
-          <p className="text-muted-foreground">{t("pageDescription")}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          {organizationSlug && (
-            <Button asChild variant="outline">
-              <Link href={`/${organizationSlug}`} target="_blank">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                {t("visitPortal")}
-              </Link>
-            </Button>
-          )}
-        </div>
+      <div>
+        <h1 className="text-2xl font-bold">{t("pageTitle")}</h1>
+        <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
+
+      {/* Current Organization Info Card */}
+      {currentOrganization && (
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Building2 className="h-5 w-5" />
+              {t("currentOrganization")}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold">{currentOrganization.name}</span>
+                  <Badge variant="secondary">{currentOrganization.role}</Badge>
+                </div>
+                {currentOrganization.slug && (
+                  <p className="text-sm text-muted-foreground">
+                    {t("slug")}: <code className="rounded bg-muted px-1 py-0.5">{currentOrganization.slug}</code>
+                  </p>
+                )}
+                {currentOrganization.description && (
+                  <p className="text-sm text-muted-foreground">{currentOrganization.description}</p>
+                )}
+              </div>
+              {currentOrganization.slug && (
+                <Button asChild variant="outline" size="sm">
+                  <Link href={`/${currentOrganization.slug}`} target="_blank">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    {t("visitPortal")}
+                  </Link>
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       <StatsCards
         totalFeedback={stats.totalFeedback}

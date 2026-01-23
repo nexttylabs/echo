@@ -557,6 +557,8 @@
     "pageTitle": "仪表盘",
     "pageDescription": "反馈管理概览",
     "visitPortal": "访问 Web Portal",
+    "currentOrganization": "当前组织",
+    "slug": "标识符",
     "stats": {
       "totalFeedback": "总反馈数",
       "pending": "待处理",

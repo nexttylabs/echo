@@ -557,6 +557,8 @@
     "pageTitle": "ダッシュボード",
     "pageDescription": "フィードバック管理の概要",
     "visitPortal": "Web Portalにアクセス",
+    "currentOrganization": "現在の組織",
+    "slug": "スラッグ",
     "stats": {
       "totalFeedback": "総フィードバック数",
       "pending": "保留中",
