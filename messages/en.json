@@ -126,6 +126,36 @@
       "updatedSuccess": "Organization updated",
       "genericError": "Something went wrong. Please try again later."
     },
+    "organizationPage": {
+      "pageTitle": "Organization Management",
+      "pageDescription": "Manage your organization information and members",
+      "members": {
+        "title": "Organization Members",
+        "description": "View and manage members in the organization",
+        "noMembers": "No members in this organization yet.",
+        "unknownMember": "Unknown Member",
+        "removeFailed": "Failed to remove member, please try again later",
+        "updateRoleFailed": "Failed to update role, please try again later",
+        "cannotRemoveSelf": "Cannot remove yourself",
+        "removing": "Removing...",
+        "remove": "Remove",
+        "confirmRemoveTitle": "Confirm member removal?",
+        "confirmRemoveDescription": "{name} will lose access to the organization. This action cannot be undone.",
+        "cancel": "Cancel",
+        "confirmRemove": "Confirm Remove"
+      },
+      "invite": {
+        "title": "Invite Members",
+        "description": "Invite new members to join the organization via email",
+        "emailLabel": "Member Email",
+        "roleLabel": "Invite Role",
+        "roleNote": "Currently only member role is supported",
+        "sendFailed": "Failed to send invitation, please try again later",
+        "sendSuccess": "Invitation sent, waiting for acceptance",
+        "sending": "Sending...",
+        "send": "Send Invitation"
+      }
+    },
     "profile": {
       "pageTitle": "Profile",
       "pageDescription": "Manage your account information and preferences",

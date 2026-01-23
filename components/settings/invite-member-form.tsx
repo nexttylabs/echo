@@ -19,6 +19,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -38,6 +39,7 @@ type InviteMemberFormProps = {
 };
 
 export function InviteMemberForm({ organizationId }: InviteMemberFormProps) {
+  const t = useTranslations("settings.organizationPage.invite");
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -58,12 +60,12 @@ export function InviteMemberForm({ organizationId }: InviteMemberFormProps) {
     const json = await res.json().catch(() => null);
 
     if (!res.ok) {
-      setError(json?.error ?? "发送邀请失败，请稍后重试");
+      setError(json?.error ?? t("sendFailed"));
       setIsLoading(false);
       return;
     }
 
-    setSuccess("邀请已发送，等待对方接受");
+    setSuccess(t("sendSuccess"));
     setEmail("");
     setIsLoading(false);
   };
@@ -71,8 +73,8 @@ export function InviteMemberForm({ organizationId }: InviteMemberFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>邀请成员</CardTitle>
-        <CardDescription>通过邮箱邀请新成员加入组织</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -88,7 +90,7 @@ export function InviteMemberForm({ organizationId }: InviteMemberFormProps) {
           ) : null}
 
           <div className="space-y-2">
-            <Label htmlFor="invite-email">成员邮箱</Label>
+            <Label htmlFor="invite-email">{t("emailLabel")}</Label>
             <Input
               id="invite-email"
               name="email"
@@ -102,18 +104,19 @@ export function InviteMemberForm({ organizationId }: InviteMemberFormProps) {
           </div>
 
           <div className="space-y-2">
-            <Label>邀请角色</Label>
+            <Label>{t("roleLabel")}</Label>
             <div className="flex items-center gap-3 rounded-md border border-dashed border-slate-200 px-3 py-2 text-sm text-slate-600">
               <Badge variant="secondary">{DEFAULT_ROLE}</Badge>
-              <span>当前仅支持成员角色</span>
+              <span>{t("roleNote")}</span>
             </div>
           </div>
 
           <Button type="submit" className="w-full" disabled={isLoading || !email}>
-            {isLoading ? "发送中..." : "发送邀请"}
+            {isLoading ? t("sending") : t("send")}
           </Button>
         </form>
       </CardContent>
     </Card>
   );
 }
+
