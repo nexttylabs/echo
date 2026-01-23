@@ -2,7 +2,7 @@
 
 
 /*
- * Copyright (c) 2026 Echo Team
+ * Copyright (c) 2026 Nexttylabs Team
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useState } from "react";
+import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -28,7 +28,7 @@ import { Monitor, Moon, Sun } from "lucide-react";
 type Theme = "light" | "dark" | "system";
 
 export function AppearanceForm() {
-  const [theme, setTheme] = useState<Theme>("system");
+  const { theme, setTheme } = useTheme();
   const t = useTranslations("settings.appearance");
 
   const themes: { value: Theme; label: string; icon: React.ElementType }[] = [
@@ -61,11 +61,9 @@ export function AppearanceForm() {
               </button>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground">
-            {t("themeComingSoon")}
-          </p>
         </div>
       </CardContent>
     </Card>
   );
 }
+

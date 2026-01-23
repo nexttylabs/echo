@@ -15,11 +15,14 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { describe, expect, it } from "bun:test";
-import { PortalOverview } from "@/components/portal/portal-overview";
+"use client";
 
-describe("Portal overview routing", () => {
-  it("exports a component", () => {
-    expect(typeof PortalOverview).toBe("function");
-  });
-});
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+}
