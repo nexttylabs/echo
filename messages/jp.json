@@ -126,6 +126,36 @@
       "updatedSuccess": "組織情報を更新しました",
       "genericError": "エラーが発生しました。後でもう一度お試しください。"
     },
+    "organizationPage": {
+      "pageTitle": "組織管理",
+      "pageDescription": "組織情報とメンバーを管理します",
+      "members": {
+        "title": "組織メンバー",
+        "description": "組織内のメンバーを表示・管理",
+        "noMembers": "現在この組織にはメンバーがいません。",
+        "unknownMember": "不明なメンバー",
+        "removeFailed": "メンバーの削除に失敗しました。後でもう一度お試しください",
+        "updateRoleFailed": "ロールの更新に失敗しました。後でもう一度お試しください",
+        "cannotRemoveSelf": "自分自身を削除できません",
+        "removing": "削除中...",
+        "remove": "削除",
+        "confirmRemoveTitle": "メンバーを削除しますか？",
+        "confirmRemoveDescription": "{name} は組織へのアクセス権を失います。この操作は取り消せません。",
+        "cancel": "キャンセル",
+        "confirmRemove": "削除を確認"
+      },
+      "invite": {
+        "title": "メンバーを招待",
+        "description": "メールでメンバーを組織に招待",
+        "emailLabel": "メンバーのメールアドレス",
+        "roleLabel": "招待ロール",
+        "roleNote": "現在はメンバーロールのみサポートされています",
+        "sendFailed": "招待の送信に失敗しました。後でもう一度お試しください",
+        "sendSuccess": "招待を送信しました。相手の承認をお待ちください",
+        "sending": "送信中...",
+        "send": "招待を送信"
+      }
+    },
     "profile": {
       "pageTitle": "プロフィール",
       "pageDescription": "アカウント情報と設定を管理",

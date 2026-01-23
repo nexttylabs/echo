@@ -19,6 +19,7 @@
  */
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -47,6 +48,7 @@ export function OrganizationMembersList({
   currentUserId,
   initialMembers,
 }: OrganizationMembersListProps) {
+  const t = useTranslations("settings.organizationPage.members");
   const [members, setMembers] = useState(initialMembers);
   const [error, setError] = useState<string | null>(null);
   const [pendingMemberId, setPendingMemberId] = useState<string | null>(null);
@@ -68,7 +70,7 @@ export function OrganizationMembersList({
 
     const json = await res.json().catch(() => null);
     if (!res.ok) {
-      setError(json?.error ?? "移除失败，请稍后重试");
+      setError(json?.error ?? t("removeFailed"));
       setPendingMemberId(null);
       return;
     }
@@ -93,7 +95,7 @@ export function OrganizationMembersList({
 
     const json = await res.json().catch(() => null);
     if (!res.ok) {
-      setError(json?.error ?? "更新角色失败，请稍后重试");
+      setError(json?.error ?? t("updateRoleFailed"));
       setPendingMemberId(null);
       return;
     }
@@ -110,8 +112,8 @@ export function OrganizationMembersList({
     <>
     <Card>
       <CardHeader>
-        <CardTitle>组织成员</CardTitle>
-        <CardDescription>查看并移除组织中的成员</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {error ? (
@@ -122,14 +124,14 @@ export function OrganizationMembersList({
 
         {members.length === 0 ? (
           <div className="rounded-md border border-dashed border-slate-200 bg-white/60 px-4 py-6 text-sm text-slate-500">
-            当前组织暂无成员。
+            {t("noMembers")}
           </div>
         ) : (
           <div className="space-y-3">
             {members.map((member) => {
               const isSelf = currentUserId === member.userId;
               const isPending = pendingMemberId === member.userId;
-              const displayName = member.name ?? member.email ?? "未知成员";
+              const displayName = member.name ?? member.email ?? t("unknownMember");
               const secondaryText = member.email ?? member.userId;
 
               return (
@@ -151,7 +153,7 @@ export function OrganizationMembersList({
 
                     {isSelf ? (
                       <Button variant="outline" size="sm" disabled>
-                        不能移除自己
+                        {t("cannotRemoveSelf")}
                       </Button>
                     ) : (
                       <Button
@@ -160,7 +162,7 @@ export function OrganizationMembersList({
                         disabled={!currentUserId || isPending}
                         onClick={() => setMemberToRemove({ id: member.userId, name: displayName })}
                       >
-                        {isPending ? "移除中..." : "移除"}
+                        {isPending ? t("removing") : t("remove")}
                       </Button>
                     )}
                   </div>
@@ -175,19 +177,19 @@ export function OrganizationMembersList({
     <AlertDialog open={!!memberToRemove} onOpenChange={(open) => !open && setMemberToRemove(null)}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>确认移除成员？</AlertDialogTitle>
+          <AlertDialogTitle>{t("confirmRemoveTitle")}</AlertDialogTitle>
           <AlertDialogDescription>
-            {memberToRemove?.name} 将失去组织访问权限，此操作无法撤销。
+            {t("confirmRemoveDescription", { name: memberToRemove?.name ?? "" })}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel disabled={pendingMemberId !== null}>取消</AlertDialogCancel>
+          <AlertDialogCancel disabled={pendingMemberId !== null}>{t("cancel")}</AlertDialogCancel>
           <AlertDialogAction
             variant="destructive"
             onClick={handleRemove}
             disabled={pendingMemberId !== null}
           >
-            {pendingMemberId === memberToRemove?.id ? "移除中..." : "确认移除"}
+            {pendingMemberId === memberToRemove?.id ? t("removing") : t("confirmRemove")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -195,3 +197,4 @@ export function OrganizationMembersList({
   </>
   );
 }
+

@@ -126,6 +126,36 @@
       "updatedSuccess": "组织信息已更新",
       "genericError": "发生错误，请稍后重试"
     },
+    "organizationPage": {
+      "pageTitle": "组织管理",
+      "pageDescription": "管理您的组织信息和成员",
+      "members": {
+        "title": "组织成员",
+        "description": "查看并移除组织中的成员",
+        "noMembers": "当前组织暂无成员。",
+        "unknownMember": "未知成员",
+        "removeFailed": "移除失败，请稍后重试",
+        "updateRoleFailed": "更新角色失败，请稍后重试",
+        "cannotRemoveSelf": "不能移除自己",
+        "removing": "移除中...",
+        "remove": "移除",
+        "confirmRemoveTitle": "确认移除成员？",
+        "confirmRemoveDescription": "{name} 将失去组织访问权限，此操作无法撤销。",
+        "cancel": "取消",
+        "confirmRemove": "确认移除"
+      },
+      "invite": {
+        "title": "邀请成员",
+        "description": "通过邮箱邀请新成员加入组织",
+        "emailLabel": "成员邮箱",
+        "roleLabel": "邀请角色",
+        "roleNote": "当前仅支持成员角色",
+        "sendFailed": "发送邀请失败，请稍后重试",
+        "sendSuccess": "邀请已发送，等待对方接受",
+        "sending": "发送中...",
+        "send": "发送邀请"
+      }
+    },
     "profile": {
       "pageTitle": "个人资料",
       "pageDescription": "管理你的账户信息和偏好设置",

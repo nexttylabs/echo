@@ -17,6 +17,7 @@
 
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth/config";
 import { db } from "@/lib/db";
 import { getUserOrganizations } from "@/lib/auth/organization";
@@ -27,11 +28,15 @@ import type { UserRole } from "@/lib/auth/permissions";
 import { organizationMembers, user } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-export const metadata = {
-  title: "组织管理 - Echo",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("settings.organizationPage");
+  return {
+    title: `${t("pageTitle")} - Echo`,
+  };
+}
 
 export default async function OrganizationSettingsPage() {
+  const t = await getTranslations("settings.organizationPage");
   const session = await auth.api.getSession({ headers: await headers() });
 
   if (!session?.user) {
@@ -80,8 +85,8 @@ export default async function OrganizationSettingsPage() {
   return (
     <div className="max-w-4xl space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold">组织管理</h1>
-        <p className="text-muted-foreground">管理您的组织信息和成员</p>
+        <h1 className="text-2xl font-semibold">{t("pageTitle")}</h1>
+        <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
       <OrganizationForm
@@ -101,3 +106,4 @@ export default async function OrganizationSettingsPage() {
     </div>
   );
 }
+
