@@ -557,6 +557,8 @@
     "pageTitle": "Dashboard",
     "pageDescription": "Feedback management overview",
     "visitPortal": "Visit Web Portal",
+    "currentOrganization": "Current Organization",
+    "slug": "Slug",
     "stats": {
       "totalFeedback": "Total Feedback",
       "pending": "Pending",
