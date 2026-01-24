@@ -20,6 +20,7 @@
 
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -67,6 +68,7 @@ function SwitchField({
 }
 
 export function PortalAccessForm({ organizationId, initialSharing, initialSeo }: PortalAccessFormProps) {
+  const t = useTranslations("settings.access.form");
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
@@ -108,7 +110,7 @@ export function PortalAccessForm({ organizationId, initialSharing, initialSeo }:
     const sharingResult = await updatePortalSettings(organizationId, "sharing", sharingPayload);
 
     if (!sharingResult.success) {
-      setMessage({ type: "error", text: sharingResult.error || "保存失败" });
+      setMessage({ type: "error", text: sharingResult.error || t("saveFailed") });
       setSaving(false);
       return;
     }
@@ -116,9 +118,9 @@ export function PortalAccessForm({ organizationId, initialSharing, initialSeo }:
     const seoResult = await updatePortalSettings(organizationId, "seo", seoPayload);
 
     if (seoResult.success) {
-      setMessage({ type: "success", text: "可见性设置已保存" });
+      setMessage({ type: "success", text: t("saveSuccess") });
     } else {
-      setMessage({ type: "error", text: seoResult.error || "保存失败" });
+      setMessage({ type: "error", text: seoResult.error || t("saveFailed") });
     }
 
     setSaving(false);
@@ -128,48 +130,48 @@ export function PortalAccessForm({ organizationId, initialSharing, initialSeo }:
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
       <SwitchField
         id="enabled"
-        label="公开 Portal"
-        description="关闭后访客无法访问公开门户"
+        label={t("enabled")}
+        description={t("enabledDesc")}
         checked={enabled}
         onCheckedChange={(checked) => form.setValue("enabled", checked)}
       />
 
       <SwitchField
         id="allowPublicVoting"
-        label="允许公开投票"
-        description="访客无需登录即可投票"
+        label={t("allowPublicVoting")}
+        description={t("allowPublicVotingDesc")}
         checked={allowPublicVoting}
         onCheckedChange={(checked) => form.setValue("allowPublicVoting", checked)}
       />
 
       <SwitchField
         id="allowPublicComments"
-        label="允许公开评论"
-        description="访客无需登录即可评论"
+        label={t("allowPublicComments")}
+        description={t("allowPublicCommentsDesc")}
         checked={allowPublicComments}
         onCheckedChange={(checked) => form.setValue("allowPublicComments", checked)}
       />
 
       <SwitchField
         id="showVoteCount"
-        label="显示投票数量"
-        description="在反馈列表中显示投票计数"
+        label={t("showVoteCount")}
+        description={t("showVoteCountDesc")}
         checked={showVoteCount}
         onCheckedChange={(checked) => form.setValue("showVoteCount", checked)}
       />
 
       <SwitchField
         id="showAuthor"
-        label="显示提交者"
-        description="显示反馈提交者名称"
+        label={t("showAuthor")}
+        description={t("showAuthorDesc")}
         checked={showAuthor}
         onCheckedChange={(checked) => form.setValue("showAuthor", checked)}
       />
 
       <SwitchField
         id="noIndex"
-        label="阻止搜索引擎索引"
-        description="启用后搜索引擎将不会收录此页面"
+        label={t("noIndex")}
+        description={t("noIndexDesc")}
         checked={noIndex}
         onCheckedChange={(checked) => form.setValue("noIndex", checked)}
       />
@@ -177,12 +179,12 @@ export function PortalAccessForm({ organizationId, initialSharing, initialSeo }:
       <div className="flex items-center gap-4">
         <Button type="submit" disabled={saving}>
           {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          保存更改
+          {t("saveButton")}
         </Button>
         {message && (
           <p
             className={`text-sm ${
-              message.type === "success" ? "text-green-600" : "text-destructive"
+              message.type === "success" ? "text-green-600 dark:text-green-400" : "text-destructive"
             }`}
           >
             {message.text}
@@ -192,3 +194,4 @@ export function PortalAccessForm({ organizationId, initialSharing, initialSeo }:
     </form>
   );
 }
+

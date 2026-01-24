@@ -273,7 +273,24 @@
       "pageTitle": "组织访问",
       "pageDescription": "控制公开访问和权限",
       "visibilityTitle": "可见性与权限",
-      "visibilityDesc": "配置公开访问、投票和索引设置"
+      "visibilityDesc": "配置公开访问、投票和索引设置",
+      "form": {
+        "enabled": "公开 Portal",
+        "enabledDesc": "关闭后访客无法访问公开门户",
+        "allowPublicVoting": "允许公开投票",
+        "allowPublicVotingDesc": "访客无需登录即可投票",
+        "allowPublicComments": "允许公开评论",
+        "allowPublicCommentsDesc": "访客无需登录即可评论",
+        "showVoteCount": "显示投票数量",
+        "showVoteCountDesc": "在反馈列表中显示投票计数",
+        "showAuthor": "显示提交者",
+        "showAuthorDesc": "显示反馈提交者名称",
+        "noIndex": "阻止搜索引擎索引",
+        "noIndexDesc": "启用后搜索引擎将不会收录此页面",
+        "saveButton": "保存更改",
+        "saveSuccess": "可见性设置已保存",
+        "saveFailed": "保存失败"
+      }
     },
     "branding": {
       "pageTitle": "品牌",

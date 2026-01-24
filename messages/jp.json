@@ -273,7 +273,24 @@
       "pageTitle": "組織アクセス",
       "pageDescription": "公開アクセスと権限を制御",
       "visibilityTitle": "可視性と権限",
-      "visibilityDesc": "公開アクセス、投票、インデックス設定を構成"
+      "visibilityDesc": "公開アクセス、投票、インデックス設定を構成",
+      "form": {
+        "enabled": "ポータルを公開",
+        "enabledDesc": "無効にすると、訪問者は公開ポータルにアクセスできません",
+        "allowPublicVoting": "公開投票を許可",
+        "allowPublicVotingDesc": "訪問者はログインせずに投票できます",
+        "allowPublicComments": "公開コメントを許可",
+        "allowPublicCommentsDesc": "訪問者はログインせずにコメントできます",
+        "showVoteCount": "投票数を表示",
+        "showVoteCountDesc": "フィードバック一覧に投票数を表示します",
+        "showAuthor": "投稿者を表示",
+        "showAuthorDesc": "フィードバック投稿者の名前を表示します",
+        "noIndex": "検索エンジンのインデックスをブロック",
+        "noIndexDesc": "有効にすると、検索エンジンはこのページをインデックスしません",
+        "saveButton": "変更を保存",
+        "saveSuccess": "可視性設定を保存しました",
+        "saveFailed": "保存に失敗しました"
+      }
     },
     "branding": {
       "pageTitle": "ブランディング",

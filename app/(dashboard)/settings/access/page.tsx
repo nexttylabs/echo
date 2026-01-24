@@ -38,7 +38,7 @@ export default async function AccessSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("visibilityTitle")}</CardTitle>
           <CardDescription>{t("visibilityDesc")}</CardDescription>

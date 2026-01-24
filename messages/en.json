@@ -273,7 +273,24 @@
       "pageTitle": "Organization Access",
       "pageDescription": "Control public access and permissions",
       "visibilityTitle": "Visibility & Permissions",
-      "visibilityDesc": "Configure public access, voting, and indexing settings"
+      "visibilityDesc": "Configure public access, voting, and indexing settings",
+      "form": {
+        "enabled": "Public Portal",
+        "enabledDesc": "When disabled, visitors cannot access the public portal",
+        "allowPublicVoting": "Allow Public Voting",
+        "allowPublicVotingDesc": "Visitors can vote without logging in",
+        "allowPublicComments": "Allow Public Comments",
+        "allowPublicCommentsDesc": "Visitors can comment without logging in",
+        "showVoteCount": "Show Vote Count",
+        "showVoteCountDesc": "Display vote count in the feedback list",
+        "showAuthor": "Show Author",
+        "showAuthorDesc": "Display feedback submitter name",
+        "noIndex": "Block Search Engine Indexing",
+        "noIndexDesc": "When enabled, search engines will not index this page",
+        "saveButton": "Save Changes",
+        "saveSuccess": "Visibility settings saved",
+        "saveFailed": "Save failed"
+      }
     },
     "branding": {
       "pageTitle": "Branding",
