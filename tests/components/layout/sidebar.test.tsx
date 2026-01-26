@@ -22,10 +22,14 @@ import "../../setup";
 
 // Mock dependencies
 const mockPush = mock(() => {});
+const mockReplace = mock(() => {});
+const mockRefresh = mock(() => {});
 mock.module("next/navigation", () => ({
   usePathname: () => "/dashboard",
   useRouter: () => ({
     push: mockPush,
+    replace: mockReplace,
+    refresh: mockRefresh,
   }),
   useSearchParams: () => new URLSearchParams(),
   useParams: () => ({}),
@@ -122,6 +126,8 @@ mock.module("next/link", () => ({
 describe("Sidebar", () => {
   beforeEach(() => {
     mockPush.mockClear();
+    mockReplace.mockClear();
+    mockRefresh.mockClear();
     mockSignOut.mockClear();
   });
 
@@ -153,5 +159,15 @@ describe("Sidebar", () => {
   it("shows language menu in user dropdown", () => {
     const { getAllByText } = render(<Sidebar {...defaultProps} />);
     expect(getAllByText("语言").length).toBeGreaterThan(0);
+  });
+
+  it("refreshes when a language is selected", async () => {
+    const { getByText } = render(<Sidebar {...defaultProps} />);
+
+    fireEvent.click(getByText("简体中文"));
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(mockRefresh).toHaveBeenCalled();
   });
 });

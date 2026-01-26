@@ -78,7 +78,6 @@ export function Sidebar({ user, organizations = [], currentOrgId, onClose }: Sid
   const locale = useLocale() as AppLocale;
   const [isPending, startTransition] = useTransition();
   const pendingOrgIdRef = useRef<string | null>(null);
-  const pendingLocaleRef = useRef<AppLocale | null>(null);
 
   const navItems = [
     { href: "/dashboard", label: t("dashboard"), icon: LayoutDashboard },
@@ -118,26 +117,13 @@ export function Sidebar({ user, organizations = [], currentOrgId, onClose }: Sid
     pendingOrgIdRef.current = orgId;
   };
 
-  // Set locale cookie when pendingLocale changes
-  useEffect(() => {
-    const nextLocale = pendingLocaleRef.current;
-    if (!nextLocale) return;
-    if (nextLocale === locale) {
-      startTransition(() => {
-        pendingLocaleRef.current = null;
-      });
-      return;
-    }
+  const handleLocaleChange = (nextLocale: AppLocale) => {
+    if (nextLocale === locale) return;
     const secure = window.location.protocol === "https:" ? ";secure" : "";
     document.cookie = `${LOCALE_COOKIE_NAME}=${nextLocale};path=/;max-age=${60 * 60 * 24 * 365};samesite=lax${secure}`;
     startTransition(() => {
       router.refresh();
-      pendingLocaleRef.current = null;
     });
-  }, [locale, router]);
-
-  const handleLocaleChange = (nextLocale: AppLocale) => {
-    pendingLocaleRef.current = nextLocale;
   };
 
   const currentOrg = organizations.find((org) => org.id === currentOrgId);
