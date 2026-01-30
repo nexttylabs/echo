@@ -120,6 +120,7 @@ export function Sidebar({ user, organizations = [], currentOrgId, onClose }: Sid
   const handleLocaleChange = (nextLocale: AppLocale) => {
     if (nextLocale === locale) return;
     const secure = window.location.protocol === "https:" ? ";secure" : "";
+    // eslint-disable-next-line react-hooks/immutability
     document.cookie = `${LOCALE_COOKIE_NAME}=${nextLocale};path=/;max-age=${60 * 60 * 24 * 365};samesite=lax${secure}`;
     startTransition(() => {
       router.refresh();

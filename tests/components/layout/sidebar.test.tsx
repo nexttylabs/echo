@@ -15,8 +15,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { describe, expect, it, mock, beforeEach } from "bun:test";
-import { render, fireEvent } from "@testing-library/react";
+import { describe, expect, it, mock, beforeEach, afterEach } from "bun:test";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import { Sidebar } from "@/components/layout/sidebar";
 import "../../setup";
 
@@ -124,6 +124,10 @@ mock.module("next/link", () => ({
 }));
 
 describe("Sidebar", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   beforeEach(() => {
     mockPush.mockClear();
     mockReplace.mockClear();
