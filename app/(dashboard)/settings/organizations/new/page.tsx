@@ -19,13 +19,13 @@ import { OrganizationForm } from "@/components/settings/organization-form";
 
 export default function NewOrganizationPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+    <div className="min-h-screen bg-background px-4 py-12">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
             创建组织
           </h1>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             为新的团队或项目创建独立空间
           </p>
         </div>

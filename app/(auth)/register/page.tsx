@@ -31,13 +31,13 @@ export default async function RegisterPage() {
   const t = await getTranslations("auth.register");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+    <div className="min-h-screen bg-background px-4 py-12">
       <div className="mx-auto flex w-full max-w-md flex-col gap-6">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
             {t("pageTitle")}
           </h1>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             {t("pageSubtitle")}
           </p>
         </div>
