@@ -39,11 +39,11 @@ export default async function NewFeedbackPage() {
 
   if (!organization) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+      <div className="min-h-screen bg-background px-4 py-12">
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
-          <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">
-            <h1 className="text-xl font-semibold text-amber-800">未找到组织</h1>
-            <p className="mt-2 text-sm text-amber-700">
+          <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 dark:border-amber-800 dark:bg-amber-950">
+            <h1 className="text-xl font-semibold text-amber-800 dark:text-amber-200">未找到组织</h1>
+            <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">
               请先加入组织后再代客户提交反馈。
             </p>
           </div>
@@ -58,11 +58,11 @@ export default async function NewFeedbackPage() {
 
   if (!hasSubmitOnBehalfPermission) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+      <div className="min-h-screen bg-background px-4 py-12">
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
-          <div className="rounded-lg border border-red-200 bg-red-50 p-6">
-            <h1 className="text-xl font-semibold text-red-800">权限不足</h1>
-            <p className="mt-2 text-sm text-red-600">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-6 dark:border-red-800 dark:bg-red-950">
+            <h1 className="text-xl font-semibold text-red-800 dark:text-red-200">权限不足</h1>
+            <p className="mt-2 text-sm text-red-600 dark:text-red-300">
               您没有代客户提交反馈的权限。请联系管理员获取相应权限。
             </p>
           </div>
@@ -72,13 +72,13 @@ export default async function NewFeedbackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 px-4 py-12">
+    <div className="min-h-screen bg-background px-4 py-12">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
             代客户提交反馈
           </h1>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             以客服身份代表客户提交反馈，系统将同时记录客服和客户信息
           </p>
         </div>

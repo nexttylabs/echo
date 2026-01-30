@@ -25,11 +25,11 @@ export function Hero() {
   const t = useTranslations("hero");
   
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-slate-100">
+    <div className="min-h-screen bg-background">
       <header className="container mx-auto flex items-center justify-between px-4 py-6">
         <div className="flex items-center gap-2">
           <MessageSquare className="size-8 text-primary" />
-          <span className="text-2xl font-bold text-slate-900">{t("title")}</span>
+          <span className="text-2xl font-bold text-foreground">{t("title")}</span>
         </div>
         <nav className="flex items-center gap-4">
           <LanguageSwitcher variant="icon" />
@@ -44,13 +44,13 @@ export function Hero() {
 
       <main className="container mx-auto px-4 py-20">
         <section className="mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+          <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
             {t("headline")}
           </h1>
-          <p className="mt-6 text-xl text-slate-600">
+          <p className="mt-6 text-xl text-muted-foreground">
             {t("description")}
             <br />
-            <span className="font-medium text-slate-700">{t("subtitle")}</span>
+            <span className="font-medium text-foreground/80">{t("subtitle")}</span>
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Button size="lg" asChild>
@@ -63,7 +63,7 @@ export function Hero() {
         </section>
 
         <section className="mx-auto mt-32 max-w-5xl">
-          <h2 className="text-center text-3xl font-bold text-slate-900">{t("coreValues")}</h2>
+          <h2 className="text-center text-3xl font-bold text-foreground">{t("coreValues")}</h2>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <FeatureCard
               icon={<Zap className="size-6" />}
@@ -89,8 +89,8 @@ export function Hero() {
         </section>
 
         <section className="mx-auto mt-32 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-slate-900">{t("ready.title")}</h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <h2 className="text-3xl font-bold text-foreground">{t("ready.title")}</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
             {t("ready.description")}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -104,21 +104,21 @@ export function Hero() {
         </section>
       </main>
 
-      <footer className="container mx-auto border-t border-slate-200 px-4 py-8">
+      <footer className="container mx-auto border-t border-border px-4 py-8">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MessageSquare className="size-4" />
             <span>{t("footer.title")}</span>
           </div>
-          <div className="flex gap-6 text-sm text-slate-500">
-            <Link href="/docs" className="hover:text-slate-700">
+          <div className="flex gap-6 text-sm text-muted-foreground">
+            <Link href="/docs" className="hover:text-foreground">
               {t("footer.docs")}
             </Link>
             <a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-slate-700"
+              className="hover:text-foreground"
             >
               GitHub
             </a>
@@ -139,12 +139,12 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
       <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
         {icon}
       </div>
-      <h3 className="mt-4 font-semibold text-slate-900">{title}</h3>
-      <p className="mt-2 text-sm text-slate-600">{description}</p>
+      <h3 className="mt-4 font-semibold text-card-foreground">{title}</h3>
+      <p className="mt-2 text-sm text-muted-foreground">{description}</p>
     </div>
   );
 }
