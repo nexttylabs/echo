@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 
 /*
  * Copyright (c) 2026 Nexttylabs Team
@@ -66,6 +67,32 @@ function useLocaleSwitcher() {
 
 export function LanguageSwitcher({ variant = "text" }: LanguageSwitcherProps) {
   const { locale, t, isPending, handleSelect } = useLocaleSwitcher();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Render a placeholder button during SSR to avoid hydration mismatch
+  // caused by Radix UI's dynamic ID generation
+  if (!mounted) {
+    return variant === "icon" ? (
+      <Button
+        variant="ghost"
+        size="icon"
+        disabled
+        aria-label={t("label")}
+      >
+        <Languages className="h-4 w-4" />
+        <span className="sr-only">{t("label")}</span>
+      </Button>
+    ) : (
+      <Button variant="ghost" size="sm" disabled>
+        <Languages className="h-4 w-4 mr-2" />
+        {t(locale)}
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>
