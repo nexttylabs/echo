@@ -38,7 +38,7 @@ export default async function BrandingSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("themeTitle")}</CardTitle>
           <CardDescription>{t("themeDesc")}</CardDescription>
@@ -48,7 +48,7 @@ export default async function BrandingSettingsPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("copyTitle")}</CardTitle>
           <CardDescription>{t("copyDesc")}</CardDescription>

@@ -40,7 +40,7 @@ export default async function ModulesSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("configTitle")}</CardTitle>
           <CardDescription>{t("configDesc")}</CardDescription>

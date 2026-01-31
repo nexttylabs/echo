@@ -35,16 +35,16 @@ export default async function IntegrationsSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("availableTitle")}</CardTitle>
           <CardDescription>{t("availableDesc")}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-slate-200 p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
                   <span className="text-lg">🔗</span>
                 </div>
                 <div>
@@ -53,9 +53,9 @@ export default async function IntegrationsSettingsPage() {
                 </div>
               </div>
             </div>
-            <div className="rounded-lg border border-slate-200 p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
                   <span className="text-lg">📋</span>
                 </div>
                 <div>
@@ -64,9 +64,9 @@ export default async function IntegrationsSettingsPage() {
                 </div>
               </div>
             </div>
-            <div className="rounded-lg border border-slate-200 p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
                   <span className="text-lg">📊</span>
                 </div>
                 <div>
@@ -75,9 +75,9 @@ export default async function IntegrationsSettingsPage() {
                 </div>
               </div>
             </div>
-            <div className="rounded-lg border border-slate-200 p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
                   <span className="text-lg">💬</span>
                 </div>
                 <div>

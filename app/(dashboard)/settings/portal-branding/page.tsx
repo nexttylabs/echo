@@ -35,7 +35,7 @@ export default async function PortalBrandingSettingsPage() {
         <p className="text-muted-foreground">{t("description")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("theme.title")}</CardTitle>
           <CardDescription>{t("theme.description")}</CardDescription>
@@ -45,7 +45,7 @@ export default async function PortalBrandingSettingsPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("copy.title")}</CardTitle>
           <CardDescription>{t("copy.description")}</CardDescription>

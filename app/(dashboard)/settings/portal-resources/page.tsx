@@ -37,7 +37,7 @@ export default async function PortalResourcesSettingsPage() {
         <p className="text-muted-foreground">门户入口与相关资源链接</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <CardTitle>Portal 链接</CardTitle>
@@ -48,8 +48,8 @@ export default async function PortalResourcesSettingsPage() {
           </Badge>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="text-sm text-slate-600">
-            门户链接：<span className="font-medium text-slate-900">{portalLink}</span>
+          <div className="text-sm text-muted-foreground">
+            门户链接：<span className="font-medium text-foreground">{portalLink}</span>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="outline" size="sm">

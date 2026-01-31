@@ -35,7 +35,7 @@ export default async function PortalAccessSettingsPage() {
         <p className="text-muted-foreground">控制 Portal 的公开访问与权限范围</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>可见性与权限</CardTitle>
           <CardDescription>设置公开访问、投票与索引策略</CardDescription>

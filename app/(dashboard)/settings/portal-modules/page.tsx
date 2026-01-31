@@ -35,7 +35,7 @@ export default async function PortalModulesSettingsPage() {
         <p className="text-muted-foreground">自定义 Portal 的功能模块开关</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>模块配置</CardTitle>
           <CardDescription>按需启用反馈、路线图与更新日志</CardDescription>

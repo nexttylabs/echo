@@ -56,10 +56,10 @@ export function PortalModulesPanel({ organizationId, initialModules }: PortalMod
   };
 
   return (
-    <div className="space-y-4 rounded-xl border bg-white/80 p-5 shadow-sm">
+    <div className="space-y-4 rounded-xl border bg-muted/50 p-5 shadow-sm">
       <div>
-        <h3 className="text-sm font-semibold text-slate-900">{t("panelTitle")}</h3>
-        <p className="mt-1 text-sm text-slate-600">
+        <h3 className="text-sm font-semibold text-foreground">{t("panelTitle")}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
           {t("panelDescription")}
         </p>
       </div>
@@ -89,7 +89,7 @@ export function PortalModulesPanel({ organizationId, initialModules }: PortalMod
         <Button onClick={onSave} disabled={saving}>
           {saving ? t("saving") : t("saveButton")}
         </Button>
-        {message && <span className="text-sm text-slate-600">{message}</span>}
+        {message && <span className="text-sm text-muted-foreground">{message}</span>}
       </div>
     </div>
   );
@@ -107,10 +107,10 @@ function ModuleRow({
   onChange: (value: boolean) => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-lg border border-slate-200 bg-white px-4 py-3">
+    <div className="flex items-center justify-between gap-4 rounded-lg border bg-background px-4 py-3">
       <div>
-        <p className="text-sm font-medium text-slate-900">{label}</p>
-        <p className="text-xs text-slate-500">{description}</p>
+        <p className="text-sm font-medium text-foreground">{label}</p>
+        <p className="text-xs text-muted-foreground">{description}</p>
       </div>
       <Switch checked={checked} onCheckedChange={onChange} />
     </div>

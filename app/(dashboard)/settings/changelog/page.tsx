@@ -35,13 +35,13 @@ export default async function ChangelogSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>{t("settingsTitle")}</CardTitle>
           <CardDescription>{t("settingsDesc")}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border border-dashed border-slate-200 bg-slate-50/50 px-4 py-8 text-center text-sm text-muted-foreground">
+          <div className="rounded-md border border-dashed px-4 py-8 text-center text-sm text-muted-foreground">
             {t("settingsComingSoon")}
           </div>
         </CardContent>

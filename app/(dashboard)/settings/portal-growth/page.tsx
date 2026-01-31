@@ -33,7 +33,7 @@ export default async function PortalGrowthSettingsPage() {
         <p className="text-muted-foreground">配置分享入口与 SEO 优化</p>
       </div>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>分享设置</CardTitle>
           <CardDescription>配置社交分享与传播渠道</CardDescription>
@@ -43,7 +43,7 @@ export default async function PortalGrowthSettingsPage() {
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/80 bg-white/80 shadow-sm">
+      <Card>
         <CardHeader>
           <CardTitle>SEO 设置</CardTitle>
           <CardDescription>搜索引擎与社交分享优化</CardDescription>
