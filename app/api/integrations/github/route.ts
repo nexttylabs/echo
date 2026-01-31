@@ -29,6 +29,24 @@ import { apiError, validationError } from "@/lib/api/errors";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+// Schema for setting up repository (after OAuth)
+const setupRepoSchema = z.object({
+  owner: z.string().min(1),
+  repo: z.string().min(1),
+});
+
+// Schema for updating configuration
+const updateConfigSchema = z.object({
+  owner: z.string().min(1).optional(),
+  repo: z.string().min(1).optional(),
+  autoSync: z.boolean().optional(),
+  syncTriggerStatuses: z.array(z.string()).optional(),
+  syncStatusChanges: z.boolean().optional(),
+  syncComments: z.boolean().optional(),
+  autoAddLabels: z.boolean().optional(),
+});
+
+// Legacy schema for PAT-based setup (kept for backward compatibility)
 const createGitHubIntegrationSchema = z.object({
   accessToken: z.string().min(1),
   owner: z.string().min(1),
@@ -36,6 +54,10 @@ const createGitHubIntegrationSchema = z.object({
   autoSync: z.boolean().optional().default(true),
 });
 
+/**
+ * GET /api/integrations/github
+ * Get current GitHub integration configuration
+ */
 export async function GET(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
   if (!session?.user?.id) {
@@ -66,20 +88,39 @@ export async function GET(req: NextRequest) {
       .then((rows) => rows[0]);
 
     if (!config) {
-      return NextResponse.json({ configured: false });
+      return NextResponse.json({ configured: false, connected: false });
     }
 
+    // Check if OAuth is connected (has access token)
+    const connected = !!config.accessToken;
+    // Check if repository is configured
+    const repoConfigured = !!config.owner && !!config.repo;
+
     return NextResponse.json({
-      configured: true,
-      owner: config.owner,
-      repo: config.repo,
+      configured: connected && repoConfigured,
+      connected,
+      repoConfigured,
+      owner: config.owner || null,
+      repo: config.repo || null,
       autoSync: config.autoSync,
+      syncTriggerStatuses: config.syncTriggerStatuses || ["in-progress", "planned"],
+      syncStatusChanges: config.syncStatusChanges,
+      syncComments: config.syncComments,
+      autoAddLabels: config.autoAddLabels,
+      lastSyncAt: config.lastSyncAt?.toISOString() || null,
+      createdAt: config.createdAt.toISOString(),
+      updatedAt: config.updatedAt.toISOString(),
     });
   } catch (error) {
     return apiError(error);
   }
 }
 
+/**
+ * POST /api/integrations/github
+ * Set up repository for connected GitHub integration
+ * Also supports legacy PAT-based setup for backward compatibility
+ */
 export async function POST(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
   if (!session?.user?.id) {
@@ -103,58 +144,114 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const validated = createGitHubIntegrationSchema.parse(body);
 
-    const client = new GitHubClient({
-      accessToken: validated.accessToken,
-      owner: validated.owner,
-      repo: validated.repo,
-    });
-    const isValid = await client.validateToken();
+    // Check if this is legacy PAT-based setup or OAuth repo setup
+    if (body.accessToken) {
+      // Legacy PAT-based setup
+      const validated = createGitHubIntegrationSchema.parse(body);
 
-    if (!isValid) {
-      return NextResponse.json(
-        { error: "Invalid token or repository" },
-        { status: 400 },
-      );
-    }
+      const client = new GitHubClient({
+        accessToken: validated.accessToken,
+        owner: validated.owner,
+        repo: validated.repo,
+      });
+      const isValid = await client.validateToken();
 
-    const webhookSecret = randomBytes(32).toString("hex");
+      if (!isValid) {
+        return NextResponse.json(
+          { error: "Invalid token or repository" },
+          { status: 400 },
+        );
+      }
 
-    const existing = await db
-      .select()
-      .from(githubIntegrations)
-      .where(eq(githubIntegrations.organizationId, organizationId))
-      .limit(1)
-      .then((rows) => rows[0]);
+      const webhookSecret = randomBytes(32).toString("hex");
 
-    if (existing) {
-      await db
-        .update(githubIntegrations)
-        .set({
+      const existing = await db
+        .select()
+        .from(githubIntegrations)
+        .where(eq(githubIntegrations.organizationId, organizationId))
+        .limit(1)
+        .then((rows) => rows[0]);
+
+      if (existing) {
+        await db
+          .update(githubIntegrations)
+          .set({
+            accessToken: validated.accessToken,
+            owner: validated.owner,
+            repo: validated.repo,
+            autoSync: validated.autoSync,
+            webhookSecret,
+            connectedBy: session.user.id,
+          })
+          .where(eq(githubIntegrations.id, existing.id));
+      } else {
+        await db.insert(githubIntegrations).values({
+          organizationId,
           accessToken: validated.accessToken,
           owner: validated.owner,
           repo: validated.repo,
           autoSync: validated.autoSync,
           webhookSecret,
-        })
-        .where(eq(githubIntegrations.id, existing.id));
+          connectedBy: session.user.id,
+        });
+      }
+
+      return NextResponse.json({
+        success: true,
+        webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks/github`,
+        webhookSecret,
+      });
     } else {
-      await db.insert(githubIntegrations).values({
-        organizationId,
-        accessToken: validated.accessToken,
+      // OAuth repo setup - set repository for existing OAuth connection
+      const validated = setupRepoSchema.parse(body);
+
+      const existing = await db
+        .select()
+        .from(githubIntegrations)
+        .where(eq(githubIntegrations.organizationId, organizationId))
+        .limit(1)
+        .then((rows) => rows[0]);
+
+      if (!existing) {
+        return NextResponse.json(
+          { error: "GitHub not connected. Please connect your GitHub account first." },
+          { status: 400 },
+        );
+      }
+
+      // Validate that the token can access this repo
+      const client = new GitHubClient({
+        accessToken: existing.accessToken,
         owner: validated.owner,
         repo: validated.repo,
-        autoSync: validated.autoSync,
+      });
+      const isValid = await client.validateToken();
+
+      if (!isValid) {
+        return NextResponse.json(
+          { error: "Cannot access this repository. Please check permissions." },
+          { status: 400 },
+        );
+      }
+
+      const webhookSecret = existing.webhookSecret || randomBytes(32).toString("hex");
+
+      await db
+        .update(githubIntegrations)
+        .set({
+          owner: validated.owner,
+          repo: validated.repo,
+          webhookSecret,
+        })
+        .where(eq(githubIntegrations.id, existing.id));
+
+      return NextResponse.json({
+        success: true,
+        webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks/github`,
         webhookSecret,
       });
     }
-
-    return NextResponse.json({
-      success: true,
-      webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks/github`,
-      webhookSecret,
-    });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return validationError(error.issues);
@@ -163,6 +260,92 @@ export async function POST(req: NextRequest) {
   }
 }
 
+/**
+ * PATCH /api/integrations/github
+ * Update GitHub integration configuration
+ */
+export async function PATCH(req: NextRequest) {
+  const session = await auth.api.getSession({ headers: req.headers });
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const organizationId = await getCurrentOrganizationId(session.user.id);
+  if (!organizationId) {
+    return NextResponse.json(
+      { error: "No organization selected" },
+      { status: 400 },
+    );
+  }
+
+  if (!db) {
+    return NextResponse.json(
+      { error: "Database not configured" },
+      { status: 500 },
+    );
+  }
+
+  try {
+    const body = await req.json();
+    const validated = updateConfigSchema.parse(body);
+
+    const existing = await db
+      .select()
+      .from(githubIntegrations)
+      .where(eq(githubIntegrations.organizationId, organizationId))
+      .limit(1)
+      .then((rows) => rows[0]);
+
+    if (!existing) {
+      return NextResponse.json(
+        { error: "GitHub integration not found" },
+        { status: 404 },
+      );
+    }
+
+    // If changing repo, validate access
+    if (validated.owner && validated.repo) {
+      const client = new GitHubClient({
+        accessToken: existing.accessToken,
+        owner: validated.owner,
+        repo: validated.repo,
+      });
+      const isValid = await client.validateToken();
+
+      if (!isValid) {
+        return NextResponse.json(
+          { error: "Cannot access this repository" },
+          { status: 400 },
+        );
+      }
+    }
+
+    await db
+      .update(githubIntegrations)
+      .set({
+        ...(validated.owner && { owner: validated.owner }),
+        ...(validated.repo && { repo: validated.repo }),
+        ...(validated.autoSync !== undefined && { autoSync: validated.autoSync }),
+        ...(validated.syncTriggerStatuses && { syncTriggerStatuses: validated.syncTriggerStatuses }),
+        ...(validated.syncStatusChanges !== undefined && { syncStatusChanges: validated.syncStatusChanges }),
+        ...(validated.syncComments !== undefined && { syncComments: validated.syncComments }),
+        ...(validated.autoAddLabels !== undefined && { autoAddLabels: validated.autoAddLabels }),
+      })
+      .where(eq(githubIntegrations.id, existing.id));
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return validationError(error.issues);
+    }
+    return apiError(error);
+  }
+}
+
+/**
+ * DELETE /api/integrations/github
+ * Disconnect GitHub integration
+ */
 export async function DELETE(req: NextRequest) {
   const session = await auth.api.getSession({ headers: req.headers });
   if (!session?.user?.id) {

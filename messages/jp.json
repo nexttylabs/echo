@@ -248,16 +248,39 @@
     "integrations": {
       "pageTitle": "インテグレーション",
       "pageDescription": "サードパーティツールとサービスに接続",
-      "availableTitle": "利用可能なインテグレーション",
-      "availableDesc": "お気に入りのツールと接続",
-      "slack": "Slack",
-      "slackDesc": "Slackで通知を受け取る",
-      "jira": "Jira",
-      "jiraDesc": "Jiraの課題と同期",
-      "linear": "Linear",
-      "linearDesc": "Linearプロジェクトに接続",
-      "discord": "Discord",
-      "discordDesc": "Discordに更新を投稿"
+      "github": {
+        "title": "GitHub インテグレーション",
+        "description": "フィードバックを GitHub Issues に同期",
+        "notConnected": "未接続",
+        "connected": "接続済み",
+        "connectButton": "GitHub アカウントを接続",
+        "connectPrompt": "GitHub アカウントを接続して、フィードバックを GitHub Issues に自動同期します。",
+        "manageButton": "接続を管理",
+        "disconnectButton": "切断",
+        "lastSync": "最終同期: {time}",
+        "addRepo": "リポジトリを追加",
+        "connectedRepos": "接続済みリポジトリ",
+        "syncTrigger": {
+          "title": "同期トリガー設定",
+          "description": "どのステータス変更で GitHub Issue を作成するか選択",
+          "new": "新規 - フィードバック送信時に同期",
+          "inProgress": "進行中 - 処理開始時に同期",
+          "planned": "計画済み - ロードマップ追加時に同期",
+          "completed": "完了 - ステータス更新のみ同期",
+          "closed": "クローズ - ステータス更新のみ同期"
+        },
+        "otherSettings": {
+          "title": "その他の設定",
+          "syncStatusChanges": "作成済み Issue のステータス変更を同期",
+          "syncComments": "コメントを GitHub に同期",
+          "autoAddLabels": "ラベルを自動追加"
+        }
+      },
+      "comingSoon": {
+        "title": "その他のインテグレーションは近日公開",
+        "description": "Slack、Discord、Linear などのインテグレーションは開発中です",
+        "badge": "近日公開"
+      }
     },
     "widgets": {
       "pageTitle": "ウィジェットと埋め込み",

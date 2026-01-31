@@ -35,11 +35,24 @@ export const githubIntegrations = pgTable(
       .notNull()
       .references(() => organizations.id, { onDelete: "cascade" }),
     accessToken: text("accessToken").notNull(),
+    refreshToken: text("refreshToken"), // OAuth refresh token (optional)
+    tokenExpiresAt: timestamp("tokenExpiresAt"), // OAuth token expiry
     owner: text("owner").notNull(),
     repo: text("repo").notNull(),
     labelMapping: jsonb("labelMapping").$type<Record<string, string>>(),
     statusMapping: jsonb("statusMapping").$type<Record<string, string>>(),
     autoSync: boolean("autoSync").notNull().default(true),
+    // Sync trigger configuration - which statuses trigger issue creation
+    syncTriggerStatuses: jsonb("syncTriggerStatuses")
+      .$type<string[]>()
+      .default(["in-progress", "planned"]),
+    // Additional sync settings
+    syncStatusChanges: boolean("syncStatusChanges").notNull().default(true),
+    syncComments: boolean("syncComments").notNull().default(false),
+    autoAddLabels: boolean("autoAddLabels").notNull().default(false),
+    // Connection metadata
+    connectedBy: text("connectedBy"), // User ID who connected this integration
+    lastSyncAt: timestamp("lastSyncAt"),
     webhookSecret: text("webhookSecret"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt")

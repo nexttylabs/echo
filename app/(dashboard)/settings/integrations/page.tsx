@@ -15,14 +15,27 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, Loader2 } from "lucide-react";
+import { GitHubIntegrationClient } from "./github-integration-client";
 
 export async function generateMetadata() {
   const t = await getTranslations("settings.integrations");
   return {
     title: `${t("pageTitle")} - Echo`,
   };
+}
+
+function LoadingCard() {
+  return (
+    <Card>
+      <CardContent className="flex items-center justify-center py-12">
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      </CardContent>
+    </Card>
+  );
 }
 
 export default async function IntegrationsSettingsPage() {
@@ -35,57 +48,20 @@ export default async function IntegrationsSettingsPage() {
         <p className="text-muted-foreground">{t("pageDescription")}</p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("availableTitle")}</CardTitle>
-          <CardDescription>{t("availableDesc")}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                  <span className="text-lg">🔗</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">{t("slack")}</h4>
-                  <p className="text-sm text-muted-foreground">{t("slackDesc")}</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                  <span className="text-lg">📋</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">{t("jira")}</h4>
-                  <p className="text-sm text-muted-foreground">{t("jiraDesc")}</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                  <span className="text-lg">📊</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">{t("linear")}</h4>
-                  <p className="text-sm text-muted-foreground">{t("linearDesc")}</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                  <span className="text-lg">💬</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">{t("discord")}</h4>
-                  <p className="text-sm text-muted-foreground">{t("discordDesc")}</p>
-                </div>
-              </div>
-            </div>
+      {/* GitHub Integration Card */}
+      <Suspense fallback={<LoadingCard />}>
+        <GitHubIntegrationClient />
+      </Suspense>
+
+      {/* Coming Soon Card */}
+      <Card className="border-dashed">
+        <CardContent className="flex items-center gap-4 py-6">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
+            <Sparkles className="h-5 w-5 text-muted-foreground" />
+          </div>
+          <div>
+            <h4 className="font-medium">{t("comingSoon.title")}</h4>
+            <p className="text-sm text-muted-foreground">{t("comingSoon.description")}</p>
           </div>
         </CardContent>
       </Card>

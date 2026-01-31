@@ -248,16 +248,39 @@
     "integrations": {
       "pageTitle": "Integrations",
       "pageDescription": "Connect with third-party tools and services",
-      "availableTitle": "Available Integrations",
-      "availableDesc": "Connect your favorite tools",
-      "slack": "Slack",
-      "slackDesc": "Get notifications in Slack",
-      "jira": "Jira",
-      "jiraDesc": "Sync with Jira issues",
-      "linear": "Linear",
-      "linearDesc": "Connect to Linear projects",
-      "discord": "Discord",
-      "discordDesc": "Post updates to Discord"
+      "github": {
+        "title": "GitHub Integration",
+        "description": "Sync feedback to GitHub Issues",
+        "notConnected": "Not connected",
+        "connected": "Connected",
+        "connectButton": "Connect GitHub Account",
+        "connectPrompt": "Connect your GitHub account to sync feedback to GitHub Issues automatically.",
+        "manageButton": "Manage Connection",
+        "disconnectButton": "Disconnect",
+        "lastSync": "Last sync: {time}",
+        "addRepo": "Add Repository",
+        "connectedRepos": "Connected Repositories",
+        "syncTrigger": {
+          "title": "Sync Trigger Settings",
+          "description": "Choose which status changes create GitHub Issues",
+          "new": "New - Sync when feedback is submitted",
+          "inProgress": "In Progress - Sync when processing starts",
+          "planned": "Planned - Sync when added to roadmap",
+          "completed": "Completed - Sync status update only",
+          "closed": "Closed - Sync status update only"
+        },
+        "otherSettings": {
+          "title": "Other Settings",
+          "syncStatusChanges": "Sync status changes for created Issues",
+          "syncComments": "Sync comments to GitHub",
+          "autoAddLabels": "Auto add labels"
+        }
+      },
+      "comingSoon": {
+        "title": "More integrations coming soon",
+        "description": "Slack, Discord, Linear and more integrations are in development",
+        "badge": "Coming Soon"
+      }
     },
     "widgets": {
       "pageTitle": "Widgets & Embeds",
