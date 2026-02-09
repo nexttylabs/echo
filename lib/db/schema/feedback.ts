@@ -17,6 +17,7 @@
 
 import { relations } from "drizzle-orm";
 import {
+  bigint,
   boolean,
   index,
   integer,
@@ -63,7 +64,7 @@ export const feedback = pgTable(
     }).default("pending"),
     processedAt: timestamp("processedAt"),
     // GitHub integration fields
-    githubIssueId: integer("githubIssueId"),
+    githubIssueId: bigint("githubIssueId", { mode: "number" }),
     githubIssueNumber: integer("githubIssueNumber"),
     githubIssueUrl: text("githubIssueUrl"),
     githubSyncedAt: timestamp("githubSyncedAt"),

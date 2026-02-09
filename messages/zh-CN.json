@@ -248,16 +248,39 @@
     "integrations": {
       "pageTitle": "集成",
       "pageDescription": "连接第三方工具和服务",
-      "availableTitle": "可用集成",
-      "availableDesc": "连接您喜爱的工具",
-      "slack": "Slack",
-      "slackDesc": "在 Slack 中接收通知",
-      "jira": "Jira",
-      "jiraDesc": "与 Jira 问题同步",
-      "linear": "Linear",
-      "linearDesc": "连接到 Linear 项目",
-      "discord": "Discord",
-      "discordDesc": "将更新发布到 Discord"
+      "github": {
+        "title": "GitHub 集成",
+        "description": "将反馈同步到 GitHub Issues",
+        "notConnected": "未连接",
+        "connected": "已连接",
+        "connectButton": "连接 GitHub 账户",
+        "connectPrompt": "连接您的 GitHub 账户，自动将反馈同步到 GitHub Issues。",
+        "manageButton": "管理连接",
+        "disconnectButton": "断开连接",
+        "lastSync": "最后同步: {time}",
+        "addRepo": "添加仓库",
+        "connectedRepos": "已连接仓库",
+        "syncTrigger": {
+          "title": "同步触发设置",
+          "description": "选择哪些状态变更时创建 GitHub Issue",
+          "new": "新接收 - 反馈刚提交时同步",
+          "inProgress": "处理中 - 开始处理时同步",
+          "planned": "已规划 - 纳入计划时同步",
+          "completed": "已完成 - 仅同步状态更新",
+          "closed": "已关闭 - 仅同步状态更新"
+        },
+        "otherSettings": {
+          "title": "其他设置",
+          "syncStatusChanges": "同步已创建 Issue 的状态变更",
+          "syncComments": "同步评论到 GitHub",
+          "autoAddLabels": "自动添加标签"
+        }
+      },
+      "comingSoon": {
+        "title": "更多集成即将推出",
+        "description": "Slack、Discord、Linear 等集成正在开发中",
+        "badge": "即将推出"
+      }
     },
     "widgets": {
       "pageTitle": "小组件与嵌入",

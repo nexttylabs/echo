@@ -15,21 +15,18 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./auth";
-export * from "./organizations";
-export * from "./organization-settings";
-export * from "./organization-members";
-export * from "./invitations";
-export * from "./feedback";
-export * from "./attachments";
-export * from "./votes";
-export * from "./status-history";
-export * from "./comments";
-export * from "./notifications";
-export * from "./tags";
-export * from "./duplicates";
-export * from "./ai-processing";
-export * from "./api-keys";
-export * from "./webhooks";
-export * from "./github-integrations";
-export * from "./integrations";
+// Core exports
+export * from "./core";
+
+// Provider exports
+export { GitHubProvider, githubProvider } from "./providers/github";
+
+// Legacy client export (for backward compatibility)
+export { GitHubClient } from "./github";
+
+// Registry auto-registration
+import { integrationRegistry } from "./core/registry";
+import { githubProvider } from "./providers/github";
+
+// Register built-in providers
+integrationRegistry.register(githubProvider);

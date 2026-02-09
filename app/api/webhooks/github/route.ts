@@ -21,6 +21,7 @@ import { db } from "@/lib/db";
 import { feedback, githubIntegrations } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { logger } from "@/lib/logger";
+import { createCommentFromGitHub } from "@/lib/services/github-sync";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -41,6 +42,18 @@ interface GitHubWebhookPayload {
       login: string;
     };
     name: string;
+  };
+}
+
+interface GitHubCommentWebhookPayload extends GitHubWebhookPayload {
+  comment: {
+    id: number;
+    body: string;
+    html_url: string;
+    user: {
+      login: string;
+      id: number;
+    };
   };
 }
 
@@ -91,10 +104,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }
 
-    const payload: GitHubWebhookPayload = JSON.parse(body);
+    const payload = JSON.parse(body);
 
     if (event === "issues") {
-      await handleIssueEvent(payload);
+      await handleIssueEvent(payload as GitHubWebhookPayload);
+    } else if (event === "issue_comment") {
+      await handleIssueCommentEvent(
+        payload as GitHubCommentWebhookPayload,
+        validConfig,
+      );
     }
 
     return NextResponse.json({ success: true });
@@ -156,3 +174,54 @@ async function handleIssueEvent(payload: GitHubWebhookPayload) {
     );
   }
 }
+
+async function handleIssueCommentEvent(
+  payload: GitHubCommentWebhookPayload,
+  config: typeof githubIntegrations.$inferSelect,
+) {
+  if (!db) return;
+
+  const { action, issue, comment } = payload;
+
+  // Only handle new comments
+  if (action !== "created") {
+    return;
+  }
+
+  // Check if comment sync is enabled
+  if (!config.syncComments) {
+    logger.debug({ issueId: issue.id }, "Comment sync disabled, skipping");
+    return;
+  }
+
+  // Find associated feedback
+  const feedbackData = await db
+    .select()
+    .from(feedback)
+    .where(eq(feedback.githubIssueId, issue.id))
+    .limit(1)
+    .then((rows) => rows[0]);
+
+  if (!feedbackData) {
+    logger.debug(
+      { githubIssueId: issue.id },
+      "No associated feedback found for comment",
+    );
+    return;
+  }
+
+  // Skip comments that look like they came from Echo (to avoid loops)
+  if (comment.body.startsWith("**") && comment.body.includes("** commented:")) {
+    logger.debug({ commentId: comment.id }, "Skipping Echo-originated comment");
+    return;
+  }
+
+  await createCommentFromGitHub(
+    feedbackData.feedbackId,
+    comment.id,
+    comment.user.login,
+    comment.body,
+    comment.html_url,
+  );
+}
+

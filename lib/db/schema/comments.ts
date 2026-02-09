@@ -17,6 +17,7 @@
 
 import { relations } from "drizzle-orm";
 import {
+  bigint,
   boolean,
   index,
   pgTable,
@@ -47,6 +48,11 @@ export const comments = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date())
       .notNull(),
+    // GitHub integration fields
+    githubCommentId: bigint("githubCommentId", { mode: "number" }),
+    githubCommentUrl: text("githubCommentUrl"),
+    githubSyncedAt: timestamp("githubSyncedAt"),
+    syncedFromGitHub: boolean("syncedFromGitHub").default(false),
   },
   (table) => ({
     feedbackIdIdx: index("idx_comments_feedbackId").on(table.feedbackId),
@@ -56,6 +62,9 @@ export const comments = pgTable(
       table.isInternal,
     ),
     guestTokenIdx: index("idx_comments_guestToken").on(table.guestToken),
+    githubCommentIdIdx: index("idx_comments_githubCommentId").on(
+      table.githubCommentId,
+    ),
   }),
 );
 
