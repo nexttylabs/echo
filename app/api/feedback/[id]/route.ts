@@ -32,6 +32,7 @@ import {
 import { updateFeedbackStatusSchema } from "@/lib/validations/feedback";
 import { apiError } from "@/lib/api/errors";
 import { notifyStatusChange } from "@/lib/services/notifications";
+import { handleFeedbackStatusChange } from "@/lib/services/feedback-status-change-handler";
 import { updateFeedbackSchema } from "@/lib/validators/feedback";
 import { getOrgContext } from "@/lib/auth/org-context";
 
@@ -256,6 +257,11 @@ export async function PUT(
 
     notifyStatusChange(feedbackId, existingFeedback.status, newStatus).catch(
       (err) => console.error("Failed to send status change notification:", err),
+    );
+
+    // Sync status change to GitHub if configured
+    handleFeedbackStatusChange(feedbackId, existingFeedback.status, newStatus).catch(
+      (err) => console.error("Failed to sync status change to GitHub:", err),
     );
 
     return NextResponse.json({
