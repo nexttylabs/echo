@@ -54,6 +54,19 @@ export interface GitHubRepository {
   owner: { login: string };
 }
 
+export interface GitHubComment {
+  id: number;
+  body: string;
+  user: {
+    id: number;
+    login: string;
+    avatar_url: string;
+  };
+  html_url: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export class GitHubClient {
   private config: GitHubConfig;
   private baseUrl = "https://api.github.com";
@@ -155,5 +168,51 @@ export class GitHubClient {
     } catch {
       return false;
     }
+  }
+
+  // Issue state management
+  async closeIssue(issueNumber: number): Promise<GitHubIssue> {
+    return this.updateIssue(issueNumber, { state: "closed" });
+  }
+
+  async reopenIssue(issueNumber: number): Promise<GitHubIssue> {
+    return this.updateIssue(issueNumber, { state: "open" });
+  }
+
+  // Comment methods
+  async getIssueComments(issueNumber: number): Promise<GitHubComment[]> {
+    return this.request<GitHubComment[]>(
+      "GET",
+      `/repos/${this.config.owner}/${this.config.repo}/issues/${issueNumber}/comments`,
+    );
+  }
+
+  async createIssueComment(
+    issueNumber: number,
+    body: string,
+  ): Promise<GitHubComment> {
+    return this.request<GitHubComment>(
+      "POST",
+      `/repos/${this.config.owner}/${this.config.repo}/issues/${issueNumber}/comments`,
+      { body },
+    );
+  }
+
+  async updateIssueComment(
+    commentId: number,
+    body: string,
+  ): Promise<GitHubComment> {
+    return this.request<GitHubComment>(
+      "PATCH",
+      `/repos/${this.config.owner}/${this.config.repo}/issues/comments/${commentId}`,
+      { body },
+    );
+  }
+
+  async deleteIssueComment(commentId: number): Promise<void> {
+    await this.request<void>(
+      "DELETE",
+      `/repos/${this.config.owner}/${this.config.repo}/issues/comments/${commentId}`,
+    );
   }
 }
