@@ -16,7 +16,7 @@
  */
 
 import crypto from "crypto";
-import type { IntegrationProvider, WebhookEvent } from "../core/provider";
+import type { IntegrationProvider, WebhookEvent } from "@/lib/integrations/core/provider";
 import type {
   GitHubConfig,
   OAuthTokens,
@@ -25,8 +25,8 @@ import type {
   FeedbackForSync,
   CommentForSync,
   ProviderMetadata,
-} from "../core/types";
-import { GitHubClient } from "../github";
+} from "@/lib/integrations/core/types";
+import { GitHubClient } from "@/lib/integrations/github";
 
 /**
  * GitHub integration provider implementing the unified provider interface.
@@ -62,7 +62,7 @@ export class GitHubProvider implements IntegrationProvider<GitHubConfig> {
     return `https://github.com/login/oauth/authorize?${params.toString()}`;
   }
 
-  async handleCallback(code: string, _redirectUri: string): Promise<OAuthTokens> {
+  async handleCallback(code: string, redirectUri: string): Promise<OAuthTokens> {
     const clientId = process.env.GITHUB_CLIENT_ID;
     const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
@@ -80,6 +80,7 @@ export class GitHubProvider implements IntegrationProvider<GitHubConfig> {
         client_id: clientId,
         client_secret: clientSecret,
         code,
+        redirect_uri: redirectUri,
       }),
     });
 

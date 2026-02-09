@@ -17,9 +17,9 @@
 
 import { relations } from "drizzle-orm";
 import {
+  bigint,
   boolean,
   index,
-  integer,
   pgTable,
   serial,
   text,
@@ -49,7 +49,7 @@ export const comments = pgTable(
       .$onUpdate(() => new Date())
       .notNull(),
     // GitHub integration fields
-    githubCommentId: integer("githubCommentId"),
+    githubCommentId: bigint("githubCommentId", { mode: "number" }),
     githubCommentUrl: text("githubCommentUrl"),
     githubSyncedAt: timestamp("githubSyncedAt"),
     syncedFromGitHub: boolean("syncedFromGitHub").default(false),
