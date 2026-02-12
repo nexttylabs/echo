@@ -74,8 +74,18 @@ export async function POST(req: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse;
 
   try {
+    if (!db) {
+      logger.error("Database is not configured");
+      return NextResponse.json(
+        { error: "服务器错误，请稍后重试", code: "SERVER_ERROR" },
+        { status: 500 },
+      );
+    }
+
+    const database = db;
+
     // Find user by email
-    const users = await db
+    const users = await database
       .select({ id: user.id, name: user.name })
       .from(user)
       .where(eq(user.email, email))
@@ -98,7 +108,7 @@ export async function POST(req: NextRequest) {
     expiresAt.setHours(expiresAt.getHours() + RESET_TOKEN_EXPIRY_HOURS);
 
     // Store or update verification token
-    await db
+    await database
       .delete(verification)
       .where(
         and(
@@ -106,7 +116,7 @@ export async function POST(req: NextRequest) {
         ),
       );
 
-    await db.insert(verification).values({
+    await database.insert(verification).values({
       id: randomUUID(),
       identifier: `password-reset:${userId}`,
       value: tokenHash,
