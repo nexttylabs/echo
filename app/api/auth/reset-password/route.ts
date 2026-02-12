@@ -18,11 +18,11 @@
 import { createHash } from "crypto";
 import { eq, and, gt } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
+import { hashPassword } from "better-auth/crypto";
 import { rateLimit } from "@/lib/middleware/rate-limit";
 import { db } from "@/lib/db";
 import { resetPasswordSchema } from "@/lib/validations/auth";
 import { verification, account } from "@/lib/db/schema";
-import { auth } from "@/lib/auth/config";
 import { logger } from "@/lib/logger";
 
 function hashResetToken(token: string): string {
@@ -103,18 +103,8 @@ export async function POST(req: NextRequest) {
     // Extract userId from identifier
     const userId = identifier.replace("password-reset:", "");
 
-    // Hash new password using better-auth
-    const { data: passwordHash, error } = await auth.api.hashPassword({
-      body: { password },
-    });
-
-    if (error || !passwordHash) {
-      logger.error({ error }, "Failed to hash password");
-      return NextResponse.json(
-        { error: "密码重置失败", code: "HASH_ERROR" },
-        { status: 500 },
-      );
-    }
+    // Hash new password using better-auth's configured default algorithm.
+    const passwordHash = await hashPassword(password);
 
     // Update user's password
     await database
