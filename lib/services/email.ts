@@ -32,15 +32,17 @@ export type SendEmailPayload = {
 export type SendEmailResult = {
   success: boolean;
   error?: string;
+  messageId?: string;
 };
 
 export async function sendEmail(
   payload: SendEmailPayload,
 ): Promise<SendEmailResult> {
   const { to, subject, html, text } = payload;
+  const from = process.env.RESEND_FROM_EMAIL || "noreply@echo.app";
 
   if (process.env.NODE_ENV !== "test") {
-    logger.info({ to, subject }, "Email send requested");
+    logger.info({ from, to, subject }, "Email send requested");
   }
 
   if (!resend) {
@@ -51,18 +53,50 @@ export async function sendEmail(
   }
 
   try {
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "noreply@echo.app",
+    const resendResponse = await resend.emails.send({
+      from,
       to,
       subject,
       html,
       text,
     });
 
-    return { success: true };
+    if (resendResponse.error) {
+      const errorMessage = [
+        resendResponse.error.name,
+        resendResponse.error.message,
+      ]
+        .filter(Boolean)
+        .join(": ") || "Unknown Resend API error";
+
+      logger.error(
+        {
+          from,
+          to,
+          subject,
+          error: resendResponse.error,
+        },
+        "Resend reported email delivery failure",
+      );
+      return { success: false, error: `Resend API error: ${errorMessage}` };
+    }
+
+    const messageId = resendResponse.data?.id;
+
+    if (process.env.NODE_ENV !== "test") {
+      logger.info(
+        { from, to, subject, messageId },
+        "Email accepted by Resend",
+      );
+    }
+
+    return { success: true, messageId };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
-    logger.error({ error: errorMsg, to, subject }, "Failed to send email");
+    logger.error(
+      { error: errorMsg, from, to, subject },
+      "Failed to send email",
+    );
     return { success: false, error: errorMsg };
   }
 }

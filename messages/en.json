@@ -611,6 +611,35 @@
       "emailExists": "Email already exists",
       "registerFailed": "Registration failed, please try again later"
     },
+    "forgotPassword": {
+      "pageTitle": "Forgot Password",
+      "pageSubtitle": "Enter your email to receive a password reset link",
+      "cardTitle": "Reset Password",
+      "cardDescription": "We will send a reset link to your email",
+      "emailLabel": "Email",
+      "submitButton": "Send Reset Link",
+      "submitting": "Sending...",
+      "backToLogin": "Back to login",
+      "successTitle": "Check your email",
+      "successDescription": "If an account exists for that email, we have sent a password reset link.",
+      "emailSent": "Password reset link sent! Please check your inbox.",
+      "sendFailed": "Failed to send, please try again later"
+    },
+    "resetPassword": {
+      "pageTitle": "Reset Password",
+      "pageSubtitle": "Enter your new password below",
+      "cardTitle": "Set New Password",
+      "cardDescription": "Choose a secure password for your account",
+      "newPasswordLabel": "New Password",
+      "confirmPasswordLabel": "Confirm New Password",
+      "submitButton": "Reset Password",
+      "submitting": "Resetting...",
+      "successTitle": "Password Reset",
+      "successDescription": "Your password has been successfully reset.",
+      "passwordReset": "Your password has been reset successfully. You can now log in with your new password.",
+      "goToLogin": "Go to login",
+      "requestNewLink": "Request a new reset link"
+    },
     "validation": {
       "nameRequired": "Please enter your name",
       "emailRequired": "Please enter your email address",
@@ -1032,6 +1061,19 @@
     "ai": {
       "classification": "AI Classification",
       "reasons": "Reasons:"
+    }
+  },
+  "emails": {
+    "resetPassword": {
+      "subject": "Reset your Echo password",
+      "title": "Reset Your Password",
+      "greeting": "Hello {name},",
+      "body": "We received a password reset request for your account. If this was you, click the button below to reset your password:",
+      "buttonText": "Reset Password",
+      "linkHint": "Or copy the following link into your browser:",
+      "warning": "<strong>Note:</strong> This link will expire in {hours} hour(s). If you did not request a password reset, please ignore this email.",
+      "footer": "This email was sent automatically. Please do not reply.",
+      "defaultUser": "User"
     }
   }
 }
