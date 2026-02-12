@@ -24,6 +24,13 @@ import { forgotPasswordSchema } from "@/lib/validations/auth";
 import { user, verification } from "@/lib/db/schema";
 import { sendEmail } from "@/lib/services/email";
 import { logger } from "@/lib/logger";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE_NAME,
+  getPreferredLocaleFromHeader,
+  isSupportedLocale,
+  type AppLocale,
+} from "@/i18n/config";
 
 const RESET_TOKEN_EXPIRY_HOURS = 1;
 const RESET_TOKEN_BYTES = 32;
@@ -34,6 +41,41 @@ async function generateResetToken(): Promise<string> {
 
 function hashResetToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
+}
+
+function resolveLocaleFromRequest(req: NextRequest): AppLocale {
+  const cookieLocale = req.cookies.get(LOCALE_COOKIE_NAME)?.value;
+  if (cookieLocale && isSupportedLocale(cookieLocale)) return cookieLocale;
+  return (
+    getPreferredLocaleFromHeader(req.headers.get("accept-language")) ||
+    DEFAULT_LOCALE
+  );
+}
+
+function resolveOriginFromRequest(req: NextRequest): string {
+  const origin = req.headers.get("origin");
+  if (origin) return origin;
+
+  const host =
+    req.headers.get("x-forwarded-host") || req.headers.get("host");
+  if (host) {
+    const proto = req.headers.get("x-forwarded-proto") || "https";
+    return `${proto}://${host}`;
+  }
+
+  return process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+}
+
+async function loadEmailMessages(
+  locale: AppLocale,
+): Promise<Record<string, string>> {
+  try {
+    const messages = (await import(`@/messages/${locale}.json`)).default;
+    return messages?.emails?.resetPassword ?? {};
+  } catch {
+    const fallback = (await import(`@/messages/${DEFAULT_LOCALE}.json`)).default;
+    return fallback?.emails?.resetPassword ?? {};
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -123,12 +165,21 @@ export async function POST(req: NextRequest) {
       expiresAt,
     });
 
+    // Resolve locale and origin from the request
+    const locale = resolveLocaleFromRequest(req);
+    const origin = resolveOriginFromRequest(req);
+    const t = await loadEmailMessages(locale);
+
     // Send reset email
-    const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/reset-password?token=${token}`;
+    const resetUrl = `${origin}/reset-password?token=${token}`;
+    const displayName = name || t.defaultUser || "User";
+    const subject = t.subject || "Reset your Echo password";
+    const warningText = (t.warning || "")
+      .replace("{hours}", String(RESET_TOKEN_EXPIRY_HOURS));
 
     const emailHtml = `
       <!DOCTYPE html>
-      <html>
+      <html lang="${locale}">
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,54 +201,51 @@ export async function POST(req: NextRequest) {
               <div class="logo">Echo</div>
             </div>
             <div class="content">
-              <h2>重置您的密码</h2>
-              <p>您好 ${name || "用户"}，</p>
-              <p>我们收到了您的密码重置请求。如果这是您的操作，请点击下方的按钮重置密码：</p>
-              <a href="${resetUrl}" class="button">重置密码</a>
-              <p>或者复制以下链接到浏览器：</p>
+              <h2>${t.title || "Reset Your Password"}</h2>
+              <p>${(t.greeting || "Hello {name},").replace("{name}", displayName)}</p>
+              <p>${t.body || ""}</p>
+              <a href="${resetUrl}" class="button">${t.buttonText || "Reset Password"}</a>
+              <p>${t.linkHint || ""}</p>
               <p style="word-break: break-all; font-size: 12px; color: #666;">${resetUrl}</p>
               <div class="warning">
-                <strong>注意：</strong>此链接将在 ${RESET_TOKEN_EXPIRY_HOURS} 小时后过期。如果您没有请求重置密码，请忽略此邮件。
+                ${warningText}
               </div>
             </div>
             <div class="footer">
-              <p>此邮件由系统自动发送，请勿回复。</p>
+              <p>${t.footer || ""}</p>
             </div>
           </div>
         </body>
       </html>
     `;
 
+    const warningPlain = warningText.replace(/<[^>]*>/g, "");
+    const greetingPlain = (t.greeting || "Hello {name},").replace("{name}", displayName);
+
     const emailText = `
-重置您的密码
+${t.title || "Reset Your Password"}
 
-您好 ${name || "用户"}，
+${greetingPlain}
 
-我们收到了您的密码重置请求。如果这是您的操作，请访问以下链接重置密码：
+${t.body || ""}
 
 ${resetUrl}
 
-注意：此链接将在 ${RESET_TOKEN_EXPIRY_HOURS} 小时后过期。如果您没有请求重置密码，请忽略此邮件。
+${warningPlain}
 
-此邮件由系统自动发送，请勿回复。
+${t.footer || ""}
     `;
 
     const emailResult = await sendEmail({
       to: email,
-      subject: "重置您的 Echo 密码",
+      subject,
       html: emailHtml,
       text: emailText,
     });
 
-    const emailDiagnostics = {
-      from: process.env.RESEND_FROM_EMAIL || "noreply@echo.app",
-      to: email,
-      subject: "重置您的 Echo 密码",
-    };
-
     if (emailResult.success) {
       logger.info(
-        { userId, email, ...emailDiagnostics, messageId: emailResult.messageId },
+        { userId, email, locale, subject, messageId: emailResult.messageId },
         "Password reset email accepted for delivery",
       );
     } else {
@@ -205,7 +253,8 @@ ${resetUrl}
         {
           userId,
           email,
-          ...emailDiagnostics,
+          locale,
+          subject,
           resendError: emailResult.error,
         },
         "Password reset email delivery failed",

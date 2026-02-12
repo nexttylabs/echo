@@ -622,7 +622,8 @@
       "backToLogin": "返回登录",
       "successTitle": "检查您的邮箱",
       "successDescription": "如果该邮箱关联了账户，我们已发送密码重置链接。",
-      "emailSent": "密码重置链接已发送！请检查您的收件箱。"
+      "emailSent": "密码重置链接已发送！请检查您的收件箱。",
+      "sendFailed": "发送失败，请稍后重试"
     },
     "resetPassword": {
       "pageTitle": "重置密码",
@@ -950,6 +951,19 @@
         "submit": "发布评论",
         "submitting": "发布中..."
       }
+    }
+  },
+  "emails": {
+    "resetPassword": {
+      "subject": "重置您的 Echo 密码",
+      "title": "重置您的密码",
+      "greeting": "您好 {name}，",
+      "body": "我们收到了您的密码重置请求。如果这是您的操作，请点击下方的按钮重置密码：",
+      "buttonText": "重置密码",
+      "linkHint": "或者复制以下链接到浏览器：",
+      "warning": "<strong>注意：</strong>此链接将在 {hours} 小时后过期。如果您没有请求重置密码，请忽略此邮件。",
+      "footer": "此邮件由系统自动发送，请勿回复。",
+      "defaultUser": "用户"
     }
   }
 }

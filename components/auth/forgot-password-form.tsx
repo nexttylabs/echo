@@ -82,12 +82,12 @@ export function ForgotPasswordForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "发送失败");
+        throw new Error(data.error || t("sendFailed"));
       }
 
       setIsSuccess(true);
     } catch {
-      setFormError("发送失败，请稍后重试");
+      setFormError(t("sendFailed"));
     } finally {
       setIsLoading(false);
     }
