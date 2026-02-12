@@ -189,15 +189,29 @@ ${resetUrl}
       text: emailText,
     });
 
-    if (!emailResult.success) {
+    const emailDiagnostics = {
+      from: process.env.RESEND_FROM_EMAIL || "noreply@echo.app",
+      to: email,
+      subject: "重置您的 Echo 密码",
+    };
+
+    if (emailResult.success) {
+      logger.info(
+        { userId, email, ...emailDiagnostics, messageId: emailResult.messageId },
+        "Password reset email accepted for delivery",
+      );
+    } else {
       logger.error(
-        { email, error: emailResult.error },
-        "Failed to send password reset email",
+        {
+          userId,
+          email,
+          ...emailDiagnostics,
+          resendError: emailResult.error,
+        },
+        "Password reset email delivery failed",
       );
       // Return success anyway to avoid email enumeration
     }
-
-    logger.info({ userId, email }, "Password reset email sent");
 
     return NextResponse.json(
       { message: "如果邮箱存在，您将收到重置密码的链接" },
