@@ -50,7 +50,7 @@ export async function getDashboardStats(
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
-  const isAdminOrPM = userRole === "admin" || userRole === "product_manager";
+  const isAdminOrPM = userRole === "owner" || userRole === "admin" || userRole === "product_manager";
 
   // Base condition: not deleted and belongs to organization
   const baseCondition = and(

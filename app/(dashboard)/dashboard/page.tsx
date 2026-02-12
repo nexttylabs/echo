@@ -87,7 +87,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
 
         stats = await getDashboardStats(db, {
           userId: session.user.id,
-          userRole,
+          userRole: (context.memberRole as UserRole) || userRole,
           organizationId: context.organizationId,
         });
       }
