@@ -611,6 +611,34 @@
       "emailExists": "このメールアドレスは既に使用されています",
       "registerFailed": "登録に失敗しました。後でもう一度お試しください"
     },
+    "forgotPassword": {
+      "pageTitle": "パスワードをお忘れですか？",
+      "pageSubtitle": "パスワード再設定リンクを受け取るためにメールアドレスを入力してください",
+      "cardTitle": "パスワードを再設定",
+      "cardDescription": "ご登録のメールアドレスに再設定リンクを送信します",
+      "emailLabel": "メールアドレス",
+      "submitButton": "再設定リンクを送信",
+      "submitting": "送信中...",
+      "backToLogin": "ログインに戻る",
+      "successTitle": "メールを確認してください",
+      "successDescription": "メールアドレスが登録されている場合、パスワード再設定リンクを送信しました。",
+      "emailSent": "パスワード再設定リンクを送信しました！メールボックスを確認してください。"
+    },
+    "resetPassword": {
+      "pageTitle": "パスワードを再設定",
+      "pageSubtitle": "新しいパスワードを入力してください",
+      "cardTitle": "新しいパスワードを設定",
+      "cardDescription": "アカウントの安全なパスワードを選択してください",
+      "newPasswordLabel": "新しいパスワード",
+      "confirmPasswordLabel": "新しいパスワード（確認）",
+      "submitButton": "パスワードを再設定",
+      "submitting": "再設定中...",
+      "successTitle": "パスワードを更新しました",
+      "successDescription": "パスワードの再設定が完了しました。",
+      "passwordReset": "パスワードが正常に再設定されました。新しいパスワードでログインできます。",
+      "goToLogin": "ログインへ",
+      "requestNewLink": "新しいリンクをリクエストする"
+    },
     "validation": {
       "nameRequired": "名前を入力してください",
       "emailRequired": "メールアドレスを入力してください",

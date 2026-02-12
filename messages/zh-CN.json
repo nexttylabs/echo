@@ -611,6 +611,34 @@
       "emailExists": "邮箱已存在",
       "registerFailed": "注册失败，请稍后重试"
     },
+    "forgotPassword": {
+      "pageTitle": "忘记密码",
+      "pageSubtitle": "输入您的邮箱以获取密码重置链接",
+      "cardTitle": "重置密码",
+      "cardDescription": "我们将向您的邮箱发送重置链接",
+      "emailLabel": "邮箱",
+      "submitButton": "发送重置链接",
+      "submitting": "发送中...",
+      "backToLogin": "返回登录",
+      "successTitle": "检查您的邮箱",
+      "successDescription": "如果该邮箱关联了账户，我们已发送密码重置链接。",
+      "emailSent": "密码重置链接已发送！请检查您的收件箱。"
+    },
+    "resetPassword": {
+      "pageTitle": "重置密码",
+      "pageSubtitle": "在下方输入您的新密码",
+      "cardTitle": "设置新密码",
+      "cardDescription": "为您的账户选择一个安全的密码",
+      "newPasswordLabel": "新密码",
+      "confirmPasswordLabel": "确认新密码",
+      "submitButton": "重置密码",
+      "submitting": "重置中...",
+      "successTitle": "密码已重置",
+      "successDescription": "您的密码已成功重置。",
+      "passwordReset": "密码重置成功。您现在可以使用新密码登录。",
+      "goToLogin": "前往登录",
+      "requestNewLink": "重新申请重置链接"
+    },
     "validation": {
       "nameRequired": "请输入您的姓名",
       "emailRequired": "请输入邮箱地址",

@@ -611,6 +611,34 @@
       "emailExists": "Email already exists",
       "registerFailed": "Registration failed, please try again later"
     },
+    "forgotPassword": {
+      "pageTitle": "Forgot Password",
+      "pageSubtitle": "Enter your email to receive a password reset link",
+      "cardTitle": "Reset Password",
+      "cardDescription": "We will send a reset link to your email",
+      "emailLabel": "Email",
+      "submitButton": "Send Reset Link",
+      "submitting": "Sending...",
+      "backToLogin": "Back to login",
+      "successTitle": "Check your email",
+      "successDescription": "If an account exists for that email, we have sent a password reset link.",
+      "emailSent": "Password reset link sent! Please check your inbox."
+    },
+    "resetPassword": {
+      "pageTitle": "Reset Password",
+      "pageSubtitle": "Enter your new password below",
+      "cardTitle": "Set New Password",
+      "cardDescription": "Choose a secure password for your account",
+      "newPasswordLabel": "New Password",
+      "confirmPasswordLabel": "Confirm New Password",
+      "submitButton": "Reset Password",
+      "submitting": "Resetting...",
+      "successTitle": "Password Reset",
+      "successDescription": "Your password has been successfully reset.",
+      "passwordReset": "Your password has been reset successfully. You can now log in with your new password.",
+      "goToLogin": "Go to login",
+      "requestNewLink": "Request a new reset link"
+    },
     "validation": {
       "nameRequired": "Please enter your name",
       "emailRequired": "Please enter your email address",
