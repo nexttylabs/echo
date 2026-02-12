@@ -67,10 +67,20 @@ export async function POST(req: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse;
 
   try {
+    if (!db) {
+      logger.error("Database is not configured");
+      return NextResponse.json(
+        { error: "服务器错误，请稍后重试", code: "SERVER_ERROR" },
+        { status: 500 },
+      );
+    }
+
+    const database = db;
+
     // Find valid verification token
     const now = new Date();
     const tokenHash = hashResetToken(token);
-    const verifications = await db
+    const verifications = await database
       .select({ id: verification.id, identifier: verification.identifier })
       .from(verification)
       .where(
@@ -107,13 +117,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Update user's password
-    await db
+    await database
       .update(account)
       .set({ password: passwordHash })
       .where(eq(account.userId, userId));
 
     // Delete the verification token
-    await db.delete(verification).where(eq(verification.id, verificationId));
+    await database.delete(verification).where(eq(verification.id, verificationId));
 
     logger.info({ userId }, "Password reset successfully");
 
