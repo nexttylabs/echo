@@ -32,6 +32,55 @@ if (!process.env.BETTER_AUTH_SECRET && process.env.NODE_ENV !== "production") {
   );
 }
 
+type SocialProviderName = "google" | "github";
+
+const warnedMissingSocialProviders = new Set<SocialProviderName>();
+
+function resolveSocialProviderFromEnv(
+  provider: SocialProviderName,
+  clientIdEnv: string,
+  clientSecretEnv: string,
+  env: NodeJS.ProcessEnv
+) {
+  const clientId = env[clientIdEnv];
+  const clientSecret = env[clientSecretEnv];
+
+  if (clientId && clientSecret) {
+    return { clientId, clientSecret };
+  }
+
+  if (env.NODE_ENV !== "test" && !warnedMissingSocialProviders.has(provider)) {
+    warnedMissingSocialProviders.add(provider);
+    console.warn(
+      `[auth] ${provider.toUpperCase()}_CLIENT_ID and ${provider.toUpperCase()}_CLIENT_SECRET are required to enable ${provider} social login. Provider is disabled.`
+    );
+  }
+
+  return null;
+}
+
+export function getSocialProvidersFromEnv(env: NodeJS.ProcessEnv = process.env) {
+  const google = resolveSocialProviderFromEnv(
+    "google",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    env
+  );
+  const github = resolveSocialProviderFromEnv(
+    "github",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET",
+    env
+  );
+
+  return {
+    ...(google ? { google } : {}),
+    ...(github ? { github } : {}),
+  };
+}
+
+const socialProviders = getSocialProvidersFromEnv();
+
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   database: drizzleAdapter(db, {
@@ -41,6 +90,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  socialProviders,
   session: {
     expiresIn: 60 * 60 * 24 * 30,
   },
