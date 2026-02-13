@@ -38,7 +38,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth/client";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
+
+function getSocialAuthErrorMessage(error: unknown, fallbackMessage: string) {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+  return fallbackMessage;
+}
 
 export function LoginForm() {
   const router = useRouter();
@@ -51,6 +59,7 @@ export function LoginForm() {
     rememberMe: false,
   });
   const t = useTranslations("auth.login");
+  const tSocial = useTranslations("auth.social");
 
   // Clear potentially corrupted cookies on mount
   useEffect(() => {
@@ -116,6 +125,30 @@ export function LoginForm() {
       router.push("/dashboard");
     } catch {
       setFormError(t("invalidCredentials"));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSocialSignIn = async (provider: "google" | "github") => {
+    setFormError(null);
+    setIsLoading(true);
+
+    try {
+      const response = await authClient.signIn.social({
+        provider,
+        callbackURL: "/dashboard",
+      });
+      const socialError =
+        response && typeof response === "object" && "error" in response
+          ? response.error
+          : null;
+
+      if (socialError) {
+        throw socialError;
+      }
+    } catch (error) {
+      setFormError(getSocialAuthErrorMessage(error, tSocial("error")));
     } finally {
       setIsLoading(false);
     }
@@ -193,6 +226,38 @@ export function LoginForm() {
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? t("submitting") : t("submitButton")}
           </Button>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">{tSocial("or")}</span>
+            </div>
+          </div>
+
+          <div className="grid gap-2 sm:grid-cols-2">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={isLoading}
+              onClick={() => {
+                void handleSocialSignIn("google");
+              }}
+            >
+              {tSocial("google")}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              disabled={isLoading}
+              onClick={() => {
+                void handleSocialSignIn("github");
+              }}
+            >
+              {tSocial("github")}
+            </Button>
+          </div>
 
           <p className="text-center text-sm text-muted-foreground">
             {t("noAccount")}

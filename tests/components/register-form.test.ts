@@ -36,11 +36,11 @@ mock.module("next/link", () => ({
     createElement("a", { href }, children),
 }));
 
-import { LoginForm } from "@/components/auth/login-form";
+import { RegisterForm } from "@/components/auth/register-form";
 
-describe("LoginForm", () => {
+describe("RegisterForm", () => {
   it("renders social sign-in buttons", () => {
-    const { getByRole } = render(createElement(LoginForm));
+    const { getByRole } = render(createElement(RegisterForm));
 
     expect(getByRole("button", { name: "google" })).toBeDefined();
     expect(getByRole("button", { name: "github" })).toBeDefined();
