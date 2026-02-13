@@ -611,6 +611,12 @@
       "emailExists": "Email already exists",
       "registerFailed": "Registration failed, please try again later"
     },
+    "social": {
+      "google": "Continue with Google",
+      "github": "Continue with GitHub",
+      "or": "Or continue with",
+      "error": "Social sign-in failed. Please try again."
+    },
     "forgotPassword": {
       "pageTitle": "Forgot Password",
       "pageSubtitle": "Enter your email to receive a password reset link",

@@ -611,6 +611,12 @@
       "emailExists": "このメールアドレスは既に使用されています",
       "registerFailed": "登録に失敗しました。後でもう一度お試しください"
     },
+    "social": {
+      "google": "Google で続行",
+      "github": "GitHub で続行",
+      "or": "または",
+      "error": "ソーシャルログインに失敗しました。もう一度お試しください。"
+    },
     "forgotPassword": {
       "pageTitle": "パスワードをお忘れですか？",
       "pageSubtitle": "パスワード再設定リンクを受け取るためにメールアドレスを入力してください",
