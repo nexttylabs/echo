@@ -611,6 +611,12 @@
       "emailExists": "邮箱已存在",
       "registerFailed": "注册失败，请稍后重试"
     },
+    "social": {
+      "google": "使用 Google 继续",
+      "github": "使用 GitHub 继续",
+      "or": "或使用以下方式继续",
+      "error": "社交登录失败，请重试。"
+    },
     "forgotPassword": {
       "pageTitle": "忘记密码",
       "pageSubtitle": "输入您的邮箱以获取密码重置链接",
