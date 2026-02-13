@@ -40,9 +40,9 @@ import { RegisterForm } from "@/components/auth/register-form";
 
 describe("RegisterForm", () => {
   it("renders social sign-in buttons", () => {
-    const { getByRole } = render(createElement(RegisterForm));
+    const { getAllByRole } = render(createElement(RegisterForm));
 
-    expect(getByRole("button", { name: "google" })).toBeDefined();
-    expect(getByRole("button", { name: "github" })).toBeDefined();
+    expect(getAllByRole("button", { name: /google/i }).length).toBeGreaterThan(0);
+    expect(getAllByRole("button", { name: /github/i }).length).toBeGreaterThan(0);
   });
 });

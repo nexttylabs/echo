@@ -37,13 +37,9 @@ mock.module("next/navigation", () => ({
   useSelectedLayoutSegments: () => [],
 }));
 
-// Mock LanguageMenuItems to avoid testing next-intl internals and ensure specific text is rendered for testing
+// Mock language switcher exports to avoid next-intl internals in this unit test.
 mock.module("@/components/layout/language-switcher", () => ({
-  LanguageMenuItems: () => <div>语言</div>,
-}));
-
-// Mock LanguageMenuItems to avoid testing next-intl internals and ensure specific text is rendered for testing
-mock.module("@/components/layout/language-switcher", () => ({
+  LanguageSwitcher: () => <button type="button">Language</button>,
   LanguageMenuItems: () => <div>语言</div>,
 }));
 

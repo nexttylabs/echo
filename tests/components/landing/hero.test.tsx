@@ -31,6 +31,7 @@ mock.module("next/link", () => ({
 }));
 
 mock.module("@/components/layout/language-switcher", () => ({
+  LanguageMenuItems: () => <div>Language</div>,
   LanguageSwitcher: () => <button data-testid="language-switcher" />,
 }));
 
