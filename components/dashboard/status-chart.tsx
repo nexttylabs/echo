@@ -38,7 +38,11 @@ export function StatusChart({ data }: StatusChartProps) {
   const tFeedback = useTranslations("feedback");
 
   const normalizeStatus = (status: string) =>
-    status === "in_progress" ? "in-progress" : status;
+    status === "in_progress"
+      ? "in-progress"
+      : status === "completed"
+        ? "resolved"
+        : status;
 
   const getStatusLabel = (status: string) => {
     const normalizedStatus = normalizeStatus(status);
